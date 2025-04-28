@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxtb8fsvj4lu1"]
+
+[ext_resource type="PackedScene" uid="uid://kjcmi16ndbnt" path="res://Player.tscn" id="1_wbfu4"]
+[ext_resource type="Script" uid="uid://watm37ge1ane" path="res://Game.cs" id="1_xkndl"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_xkndl")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_top = 163.0
+offset_right = 319.0
+offset_bottom = 240.0
+text = "Enemy Player has dealth 20 damage and is continuing its assault!"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2(160, 120)
+
+[node name="Player1" parent="." instance=ExtResource("1_wbfu4")]
+position = Vector2(3, -4)
+
+[node name="Player2" parent="." instance=ExtResource("1_wbfu4")]
+position = Vector2(164, -5)

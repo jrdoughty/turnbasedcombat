@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Player" load_steps=3 format=3 uid="uid://buof0guua5auj"]
+
+[ext_resource type="Script" uid="uid://decfhkt727sbr" path="res://Player.cs" id="1_i4jvf"]
+[ext_resource type="Texture2D" uid="uid://0he7qvgx0se1" path="res://Rouge.png" id="1_ron26"]
+
+[resource]
+script = ExtResource("1_i4jvf")
+name = "Rouge"
+health = 8
+mana = 5
+level = 1
+experience = 14
+attack = 5
+defense = 3
+speed = 3
+magicDefense = 2
+magicAttack = 3
+playerSprite = ExtResource("1_ron26")
+metadata/_custom_type_script = "uid://decfhkt727sbr"

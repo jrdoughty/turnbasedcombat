@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Player" load_steps=3 format=3 uid="uid://c3fps3v5iqkxc"]
+
+[ext_resource type="Texture2D" uid="uid://b1d8fvnk4nv83" path="res://Barbarian.png" id="1_813eb"]
+[ext_resource type="Script" uid="uid://decfhkt727sbr" path="res://Player.cs" id="1_plsf1"]
+
+[resource]
+script = ExtResource("1_plsf1")
+name = "Barbarian"
+health = 12
+mana = 3
+level = 1
+experience = 15
+attack = 3
+defense = 1
+speed = 2
+magicDefense = 1
+magicAttack = 1
+playerSprite = ExtResource("1_813eb")
+metadata/_custom_type_script = "uid://decfhkt727sbr"

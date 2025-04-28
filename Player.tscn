@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://kjcmi16ndbnt"]
+
+[ext_resource type="Script" uid="uid://e7php10aii4s" path="res://PlayerContainer.cs" id="1_kpjcp"]
+[ext_resource type="Texture2D" uid="uid://bx7fosj3jhfu2" path="res://icon.svg" id="1_xhfnw"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_kpjcp")
+
+[node name="PlayerName" type="Label" parent="."]
+offset_right = 213.0
+offset_bottom = 23.0
+text = "Player 1"
+
+[node name="PlayerHealth" type="ProgressBar" parent="."]
+offset_left = -1.0
+offset_top = 45.0
+offset_right = 144.0
+offset_bottom = 72.0
+
+[node name="PlayerLevel" type="Label" parent="."]
+offset_top = 24.0
+offset_right = 213.0
+offset_bottom = 47.0
+text = "Level 1"
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+position = Vector2(66, 119)
+scale = Vector2(0.992188, 0.742188)
+texture = ExtResource("1_xhfnw")
+
+[node name="PlayerControls" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="PlayerControls"]
+offset_left = 4.0
+offset_top = 165.0
+offset_right = 129.0
+offset_bottom = 192.0
+
+[node name="Button2" type="Button" parent="PlayerControls"]
+offset_left = 4.0
+offset_top = 192.0
+offset_right = 129.0
+offset_bottom = 219.0
+
+[node name="Button3" type="Button" parent="PlayerControls"]
+offset_left = 4.0
+offset_top = 219.0
+offset_right = 129.0
+offset_bottom = 246.0
