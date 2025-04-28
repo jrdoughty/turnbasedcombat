@@ -32,6 +32,7 @@ public partial class Game : Node2D
             player.PlayerSprite.Texture = pData.playerSprite;
             x++;
         }
+        AddChild(gameStateMachine);
         gameStateMachine.ChangeState("Menu");
         GD.Print($"Game state: {gameStateMachine.GameState.state}");
     }
@@ -60,7 +61,7 @@ public partial class Game : Node2D
             else if (keyEvent.IsPressed() && keyEvent.Keycode == Key.Q)
             {
                 GD.Print($"Key pressed: {keyEvent.Keycode.ToString()}");
-                GD.Print($"Game state: {GameState}");
+                GD.Print($"Game state: {gameStateMachine.GameState.state}");
                 GD.Print($"Teams: {Teams.Count}");
                 foreach (var team in Teams)
                 {
@@ -79,7 +80,7 @@ public partial class Game : Node2D
                         GD.Print($"Player magicAttack: {player.magicAttack}");
                     }
                 }
-                GD.Print($"Game states: {GameStates.Count}");
+                GD.Print($"Game states: {gameStateMachine.States.Count}");
             }
         }
     }
