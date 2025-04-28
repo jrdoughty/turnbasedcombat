@@ -1,11 +1,12 @@
 using Godot;
-using System;
+using System.Collections.Generic;
 
 
 public partial class State : Node
 {
 
     public string state { get; set; }
+    private List<List<Player>> Teams;
     public override void _Ready()
     {
     }
@@ -23,6 +24,11 @@ public partial class State : Node
     {
         GD.Print($"Exiting state: {state}");
         // Handle exiting the state
+    }
+    
+    public void SetTeams(List<List<Player>> teams)
+    {
+        Teams = teams;
     }
 
 }

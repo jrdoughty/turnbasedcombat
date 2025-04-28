@@ -15,9 +15,8 @@ public partial class Game : Node2D
         // Initialize the game state
         GD.Print("Game is ready!");
         Teams = new List<List<Player>>{
-        new List<Player>{ GD.Load<Player>("res://Rouge.tres") },
-        new List<Player>{ GD.Load<Player>("res://Barbarian.tres") }
-        
+            new List<Player>{ GD.Load<Player>("res://Rouge.tres") },
+            new List<Player>{ GD.Load<Player>("res://Barbarian.tres") }
         };
         Players.Add(GetNode<PlayerContainer>("Player1"));
         Players.Add(GetNode<PlayerContainer>("Player2"));
@@ -32,6 +31,7 @@ public partial class Game : Node2D
             player.PlayerSprite.Texture = pData.playerSprite;
             x++;
         }
+        gameStateMachine.SetTeams(Teams);
         AddChild(gameStateMachine);
         gameStateMachine.ChangeState("Menu");
         GD.Print($"Game state: {gameStateMachine.GameState.state}");
@@ -40,12 +40,6 @@ public partial class Game : Node2D
     public override void _Process(double delta)
     {
         gameStateMachine.GameState.UpdateState();
-    }
-
-    public override void _PhysicsProcess(double delta)
-    {
-        // Handle physics-related updates
-        //GD.Print("Processing physics...");
     }
 
     public override void _Input(InputEvent @event)

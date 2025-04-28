@@ -32,4 +32,11 @@ public partial class GameStates : Node2D
             GD.Print($"Invalid state: {newState}");
         }
     }
+    public void SetTeams(List<List<Player>> teams)
+    {
+        foreach (var state in States.Values)
+        {
+            state.SetTeams(teams);
+        }
+    }
 }
