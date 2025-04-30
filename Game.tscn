@@ -6,11 +6,10 @@
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_xkndl")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="GameText" type="RichTextLabel" parent="."]
 offset_top = 163.0
 offset_right = 319.0
 offset_bottom = 240.0
-text = "Enemy Player has dealth 20 damage and is continuing its assault!"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public partial class GameStates : Node2D
 {
     public State GameState { get; set; }
-    public Dictionary<String,State> States = new Dictionary<string, State>{ { "Menu", new State() }, { "Casting", new State() }, { "Effect", new State() }, { "Decision", new State() } };
+    public Dictionary<String,State> States = new Dictionary<string, State>{ { "Menu", new MenuState() }, { "Casting", new CastState() }, { "Effect", new State() }, { "Decision", new State() } };
 
     public override void _Ready()
     {
@@ -32,11 +32,25 @@ public partial class GameStates : Node2D
             GD.Print($"Invalid state: {newState}");
         }
     }
-    public void SetTeams(List<List<Player>> teams)
+    public void SetTeams(List<Team> teams)
     {
         foreach (var state in States.Values)
         {
             state.SetTeams(teams);
+        }
+    }
+    public void SetContainers(List<PlayerContainer> containers)
+    {
+        foreach (var state in States.Values)
+        {
+            state.SetContainers(containers);
+        }
+    }
+    public void SetTextBox(RichTextLabel rtl)
+    {
+        foreach (var state in States.Values)
+        {
+            state.SetTextBox(rtl);
         }
     }
 }

@@ -1,0 +1,19 @@
+using Godot;
+using System;
+
+public partial class MenuState : State
+{
+    
+    public override void EnterState()
+    {
+        base.EnterState();
+        Players[0].GetNode<Control>("PlayerControls").Visible = true;
+        // Handle entering the state
+    }
+    public override void ExitState()
+    {
+        base.ExitState();
+        Players[0].GetNode<Control>("PlayerControls").Visible = false;
+        // Handle exiting the state
+    }
+}
