@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public partial class GameStates : Node2D
 {
     public State GameState { get; set; }
-    public Dictionary<String,State> States = new Dictionary<string, State>{ { "Menu", new MenuState() }, { "Casting", new CastState() }, { "Effect", new State() }, { "Decision", new State() } };
+    public Dictionary<String,State> States = new Dictionary<string, State>{ { "Menu", new MenuState() }, { "Casting", new CastState() }, { "Effect", new EffectState() }, { "Decision", new State() } };
 
     public override void _Ready()
     {
@@ -51,6 +51,21 @@ public partial class GameStates : Node2D
         foreach (var state in States.Values)
         {
             state.SetTextBox(rtl);
+        }
+    }
+
+    public void SetActions(List<TBAction> actions)
+    {
+        foreach (var state in States.Values)
+        {
+            state.Actions = actions;
+        }
+    }
+    public void setStateChange()
+    {
+        foreach (State state in States.Values)
+        {
+            state.StateChangedHandler = ChangeState;
         }
     }
 }

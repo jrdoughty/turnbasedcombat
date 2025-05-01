@@ -29,6 +29,7 @@ scale = Vector2(0.992188, 0.742188)
 texture = ExtResource("1_xhfnw")
 
 [node name="PlayerControls" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -40,6 +41,7 @@ offset_left = 4.0
 offset_top = 165.0
 offset_right = 129.0
 offset_bottom = 192.0
+text = "Spell 1"
 
 [node name="Button2" type="Button" parent="PlayerControls"]
 layout_mode = 0
@@ -47,6 +49,7 @@ offset_left = 4.0
 offset_top = 192.0
 offset_right = 129.0
 offset_bottom = 219.0
+text = "Spell 2"
 
 [node name="Button3" type="Button" parent="PlayerControls"]
 layout_mode = 0
@@ -54,3 +57,4 @@ offset_left = 4.0
 offset_top = 219.0
 offset_right = 129.0
 offset_bottom = 246.0
+text = "Spell 3"

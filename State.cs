@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 
 
@@ -9,6 +10,10 @@ public partial class State : Node
     public List<Team> Teams;
     public List<PlayerContainer> Players = new List<PlayerContainer>();
     public RichTextLabel RTL { get; set; }
+
+    public List<TBAction> Actions = new List<TBAction>();
+
+    public Action<string> StateChangedHandler;
     public override void _Ready()
     {
     }

@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+
 public partial class Game : Node2D
 {
 
@@ -9,6 +10,7 @@ public partial class Game : Node2D
 
     public List<Team> Teams;
     public List<PlayerContainer> Players = new List<PlayerContainer>();
+    public List<TBAction> Actions = new List<TBAction>();
 
     public override void _Ready()
     {
@@ -42,6 +44,8 @@ public partial class Game : Node2D
         gameStateMachine.SetContainers(Players);
         gameStateMachine.SetTeams(Teams);
         gameStateMachine.SetTextBox(GetNode<RichTextLabel>("GameText"));
+        SetActions();
+        gameStateMachine.setStateChange();
         AddChild(gameStateMachine);
         gameStateMachine.ChangeState("Menu");
         GD.Print($"Game state: {gameStateMachine.GameState.state}");
@@ -71,6 +75,11 @@ public partial class Game : Node2D
                 gameStateMachine.ChangeState("Casting");
             }
         }
+    }
+
+    public void SetActions()
+    {
+        gameStateMachine.SetActions(Actions);
     }
 
 }
