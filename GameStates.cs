@@ -9,10 +9,10 @@ public partial class GameStates : Node2D
 
     public override void _Ready()
     {
-        foreach (var state in States.Keys)
-        {
-            States[state].state = state;
-        }
+        setStateChange();
+        GameState = States["Menu"];
+        GameState.EnterState();
+        GD.Print("Game state initialized to: Menu");
     }
 
     public void ChangeState(string newState)

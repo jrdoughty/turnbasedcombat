@@ -30,24 +30,27 @@ public partial class Game : Node2D
         Teams[1].TeamId = 2;
         Players.Add(GetNode<PlayerContainer>("Player1"));
         Players.Add(GetNode<PlayerContainer>("Player2"));
+        Players[0].PlayerData = Teams[0].Players[0];
+        Players[1].PlayerData = Teams[1].Players[0];
         int x = 0;
         foreach (var player in Players)
         {
-            Player pData = Teams[x].Players[0];
+            Player pData = player.PlayerData;
+
             player.PlayerName.Text = pData.name;
             player.PlayerHealth.Value = pData.health;
+            player.PlayerCurrentHealth = pData.health;
             player.PlayerHealth.MaxValue = pData.health;
             player.PlayerLevel.Text = pData.level.ToString();
             player.PlayerSprite.Texture = pData.playerSprite;
+
             x++;
         }
         gameStateMachine.SetContainers(Players);
         gameStateMachine.SetTeams(Teams);
         gameStateMachine.SetTextBox(GetNode<RichTextLabel>("GameText"));
-        SetActions();
-        gameStateMachine.setStateChange();
+        gameStateMachine.SetActions(Actions);
         AddChild(gameStateMachine);
-        gameStateMachine.ChangeState("Menu");
         GD.Print($"Game state: {gameStateMachine.GameState.state}");
     }
 
@@ -75,11 +78,6 @@ public partial class Game : Node2D
                 gameStateMachine.ChangeState("Casting");
             }
         }
-    }
-
-    public void SetActions()
-    {
-        gameStateMachine.SetActions(Actions);
     }
 
 }

@@ -5,9 +5,11 @@ public partial class PlayerContainer : Node2D
 {
     public Label PlayerName { get; set; }
     public ProgressBar PlayerHealth { get; set; }
+    public int PlayerCurrentHealth { get; set; }
     public Label PlayerLevel { get; set; }
     public Sprite2D PlayerSprite { get; set; }
     public Control PlayerControls { get; set; }
+    public Player PlayerData { get; set; }
     public Guid PlayerID { get; set; }
 
     public override void _Ready()
@@ -30,11 +32,11 @@ public partial class PlayerContainer : Node2D
         // Handle spell 1 action
         GD.Print("Spell 1 casted!");
         TBAction action = new TBAction();
-        action.ActionType = "Spell";
-        action.ActionName = "Spell 1";
+        action.ActionType = "Attack";
+        action.ActionName = "Dagger";
         action.ActionDescription = "Spell 1 is cast!";
         Effect e = new Effect();
-        e.EffectType = "damage";
+        e.EffectType = "Damage";
         e.EffectName = "Dagger";
         e.EffectValue = 2;
         action.Effects.Add(e);
