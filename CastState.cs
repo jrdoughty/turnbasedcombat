@@ -13,7 +13,7 @@ public partial class CastState : State
     public override void UpdateState()
     {
         base.UpdateState();
-        if(Input.IsActionJustPressed("ui_accept"))
+        if(Input.IsActionJustPressed("ui_accept") || Input.IsMouseButtonPressed(MouseButton.Left))
         {
             if (Actions[0].Effects.Count > 0)
             {

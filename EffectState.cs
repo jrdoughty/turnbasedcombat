@@ -7,15 +7,20 @@ public partial class EffectState : State
     public override void EnterState()
     {
         base.EnterState();
-        switch (Actions[0].Effects[0].EffectType)
+        Effect effect = Actions[0].Effects[0];
+        Actions[0].Effects.RemoveAt(0);
+        PlayerContainer targetPlayer = Actions[0].Target;
+        PlayerContainer actorPlayer = Actions[0].Actor;
+        switch (effect.EffectType)
         {
             case "Damage":
-                Players[1].PlayerCurrentHealth -= Actions[0].Effects[0].EffectValue;
-                Players[1].GetNode<ProgressBar>("PlayerHealth").Value = Players[1].PlayerCurrentHealth;
-                RTL.Text = Players[1].PlayerData.name + " takes " + Actions[0].Effects[0].EffectValue + " damage from " + Players[0].PlayerData.name + "'s " + Actions[0].ActionName + "!";
+                targetPlayer.PlayerCurrentHealth -= effect.EffectValue;
+                targetPlayer.GetNode<ProgressBar>("PlayerHealth").Value = targetPlayer.PlayerCurrentHealth;
+                RTL.Text = targetPlayer.PlayerData.name + " takes " + effect.EffectValue + " damage from " + Players[0].PlayerData.name + "'s " + Actions[0].ActionName + "!";
                 break;
             case "Heal":
-                Players[0].GetNode<Control>("PlayerControls").Visible = true;
+                actorPlayer.PlayerCurrentHealth += effect.EffectValue;
+                actorPlayer.GetNode<ProgressBar>("PlayerHealth").Value = actorPlayer.PlayerCurrentHealth;
                 break;
             case "Buff":
                 Players[0].GetNode<Control>("PlayerControls").Visible = true;
@@ -27,9 +32,27 @@ public partial class EffectState : State
                 Players[0].GetNode<Control>("PlayerControls").Visible = false;
                 break;
         }
-        //RTL.Text = Actions[0].Effects[0].EffectName;
-        // Handle entering the state
     }
+
+
+    public override void UpdateState()
+    {
+        base.UpdateState();
+        if(Input.IsActionJustPressed("ui_accept"))
+        {
+            if (Actions[0].Effects.Count > 0)
+            {
+                StateChangedHandler("Effect");
+            }
+            else
+            {
+                Actions.RemoveAt(0);
+                StateChangedHandler("Menu");
+            }
+        }
+        // Handle state updates
+    }
+
     public override void ExitState()
     {
         base.ExitState();

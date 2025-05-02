@@ -14,6 +14,7 @@ public partial class MenuState : State
     {
         base.ExitState();
         Players[0].GetNode<Control>("PlayerControls").Visible = false;
+        RTL.Visible = true;
         // Handle exiting the state
     }
 }

@@ -12,6 +12,8 @@ public partial class Game : Node2D
     public List<PlayerContainer> Players = new List<PlayerContainer>();
     public List<TBAction> Actions = new List<TBAction>();
 
+    public PlayerContainer ActivePlayer { get; set; }
+
     public override void _Ready()
     {
         // Initialize the game state
@@ -39,8 +41,10 @@ public partial class Game : Node2D
 
             player.PlayerName.Text = pData.name;
             player.PlayerHealth.Value = pData.health;
-            player.PlayerCurrentHealth = pData.health;
+            player.PlayerCurrentHealth = pData.health - 3;
             player.PlayerHealth.MaxValue = pData.health;
+            player.GetNode<ProgressBar>("PlayerHealth").Value = player.PlayerCurrentHealth;
+            player.GetNode<ProgressBar>("PlayerHealth").MaxValue = pData.health;
             player.PlayerLevel.Text = pData.level.ToString();
             player.PlayerSprite.Texture = pData.playerSprite;
 

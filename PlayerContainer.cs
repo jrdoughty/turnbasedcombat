@@ -34,20 +34,47 @@ public partial class PlayerContainer : Node2D
         TBAction action = new TBAction();
         action.ActionType = "Attack";
         action.ActionName = "Dagger";
-        action.ActionDescription = "Spell 1 is cast!";
+        action.ActionDescription = "She swings her dagger at the enemy.";
         Effect e = new Effect();
         e.EffectType = "Damage";
         e.EffectName = "Dagger";
         e.EffectValue = 2;
+        action.Actor = this;
         action.Effects.Add(e);
-
+        foreach (var player in GetParent<Game>().Players)
+        {
+            if (player != this)
+            {
+                action.Target = player;
+            }
+        }
+        GetParent<Game>().ActivePlayer = this;
         GetParent<Game>().Actions.Add(action);
         GetParent<Game>().gameStateMachine.ChangeState("Casting");
     }
     public void Spell2()
     {
-        // Handle spell 2 action
-        GD.Print("Spell 2 casted!");
+        // Handle spell 1 action
+        GD.Print("Spell 1 casted!");
+        TBAction action = new TBAction();
+        action.ActionType = "Spell";
+        action.ActionName = "Heal";
+        action.ActionDescription = "She casts 'Heal Self.'";
+        Effect e = new Effect();
+        e.EffectType = "Heal";
+        e.EffectName = "Self Heal";
+        e.EffectValue = 2;
+        action.Actor = this;
+        action.Effects.Add(e);
+        foreach (var player in GetParent<Game>().Players)
+        {
+            if (player != this)
+            {
+                action.Target = player;
+            }
+        }
+        GetParent<Game>().ActivePlayer = this;
+        GetParent<Game>().Actions.Add(action);
         GetParent<Game>().gameStateMachine.ChangeState("Casting");
     }
     public void Spell3()
