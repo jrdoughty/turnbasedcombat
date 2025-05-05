@@ -13,6 +13,7 @@ public partial class Game : Node2D
     public List<TBAction> Actions = new List<TBAction>();
 
     public PlayerContainer ActivePlayer { get; set; }
+    public Team ActiveTeam { get; set; }
 
     public override void _Ready()
     {
@@ -33,6 +34,7 @@ public partial class Game : Node2D
         Players.Add(GetNode<PlayerContainer>("Player1"));
         Players.Add(GetNode<PlayerContainer>("Player2"));
         Players[0].PlayerData = Teams[0].Players[0];
+        Players[0].IsPlayerContolled = true;
         Players[1].PlayerData = Teams[1].Players[0];
         int x = 0;
         foreach (var player in Players)
@@ -50,12 +52,18 @@ public partial class Game : Node2D
 
             x++;
         }
+        ActiveTeam = Teams[0];
         gameStateMachine.SetContainers(Players);
         gameStateMachine.SetTeams(Teams);
         gameStateMachine.SetTextBox(GetNode<RichTextLabel>("GameText"));
         gameStateMachine.SetActions(Actions);
         AddChild(gameStateMachine);
         GD.Print($"Game state: {gameStateMachine.GameState.state}");
+        GetNode<Queue>("Queue").StateChangedHandler = gameStateMachine.ChangeState;
+        gameStateMachine.setNextCharacter(GetNode<Queue>("Queue").GetNextCharacter);
+
+        GetNode<Queue>("Queue").Initialize(new List<PlayerContainer> (){Players[0], Players[1]});
+
     }
 
     public override void _Process(double delta)
@@ -84,4 +92,13 @@ public partial class Game : Node2D
         }
     }
 
+    public void SetActivePlayer(PlayerContainer player)
+    {
+        if (ActivePlayer != null)
+        {
+            ActivePlayer.IsActive = false;
+        }
+        ActivePlayer = player;
+        player.IsActive = true;
+    }
 }

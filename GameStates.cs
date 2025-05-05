@@ -5,14 +5,14 @@ using System.Collections.Generic;
 public partial class GameStates : Node2D
 {
     public State GameState { get; set; }
-    public Dictionary<String,State> States = new Dictionary<string, State>{ { "Menu", new MenuState() }, { "Casting", new CastState() }, { "Effect", new EffectState() }, { "Decision", new State() } };
+    public Dictionary<String,State> States = new Dictionary<string, State>{ { "Menu", new MenuState() }, { "Start", new StartState() }, { "Casting", new CastState() }, { "Effect", new EffectState() }, { "Decision", new DecisionState() } , { "TurnEnd", new TurnEndState() } };
 
     public override void _Ready()
     {
         setStateChange();
-        GameState = States["Menu"];
+        GameState = States["Start"];
         GameState.EnterState();
-        GD.Print("Game state initialized to: Menu");
+        GD.Print("Game state initialized to: Start");
     }
 
     public void ChangeState(string newState)
@@ -66,6 +66,13 @@ public partial class GameStates : Node2D
         foreach (State state in States.Values)
         {
             state.StateChangedHandler = ChangeState;
+        }
+    }
+    public void setNextCharacter(Func<PlayerContainer> nextCharacterHandler)
+    {
+        foreach (State state in States.Values)
+        {
+            state.NextCharacterHandler = nextCharacterHandler;
         }
     }
 }

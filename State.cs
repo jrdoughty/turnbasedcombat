@@ -12,6 +12,7 @@ public partial class State : Node
     public RichTextLabel RTL { get; set; }
 
     public List<TBAction> Actions = new List<TBAction>();
+    public Func<PlayerContainer> NextCharacterHandler;
 
     public Action<string> StateChangedHandler;
     public override void _Ready()
@@ -24,12 +25,12 @@ public partial class State : Node
     }
     public virtual void EnterState()
     {
-        GD.Print($"Entering state: {state}");
+        //GD.Print($"Entering state: {state}");
         // Handle entering the state
     }
     public virtual void ExitState()
     {
-        GD.Print($"Exiting state: {state}");
+        //GD.Print($"Exiting state: {state}");
         // Handle exiting the state
     }
     

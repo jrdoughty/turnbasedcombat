@@ -38,23 +38,26 @@ offset_bottom = 40.0
 [node name="Button" type="Button" parent="PlayerControls"]
 layout_mode = 0
 offset_left = 4.0
-offset_top = 165.0
+offset_top = 169.0
 offset_right = 129.0
-offset_bottom = 192.0
+offset_bottom = 200.0
+scale = Vector2(1, 0.720001)
 text = "Spell 1"
 
 [node name="Button2" type="Button" parent="PlayerControls"]
 layout_mode = 0
 offset_left = 4.0
-offset_top = 192.0
+offset_top = 196.0
 offset_right = 129.0
-offset_bottom = 219.0
+offset_bottom = 227.0
+scale = Vector2(1, 0.720001)
 text = "Spell 2"
 
 [node name="Button3" type="Button" parent="PlayerControls"]
 layout_mode = 0
 offset_left = 4.0
-offset_top = 219.0
+offset_top = 223.0
 offset_right = 129.0
-offset_bottom = 246.0
+offset_bottom = 254.0
+scale = Vector2(1, 0.720001)
 text = "Spell 3"

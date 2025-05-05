@@ -11,4 +11,5 @@ public partial class Effect : Resource
     public string EffectType { get; set; }
     public int EffectValue { get; set; }
     public string EffectName { get; set; }
+    public int EffectDuration { get; set; }
 }

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class PlayerContainer : Node2D
 {
@@ -11,6 +12,10 @@ public partial class PlayerContainer : Node2D
     public Control PlayerControls { get; set; }
     public Player PlayerData { get; set; }
     public Guid PlayerID { get; set; }
+    public List<Effect> PlayerEffects { get; set; } = new List<Effect>();
+    public bool IsActive { get; set; } = false;
+    public bool IsPlayerContolled { get; set; } = false;
+    public int QueueVal { get; set; } = 0;
 
     public override void _Ready()
     {
@@ -48,14 +53,14 @@ public partial class PlayerContainer : Node2D
                 action.Target = player;
             }
         }
-        GetParent<Game>().ActivePlayer = this;
+        GetParent<Game>().SetActivePlayer(this);
         GetParent<Game>().Actions.Add(action);
         GetParent<Game>().gameStateMachine.ChangeState("Casting");
     }
     public void Spell2()
     {
-        // Handle spell 1 action
-        GD.Print("Spell 1 casted!");
+        // Handle spell 3 action
+        GD.Print("Spell 3 casted!");
         TBAction action = new TBAction();
         action.ActionType = "Spell";
         action.ActionName = "Heal";
@@ -73,7 +78,7 @@ public partial class PlayerContainer : Node2D
                 action.Target = player;
             }
         }
-        GetParent<Game>().ActivePlayer = this;
+        GetParent<Game>().SetActivePlayer(this);
         GetParent<Game>().Actions.Add(action);
         GetParent<Game>().gameStateMachine.ChangeState("Casting");
     }
@@ -81,6 +86,26 @@ public partial class PlayerContainer : Node2D
     {
         // Handle spell 3 action
         GD.Print("Spell 3 casted!");
+        TBAction action = new TBAction();
+        action.ActionType = "Spell";
+        action.ActionName = "Regeneration";
+        action.ActionDescription = "She casts 'Regeneration.'";
+        Effect e = new Effect();
+        e.EffectType = "Heal Over Time";
+        e.EffectName = "Regeneration";
+        e.EffectDuration = 3;
+        e.EffectValue = 1;
+        action.Actor = this;
+        action.Effects.Add(e);
+        foreach (var player in GetParent<Game>().Players)
+        {
+            if (player != this)
+            {
+                action.Target = player;
+            }
+        }
+        GetParent<Game>().SetActivePlayer(this);
+        GetParent<Game>().Actions.Add(action);
         GetParent<Game>().gameStateMachine.ChangeState("Casting");
     }
 }

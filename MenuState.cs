@@ -8,6 +8,7 @@ public partial class MenuState : State
     {
         base.EnterState();
         Players[0].GetNode<Control>("PlayerControls").Visible = true;
+        RTL.Visible = false;
         // Handle entering the state
     }
     public override void ExitState()
