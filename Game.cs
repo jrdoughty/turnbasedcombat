@@ -23,19 +23,20 @@ public partial class Game : Node2D
             new Team(),
             new Team()
         };
+        /*
         Teams[0].TeamName = "Team 1";
         Teams[0].TeamId = 1;
         Teams[0].Players = new List<Player>();
-        Teams[0].Players.Add(GD.Load<Player>("res://Rouge.tres"));
         Teams[1].Players = new List<Player>();
-        Teams[1].Players.Add(GD.Load<Player>("res://Barbarian.tres"));
         Teams[1].TeamName = "Team 2";
         Teams[1].TeamId = 2;
-        Players.Add(GetNode<PlayerContainer>("Player1"));
-        Players.Add(GetNode<PlayerContainer>("Player2"));
         Players[0].PlayerData = Teams[0].Players[0];
         Players[0].IsPlayerContolled = true;
         Players[1].PlayerData = Teams[1].Players[0];
+        */
+        Players.Add(GetNode<PlayerContainer>("Player1"));
+        Players.Add(GetNode<PlayerContainer>("Player2"));
+        Players[0].IsPlayerContolled = true;
         int x = 0;
         foreach (var player in Players)
         {

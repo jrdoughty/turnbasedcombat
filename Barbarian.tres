@@ -16,4 +16,5 @@ speed = 2
 magicDefense = 1
 magicAttack = 1
 playerSprite = ExtResource("1_813eb")
+playerActions = ["Axe", "Regen"]
 metadata/_custom_type_script = "uid://decfhkt727sbr"

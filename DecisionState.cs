@@ -14,11 +14,11 @@ public partial class DecisionState : State
         float random = GD.Randf();
         if (random < 0.5f)
         {
-            Players[1].Spell1();
+            Players[1].PerformAction(Players[1].PlayerData.playerActions[0].ToString().Trim('"'));
         }
         else
         {
-            Players[1].Spell2();
+            Players[1].PerformAction(Players[1].PlayerData.playerActions[1].ToString().Trim('"'));
         }
     }
     public override void ExitState()

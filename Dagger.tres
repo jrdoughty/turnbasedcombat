@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TBAction" load_steps=2 format=3 uid="uid://bsxetrbpj17pk"]
+
+[ext_resource type="Script" uid="uid://bupsnfrxtmn4s" path="res://TBAction.cs" id="1_d15t0"]
+
+[resource]
+script = ExtResource("1_d15t0")
+ActionType = "Damage"
+ActionName = "Dagger"
+ActionDescription = "They swing their dagger at the enemy."
+EffectNames = ["Dagger"]
+metadata/_custom_type_script = "uid://bupsnfrxtmn4s"

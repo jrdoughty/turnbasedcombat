@@ -1,5 +1,5 @@
 using Godot;
-using System;
+using Godot.Collections;
 
 [GlobalClass]
 public partial class Player : Resource
@@ -16,4 +16,5 @@ public partial class Player : Resource
     [Export] public int magicAttack;
 
     [Export] public Texture2D playerSprite;
+    [Export] public Array playerActions = new Array();
 }

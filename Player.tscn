@@ -35,7 +35,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Button" type="Button" parent="PlayerControls"]
+[node name="Button1" type="Button" parent="PlayerControls"]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 169.0
