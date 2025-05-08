@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://cxtb8fsvj4lu1"]
 
-[ext_resource type="PackedScene" uid="uid://kjcmi16ndbnt" path="res://Player.tscn" id="1_wbfu4"]
+[ext_resource type="PackedScene" uid="uid://kjcmi16ndbnt" path="res://Characters/Player.tscn" id="1_wbfu4"]
 [ext_resource type="Script" uid="uid://watm37ge1ane" path="res://Game.cs" id="1_xkndl"]
 [ext_resource type="Texture2D" uid="uid://b1vlhukw46ch1" path="res://BG.png" id="2_u44n3"]
-[ext_resource type="Resource" uid="uid://buof0guua5auj" path="res://Rouge.tres" id="4_r0x5m"]
-[ext_resource type="Script" uid="uid://dyefct01v4jfa" path="res://Queue.cs" id="4_sb48q"]
-[ext_resource type="Resource" uid="uid://c3fps3v5iqkxc" path="res://Barbarian.tres" id="5_3mrqo"]
+[ext_resource type="Resource" uid="uid://buof0guua5auj" path="res://Characters/Rouge.tres" id="4_r0x5m"]
+[ext_resource type="Script" uid="uid://dyefct01v4jfa" path="res://GameStates/Queue.cs" id="4_sb48q"]
+[ext_resource type="Resource" uid="uid://c3fps3v5iqkxc" path="res://Characters/Barbarian.tres" id="5_3mrqo"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_xkndl")

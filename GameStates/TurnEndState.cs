@@ -33,6 +33,7 @@ public partial class TurnEndState : State
         if(Player.PlayerEffects.Count > effectCount)
         {
             Effect effect = Player.PlayerEffects[effectCount];
+            GD.Print("Applying effect: " + effect.EffectName);
             switch (effect.EffectType)
             {
                 case "Heal Over Time":

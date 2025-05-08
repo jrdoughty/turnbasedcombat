@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://cv68be5fvw12i"]
+
+[ext_resource type="Script" uid="uid://c0aqfb0ay7tac" path="res://Effects/Effect.cs" id="1_r3rc7"]
+
+[resource]
+script = ExtResource("1_r3rc7")
+EffectType = "Damage"
+EffectValue = 2
+EffectName = "Dagger Damage"
+EffectDuration = 0
+metadata/_custom_type_script = "uid://c0aqfb0ay7tac"

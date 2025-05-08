@@ -8,9 +8,17 @@ public partial class EffectState : State
     PlayerContainer actorPlayer;
     public override void EnterState()
     {
-        base.EnterState();    
+        base.EnterState();   
+        ApplyEffect();
+    }
+
+    public void ApplyEffect()
+    {
+        // Apply the effect to the target player
+        // This method can be called from the EnterState method or elsewhere as needed 
         targetPlayer = Actions[0].Target;
         actorPlayer = Actions[0].Actor;
+        GD.Print("Actor: " + actorPlayer.PlayerData.name + ", Target: " + targetPlayer.PlayerData.name);
         Effect effect = Actions[0].Effects[0];
         Actions[0].Effects.RemoveAt(0);
         switch (effect.EffectType)
@@ -26,18 +34,17 @@ public partial class EffectState : State
                 RTL.Text = actorPlayer.PlayerData.name + " heals for " + effect.EffectValue + " from " + actorPlayer.PlayerData.name + "'s " + Actions[0].ActionName + "!";
                 break;
             case "Buff": case "Heal Over Time":
-                actorPlayer.PlayerEffects.Add(effect);
+                Effect duplicateEffect = effect.Duplicate() as Effect;
+                actorPlayer.PlayerEffects.Add(duplicateEffect);
                 break;
             case "Debuff": 
-                targetPlayer.PlayerEffects.Add(effect);
+                targetPlayer.PlayerEffects.Add(effect.Duplicate() as Effect);
                 break;
             default:
                 GD.Print("Unknown effect type: " + effect.EffectType);
                 break;
         }
-        
     }
-
 
     public override void UpdateState()
     {
@@ -46,7 +53,7 @@ public partial class EffectState : State
         {
             if (Actions[0].Effects.Count > 0)
             {
-                StateChangedHandler("Effect");
+                ApplyEffect();
             }
             else
             {

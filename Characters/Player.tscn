@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://kjcmi16ndbnt"]
 
-[ext_resource type="Script" uid="uid://e7php10aii4s" path="res://PlayerContainer.cs" id="1_kpjcp"]
+[ext_resource type="Script" uid="uid://e7php10aii4s" path="res://Characters/PlayerContainer.cs" id="1_kpjcp"]
 [ext_resource type="Texture2D" uid="uid://bx7fosj3jhfu2" path="res://icon.svg" id="1_xhfnw"]
 
 [node name="Player" type="Node2D"]

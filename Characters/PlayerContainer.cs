@@ -54,30 +54,4 @@ public partial class PlayerContainer : Node2D
         GetParent<Game>().Actions.Add(action);
         GetParent<Game>().gameStateMachine.ChangeState("Casting");
     }
-    public void Spell3()
-    {
-        // Handle spell 3 action
-        GD.Print("Spell 3 casted!");
-        TBAction action = new TBAction();
-        action.ActionType = "Spell";
-        action.ActionName = "Regeneration";
-        action.ActionDescription = "She casts 'Regeneration.'";
-        Effect e = new Effect();
-        e.EffectType = "Heal Over Time";
-        e.EffectName = "Regeneration";
-        e.EffectDuration = 3;
-        e.EffectValue = 1;
-        action.Actor = this;
-        action.Effects.Add(e);
-        foreach (var player in GetParent<Game>().Players)
-        {
-            if (player != this)
-            {
-                action.Target = player;
-            }
-        }
-        GetParent<Game>().SetActivePlayer(this);
-        GetParent<Game>().Actions.Add(action);
-        GetParent<Game>().gameStateMachine.ChangeState("Casting");
-    }
 }
