@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0he7qvgx0se1"
-path="res://.godot/imported/Rouge.png-7e0a834da846eb80752ac25e7a2c5983.ctex"
+uid="uid://b1d8fvnk4nv83"
+path="res://.godot/imported/Barbarian.png-957831f5ca4522b00cf46e00b10f610d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Rouge.png"
-dest_files=["res://.godot/imported/Rouge.png-7e0a834da846eb80752ac25e7a2c5983.ctex"]
+source_file="res://Characters/Barbarian.png"
+dest_files=["res://.godot/imported/Barbarian.png-957831f5ca4522b00cf46e00b10f610d.ctex"]
 
 [params]
 
