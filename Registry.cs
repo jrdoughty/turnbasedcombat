@@ -7,11 +7,9 @@ public static class Registry
     //public static Dictionary<string, object> GameData = new Dictionary<string, object>();
     public static Dictionary<string, TBAction> ActionData = new Dictionary<string, TBAction>(){
         { "Dagger", GD.Load<TBAction>("res://Actions/Dagger.tres")},
-        { "Axe", new TBAction() { ActionType = "Attack", ActionName = "Axe", ActionDescription = "They swing their axe at the enemy.", EffectNames = new Array() { "Axe" } } },
-        { "Heal", new TBAction() { ActionType = "Heal", ActionName = "Heal", ActionDescription = "They heal themselves.", EffectNames = new Array() { "Heal" } } },
-        { "Regen", new TBAction() { ActionType = "Spell", ActionName = "Regeneration", ActionDescription = "They begin to regenerate.", EffectNames = new Array() { "Regeneration" } } },
-        { "Burn", new TBAction() { ActionType = "Burn", ActionName = "Burn", ActionDescription = "They burn the enemy.", EffectNames = new Array() { "Burn" } } },
-        { "Freeze", new TBAction() { ActionType = "Freeze", ActionName = "Freeze", ActionDescription = "They freeze the enemy.", EffectNames = new Array() { "Freeze" } } }
+        { "Axe", GD.Load<TBAction>("res://Actions/Axe.tres")},
+        { "Heal", GD.Load<TBAction>("res://Actions/Heal.tres")},
+        { "Regeneration", GD.Load<TBAction>("res://Actions/Regeneration.tres")}
     };
     public static Dictionary<string, Effect> EffectData = new Dictionary<string, Effect>(){
         { "Dagger", GD.Load<Effect>("res://Effects/DaggerDamage.tres") },

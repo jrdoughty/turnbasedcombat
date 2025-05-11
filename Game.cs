@@ -15,6 +15,7 @@ public partial class Game : Node2D
     public PlayerContainer ActivePlayer { get; set; }
     public Team ActiveTeam { get; set; }
 
+    public BattleConditions BattleConditions { get; set; } = new BattleConditions();
     public override void _Ready()
     {
         // Initialize the game state
@@ -23,20 +24,12 @@ public partial class Game : Node2D
             new Team(),
             new Team()
         };
-        /*
-        Teams[0].TeamName = "Team 1";
-        Teams[0].TeamId = 1;
-        Teams[0].Players = new List<Player>();
-        Teams[1].Players = new List<Player>();
-        Teams[1].TeamName = "Team 2";
-        Teams[1].TeamId = 2;
-        Players[0].PlayerData = Teams[0].Players[0];
-        Players[0].IsPlayerContolled = true;
-        Players[1].PlayerData = Teams[1].Players[0];
-        */
+        
         Players.Add(GetNode<PlayerContainer>("Player1"));
         Players.Add(GetNode<PlayerContainer>("Player2"));
         Players[0].IsPlayerContolled = true;
+        Teams[0].AddPlayer(Players[0]);
+        Teams[1].AddPlayer(Players[1]);
         int x = 0;
         foreach (var player in Players)
         {
@@ -64,7 +57,9 @@ public partial class Game : Node2D
         gameStateMachine.setNextCharacter(GetNode<Queue>("Queue").GetNextCharacter);
 
         GetNode<Queue>("Queue").Initialize(new List<PlayerContainer> (){Players[0], Players[1]});
-
+        GetNode<Queue>("Queue").ActiveCharacterHandler = SetActivePlayer;
+        gameStateMachine.setGetBattleConditions(GetActiveBattleConditions);
+        BattleConditions.Teams = Teams;
     }
 
     public override void _Process(double delta)
@@ -101,5 +96,9 @@ public partial class Game : Node2D
         }
         ActivePlayer = player;
         player.IsActive = true;
+    }
+    public BattleConditions GetActiveBattleConditions()
+    {
+        return BattleConditions;
     }
 }

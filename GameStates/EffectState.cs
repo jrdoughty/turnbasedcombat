@@ -33,9 +33,10 @@ public partial class EffectState : State
                 actorPlayer.GetNode<ProgressBar>("PlayerHealth").Value = actorPlayer.PlayerCurrentHealth;
                 RTL.Text = actorPlayer.PlayerData.name + " heals for " + effect.EffectValue + " from " + actorPlayer.PlayerData.name + "'s " + Actions[0].ActionName + "!";
                 break;
-            case "Buff": case "Heal Over Time":
+            case "Heal Over Time":
                 Effect duplicateEffect = effect.Duplicate() as Effect;
                 actorPlayer.PlayerEffects.Add(duplicateEffect);
+                RTL.Text = actorPlayer.PlayerData.name + " begins to heal!";
                 break;
             case "Debuff": 
                 targetPlayer.PlayerEffects.Add(effect.Duplicate() as Effect);
@@ -44,6 +45,7 @@ public partial class EffectState : State
                 GD.Print("Unknown effect type: " + effect.EffectType);
                 break;
         }
+        targetPlayer.updateConditions();
     }
 
     public override void UpdateState()
@@ -58,24 +60,8 @@ public partial class EffectState : State
             else
             {
                 Actions.RemoveAt(0);
-                if(actorPlayer.PlayerEffects.Count > 0)
-                {
-                    StateChangedHandler("TurnEnd");
-                }
-                else
-                {
-                    PlayerContainer nextPlayer = NextCharacterHandler();
-                    if(!nextPlayer.IsPlayerContolled)
-                    {
-                        GD.Print("End of turn!");
-                        StateChangedHandler("Decision");
-                    }
-                    else
-                    {
-                        GD.Print("Your turn!");
-                        StateChangedHandler("Menu");
-                    }
-                }
+
+                StateChangedHandler("TurnEnd");
             }
         }
         // Handle state updates

@@ -15,6 +15,7 @@ public partial class State : Node
     public Func<PlayerContainer> NextCharacterHandler;
 
     public Action<string> StateChangedHandler;
+    public Func<BattleConditions> GetConditionsHandler;
     public override void _Ready()
     {
     }

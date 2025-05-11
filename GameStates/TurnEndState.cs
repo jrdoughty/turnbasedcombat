@@ -4,6 +4,7 @@ using System;
 public partial class TurnEndState : State
 {
     private PlayerContainer Player;
+    private bool firstTime = true;
     private int effectCount = 0;
     public override void EnterState()
     {
@@ -13,18 +14,28 @@ public partial class TurnEndState : State
             if(player.IsActive)
             {
                 Player = player;
-                ApplyEndTurnEffects();
-                break;
+                effectCount = 0;
+                firstTime = true;
+                return;
             }
         }
+        GD.Print("No active player found, ending turn.");
+        EndTurn();
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
-        if(Input.IsActionJustPressed("ui_accept"))
+        if(Player.PlayerEffects.Count == 0)
         {
-            ApplyEndTurnEffects(); 
+            EndTurn();
+        }
+        else if(Input.IsActionJustPressed("ui_accept") || firstTime)
+        {
+            firstTime = false;
+            GD.Print("End Turn pressed");
+            // Apply end turn effects
+            ApplyEndTurnEffects();
         }
         // Handle state updates
     }
@@ -52,11 +63,13 @@ public partial class TurnEndState : State
                     break;
             }
             effect.EffectDuration--;
+            GD.Print("Effect duration: " + effect.EffectDuration);
             if (effect.EffectDuration <= 0)
             {
                 Player.PlayerEffects.Remove(effect);
                 effectCount--;//compensate for the removal of the effect
             }
+            Player.updateConditions();
             effectCount++;
         }
         else
@@ -67,11 +80,22 @@ public partial class TurnEndState : State
 
     private void EndTurn()
     {
+        if(GetConditionsHandler() != null)
+        {
+            if(GetConditionsHandler().SessionComplete())
+            {
+                GD.Print("Victory!");
+                StateChangedHandler("Victory");
+                return;
+            }
+        }
         foreach (var player in Players)
         {
-            player.IsActive = !player.IsActive;//this didnt work
+            player.IsActive = false;
         }
-        if(!Players[0].IsActive)
+        PlayerContainer next = NextCharacterHandler();
+        next.IsActive = true;
+        if(!next.IsPlayerContolled)
         {
             GD.Print("End of turn!");
             StateChangedHandler("Decision");

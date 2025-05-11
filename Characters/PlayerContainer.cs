@@ -16,6 +16,7 @@ public partial class PlayerContainer : Node2D
     public bool IsPlayerContolled { get; set; } = false;
     public int QueueVal { get; set; } = 0;
     [Export] public Player PlayerData { get; set; }
+    public Team team { get; set; }
 
     public override void _Ready()
     {
@@ -53,5 +54,14 @@ public partial class PlayerContainer : Node2D
         GetParent<Game>().SetActivePlayer(this);
         GetParent<Game>().Actions.Add(action);
         GetParent<Game>().gameStateMachine.ChangeState("Casting");
+    }
+    public void updateConditions()// this will need to be elaborated on later
+    {
+        if(PlayerCurrentHealth <= 0)
+        {
+            PlayerSprite.Visible = false;
+            IsActive = false;
+            team.IsDefeated = true;
+        }
     }
 }

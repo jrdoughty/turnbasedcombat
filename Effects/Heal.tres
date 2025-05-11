@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_nkyg3")
-EffectType = "Damage"
+EffectType = "Heal"
 EffectValue = 2
-EffectName = "Dagger Damage"
+EffectName = "Heal"
 EffectDuration = 0
 metadata/_custom_type_script = "uid://c0aqfb0ay7tac"

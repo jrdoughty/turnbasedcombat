@@ -16,5 +16,5 @@ speed = 3
 magicDefense = 2
 magicAttack = 3
 playerSprite = ExtResource("1_ron26")
-playerActions = ["\"Dagger\"", "\"Heal\"", "\"Regen\""]
+playerActions = ["Dagger", "Heal", "Regeneration"]
 metadata/_custom_type_script = "uid://decfhkt727sbr"

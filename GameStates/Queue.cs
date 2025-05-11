@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public partial class Queue : Node
 {
     public Action<string> StateChangedHandler;
+    public Action<PlayerContainer> ActiveCharacterHandler;
     public List<PlayerContainer> CharacterQueue { get; set; } = new List<PlayerContainer>();
 
     public PlayerContainer CurrentCharacter { get; set; } = null;

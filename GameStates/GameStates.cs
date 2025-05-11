@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public partial class GameStates : Node2D
 {
     public State GameState { get; set; }
-    public Dictionary<String,State> States = new Dictionary<string, State>{ { "Menu", new MenuState() }, { "Start", new StartState() }, { "Casting", new CastState() }, { "Effect", new EffectState() }, { "Decision", new DecisionState() } , { "TurnEnd", new TurnEndState() } };
+    public Dictionary<String,State> States = new Dictionary<string, State>{ { "Menu", new MenuState() }, { "Start", new StartState() }, { "Casting", new CastState() }, { "Effect", new EffectState() }, { "Decision", new DecisionState() } , { "TurnEnd", new TurnEndState() }, {"Victory", new VictoryState() }, { "Defeat", new DefeatState() } };
 
     public override void _Ready()
     {
@@ -73,6 +73,13 @@ public partial class GameStates : Node2D
         foreach (State state in States.Values)
         {
             state.NextCharacterHandler = nextCharacterHandler;
+        }
+    }
+    public void setGetBattleConditions(Func<BattleConditions> getBCHandler)
+    {
+        foreach (State state in States.Values)
+        {
+            state.GetConditionsHandler = getBCHandler;
         }
     }
 }

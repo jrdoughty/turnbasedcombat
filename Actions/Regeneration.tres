@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TBAction" load_steps=2 format=3 uid="uid://w1qvmmefi63t"]
+
+[ext_resource type="Script" uid="uid://bupsnfrxtmn4s" path="res://Actions/TBAction.cs" id="1_xefps"]
+
+[resource]
+script = ExtResource("1_xefps")
+ActionType = "Heal"
+ActionName = "Regeneration"
+ActionDescription = "They begin to regenerate."
+EffectNames = ["Regeneration"]
+metadata/_custom_type_script = "uid://bupsnfrxtmn4s"
