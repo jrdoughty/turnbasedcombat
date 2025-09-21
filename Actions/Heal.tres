@@ -6,6 +6,6 @@
 script = ExtResource("1_wo7ry")
 ActionType = "Heal"
 ActionName = "Heal"
-ActionDescription = "They Heal themselves!"
+ActionDescription = "<character> Heal <them><selves>!"
 EffectNames = ["Heal"]
 metadata/_custom_type_script = "uid://bupsnfrxtmn4s"

@@ -6,6 +6,6 @@
 script = ExtResource("1_33g26")
 ActionType = "Damage"
 ActionName = "Poison"
-ActionDescription = "They have Poisoned Their Opponent"
+ActionDescription = "<character> have Poisoned Their Opponent"
 EffectNames = ["Poison"]
 metadata/_custom_type_script = "uid://bupsnfrxtmn4s"
