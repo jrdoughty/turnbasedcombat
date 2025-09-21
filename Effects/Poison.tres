@@ -8,4 +8,6 @@ EffectType = "Damage Over Time"
 EffectValue = 1
 EffectName = "Poison"
 EffectDuration = 3
+EffectCastDescription = "<oname> has been <eName>ed!"
+EffectEndTurnDescription = "<name> takes <value> damage from <ename>!"; 
 metadata/_custom_type_script = "uid://c0aqfb0ay7tac"

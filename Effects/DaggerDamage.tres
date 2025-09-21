@@ -6,6 +6,6 @@
 script = ExtResource("1_r3rc7")
 EffectType = "Damage"
 EffectValue = 2
-EffectName = "Dagger Damage"
-EffectDuration = 0
+EffectName = "Dagger"
+EffectCastDescription = "<oname> takes <value> damage from <name>'s <ename>!"
 metadata/_custom_type_script = "uid://c0aqfb0ay7tac"

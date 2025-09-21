@@ -26,34 +26,31 @@ public partial class EffectState : State
             case "Damage":
                 targetPlayer.PlayerCurrentHealth -= effect.EffectValue;
                 targetPlayer.GetNode<ProgressBar>("PlayerHealth").Value = targetPlayer.PlayerCurrentHealth;
-                RTL.Text = targetPlayer.PlayerData.name + " takes " + effect.EffectValue + " damage from " + actorPlayer.PlayerData.name + "'s " + Actions[0].ActionName + "!";
                 break;
             case "Heal":
                 actorPlayer.PlayerCurrentHealth += effect.EffectValue;
                 actorPlayer.GetNode<ProgressBar>("PlayerHealth").Value = actorPlayer.PlayerCurrentHealth;
-                RTL.Text = actorPlayer.PlayerData.name + " heals for " + effect.EffectValue + " from " + actorPlayer.PlayerData.name + "'s " + Actions[0].ActionName + "!";
                 break;
             case "Heal Over Time":
-                if(targetPlayer.PlayerEffects.Count > 0)
+                if(actorPlayer.PlayerEffects.Count > 0)
                 {
-                    foreach(var e in targetPlayer.PlayerEffects)
+                    foreach(var e in actorPlayer.PlayerEffects)
                     {
                         if(e.EffectName == effect.EffectName)
                         {
                             if (e.EffectDuration == -1)
-                                RTL.Text = targetPlayer.PlayerData.name + " is already affected by " + effect.EffectName + "!";
+                                RTL.Text = actorPlayer.PlayerData.name + " is already affected by " + effect.EffectName + "!";
                             else
                             {
                                 e.EffectDuration = effect.EffectDuration;
-                                RTL.Text = targetPlayer.PlayerData.name + "'s " + effect.EffectName + " duration has been renewed!";
+                                RTL.Text = actorPlayer.PlayerData.name + "'s " + effect.EffectName + " duration has been renewed!";
                             }
-                            targetPlayer.updateConditions();
+                            actorPlayer.updateConditions();
                             return;
                         }
                     }
                 }
                 actorPlayer.PlayerEffects.Add(effect.Duplicate() as Effect);
-                RTL.Text = actorPlayer.PlayerData.name + " begins to heal!";
                 break;
             case "Damage Over Time":
                 if(targetPlayer.PlayerEffects.Count > 0)
@@ -75,7 +72,6 @@ public partial class EffectState : State
                     }
                 }
                 targetPlayer.PlayerEffects.Add(effect.Duplicate() as Effect);
-                RTL.Text = targetPlayer.PlayerData.name + " has been Poisoned!";
                 break;
             case "Debuff": 
                 targetPlayer.PlayerEffects.Add(effect.Duplicate() as Effect);
@@ -84,6 +80,10 @@ public partial class EffectState : State
                 GD.Print("Unknown effect type: " + effect.EffectType);
                 break;
         }
+        string effectText = Utils.ReplacePlayerStrings(effect.EffectCastDescription, actorPlayer.PlayerData);
+        effectText = Utils.ReplaceOtherPlayerStrings(effectText, targetPlayer.PlayerData);
+        effectText = Utils.ReplaceDamageStrings(effectText, effect);
+        RTL.Text = effectText;
         targetPlayer.updateConditions();
     }
 

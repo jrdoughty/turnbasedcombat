@@ -22,6 +22,5 @@ public partial class TBAction : Resource
 			Effect e = Registry.EffectData[(string)effect];
 			Effects.Add(e);
 		}
-		ActionDescription = Utils.ReplacePlayerStrings(ActionDescription, Actor.PlayerData);
 	}
 }

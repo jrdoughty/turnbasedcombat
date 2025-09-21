@@ -8,4 +8,6 @@ EffectType = "Heal Over Time"
 EffectValue = 1
 EffectName = "Regeneration"
 EffectDuration = 3
+EffectCastDescription = "f"
+EffectEndTurnDescription = "f"
 metadata/_custom_type_script = "uid://c0aqfb0ay7tac"

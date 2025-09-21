@@ -51,12 +51,10 @@ public partial class TurnEndState : State
                 case "Heal Over Time":
                     Player.PlayerCurrentHealth += effect.EffectValue;
                     Player.GetNode<ProgressBar>("PlayerHealth").Value = Player.PlayerCurrentHealth;
-                    RTL.Text = Player.PlayerData.name + " heals for " + effect.EffectValue + " from " + effect.EffectName + "!";
                     break;
                 case "Damage Over Time":
                     Player.PlayerCurrentHealth -= effect.EffectValue;
                     Player.GetNode<ProgressBar>("PlayerHealth").Value = Player.PlayerCurrentHealth;
-                    RTL.Text = Player.PlayerData.name + " takes" + effect.EffectValue + " damage from " + effect.EffectName + "!";
                     break;
                 case "Buff":
                     Player.PlayerEffects.Add(effect);
@@ -68,6 +66,10 @@ public partial class TurnEndState : State
                     GD.Print("Unknown effect type: " + effect.EffectType);
                     break;
             }
+            string str = Utils.ReplacePlayerStrings(effect.EffectEndTurnDescription, Player.PlayerData);
+            str = Utils.ReplaceOtherPlayerStrings(str, Player.PlayerData);
+            str = Utils.ReplaceDamageStrings(str, effect);
+            RTL.Text = str;
             effect.EffectDuration--;
             GD.Print("Effect duration: " + effect.EffectDuration);
             if (effect.EffectDuration <= 0)

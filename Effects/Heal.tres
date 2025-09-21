@@ -7,5 +7,6 @@ script = ExtResource("1_nkyg3")
 EffectType = "Heal"
 EffectValue = 2
 EffectName = "Heal"
-EffectDuration = 0
+EffectCastDescription = "<name> casts <ename> and heals <name> for <value> health!"
+EffectEndTurnDescription = ""
 metadata/_custom_type_script = "uid://c0aqfb0ay7tac"

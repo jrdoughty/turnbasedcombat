@@ -9,4 +9,6 @@ public partial class Effect : Resource
     [Export] public int EffectValue { get; set; }
     [Export] public string EffectName { get; set; }
     [Export] public int EffectDuration { get; set; }
+    [Export] public string EffectCastDescription { get; set; }
+    [Export] public string EffectEndTurnDescription { get; set; }
 }
