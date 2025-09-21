@@ -3,16 +3,13 @@
 	"tasks": [
 		{
             "label": "build",
-			"type": "dotnet",
-			"task": "build",
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
+			"command": "dotnet",
+			"type": "process",
+			"args": ["build"],
 			"presentation": {
 				"reveal": "silent"
 			},
-			"problemMatcher": ["$msCompile"],
+			"problemMatcher": "$msCompile",
 			
 		}
 	]

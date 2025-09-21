@@ -34,9 +34,29 @@ public partial class EffectState : State
                 RTL.Text = actorPlayer.PlayerData.name + " heals for " + effect.EffectValue + " from " + actorPlayer.PlayerData.name + "'s " + Actions[0].ActionName + "!";
                 break;
             case "Heal Over Time":
-                Effect duplicateEffect = effect.Duplicate() as Effect;
-                actorPlayer.PlayerEffects.Add(duplicateEffect);
+                actorPlayer.PlayerEffects.Add(effect.Duplicate() as Effect);
                 RTL.Text = actorPlayer.PlayerData.name + " begins to heal!";
+                break;
+            case "Damage Over Time":
+                if(targetPlayer.PlayerEffects.Count > 0)
+                {
+                    foreach(var e in targetPlayer.PlayerEffects)
+                    {
+                        if(e.EffectName == effect.EffectName)
+                        {
+                            if (e.EffectDuration == -1)
+                                RTL.Text = targetPlayer.PlayerData.name + " is already affected by " + effect.EffectName + "!";
+                            else
+                            {
+                                e.EffectDuration = effect.EffectDuration;
+                                RTL.Text = targetPlayer.PlayerData.name + "'s " + effect.EffectName + " duration has been refreshed!";
+                            }
+                            return;
+                        }
+                    }
+                }
+                targetPlayer.PlayerEffects.Add(effect.Duplicate() as Effect);
+                RTL.Text = targetPlayer.PlayerData.name + " has been Poisoned!";
                 break;
             case "Debuff": 
                 targetPlayer.PlayerEffects.Add(effect.Duplicate() as Effect);
@@ -60,7 +80,6 @@ public partial class EffectState : State
             else
             {
                 Actions.RemoveAt(0);
-
                 StateChangedHandler("TurnEnd");
             }
         }

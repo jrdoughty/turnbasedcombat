@@ -5,11 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Launch (console)",
+            "name": "Debug",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "C:/Users/John/Documents/Godot_v4.4.1-stable_mono_win64/Godot_v4.4.1-stable_mono_win64.exe",
+            "program": "C:/Users/John/Downloads/Godot_v4.5-stable_mono_win64/Godot_v4.5-stable_mono_win64/Godot_v4.5-stable_mono_win64.exe",
             "args": [],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,

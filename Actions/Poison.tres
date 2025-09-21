@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TBAction" load_steps=2 format=3 uid="uid://crcarqyt6akym"]
+
+[ext_resource type="Script" uid="uid://bupsnfrxtmn4s" path="res://Actions/TBAction.cs" id="1_33g26"]
+
+[resource]
+script = ExtResource("1_33g26")
+ActionType = "Damage"
+ActionName = "Poison"
+ActionDescription = "They have Poisoned Their Opponent"
+EffectNames = ["Poison"]
+metadata/_custom_type_script = "uid://bupsnfrxtmn4s"

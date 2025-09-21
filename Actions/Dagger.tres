@@ -7,5 +7,5 @@ script = ExtResource("1_d15t0")
 ActionType = "Damage"
 ActionName = "Dagger"
 ActionDescription = "They swing their dagger at the enemy."
-EffectNames = ["Dagger"]
+EffectNames = ["Dagger", "Poison"]
 metadata/_custom_type_script = "uid://bupsnfrxtmn4s"

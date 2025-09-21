@@ -3,11 +3,12 @@ using System;
 
 public partial class DecisionState : State
 {
-    
+
     public override void EnterState()
     {
 
         base.EnterState();
+        GD.Print("Enemy has " + Players[1].PlayerEffects.Count + " effects.");
     }
     public override void UpdateState()
     {

@@ -11,7 +11,7 @@ public partial class TurnEndState : State
         base.EnterState();
         foreach (var player in Players)
         {
-            if(player.IsActive)
+            if (player.IsActive)
             {
                 Player = player;
                 effectCount = 0;
@@ -41,7 +41,8 @@ public partial class TurnEndState : State
     }
     private void ApplyEndTurnEffects()
     {
-        if(Player.PlayerEffects.Count > effectCount)
+        GD.Print(Player.PlayerEffects.Count + " effects to process. We're on effect " + effectCount);
+        if (Player.PlayerEffects.Count > effectCount)
         {
             Effect effect = Player.PlayerEffects[effectCount];
             GD.Print("Applying effect: " + effect.EffectName);
@@ -51,6 +52,11 @@ public partial class TurnEndState : State
                     Player.PlayerCurrentHealth += effect.EffectValue;
                     Player.GetNode<ProgressBar>("PlayerHealth").Value = Player.PlayerCurrentHealth;
                     RTL.Text = Player.PlayerData.name + " heals for " + effect.EffectValue + " from " + effect.EffectName + "!";
+                    break;
+                case "Damage Over Time":
+                    Player.PlayerCurrentHealth -= effect.EffectValue;
+                    Player.GetNode<ProgressBar>("PlayerHealth").Value = Player.PlayerCurrentHealth;
+                    RTL.Text = Player.PlayerData.name + " takes" + effect.EffectValue + " damage from " + effect.EffectName + "!";
                     break;
                 case "Buff":
                     Player.PlayerEffects.Add(effect);

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://ug35mj7ergmq"]
+
+[ext_resource type="Script" uid="uid://c0aqfb0ay7tac" path="res://Effects/Effect.cs" id="1_ml8ad"]
+
+[resource]
+script = ExtResource("1_ml8ad")
+EffectType = "Damage Over Time"
+EffectValue = 1
+EffectName = "Poison"
+EffectDuration = 3
+metadata/_custom_type_script = "uid://c0aqfb0ay7tac"

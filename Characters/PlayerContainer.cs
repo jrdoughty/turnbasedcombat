@@ -13,6 +13,7 @@ public partial class PlayerContainer : Node2D
     public Guid PlayerID { get; set; }
     public List<Effect> PlayerEffects { get; set; } = new List<Effect>();
     public bool IsActive { get; set; } = false;
+    public bool IsDefeated { get; set; } = false;
     public bool IsPlayerContolled { get; set; } = false;
     public int QueueVal { get; set; } = 0;
     [Export] public Player PlayerData { get; set; }
@@ -21,7 +22,7 @@ public partial class PlayerContainer : Node2D
     public override void _Ready()
     {
         // Initialize the player container
-        GD.Print("PlayerContainer is ready!");
+        GD.Print("PlayerContainer getting ready!");
         PlayerName = GetNode<Label>("PlayerName");
         PlayerHealth = GetNode<ProgressBar>("PlayerHealth");
         PlayerLevel = GetNode<Label>("PlayerLevel");
@@ -61,7 +62,14 @@ public partial class PlayerContainer : Node2D
         {
             PlayerSprite.Visible = false;
             IsActive = false;
-            team.IsDefeated = true;
+            IsDefeated = true;
+            team.IsDefeated = true;// will need to change later
+        }
+        else
+        {
+            //PlayerSprite.Visible = true;
+            //IsActive = true;
+            //IsDefeated = false;
         }
     }
 }
