@@ -2,26 +2,26 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class Player : Resource
+public partial class Player : Resource, ICharacter
 {
-	[Export] public string name;
-	[Export] public int health;
-	[Export] public int mana;
-	[Export] public int level;
-	[Export] public int experience;
-	[Export] public int attack;
-	[Export] public int defense;
-	[Export] public int speed;
-	[Export] public int magicDefense;
-	[Export] public int magicAttack;
-	[Export] public string they;
-	[Export] public string them;
-	[Export] public string theirs;
-	[Export] public string their;
-	[Export] public string selves;
+	[Export] public string name { get; set; }
+	[Export] public int health { get; set; }
+	[Export] public int mana { get; set; }
+	[Export] public int level { get; set; }
+	[Export] public int experience { get; set; }
+	[Export] public int attack { get; set; }
+	[Export] public int defense { get; set; }
+	[Export] public int speed { get; set; }
+	[Export] public int magicDefense { get; set; }
+	[Export] public int magicAttack { get; set; }
+	[Export] public string they { get; set; }
+	[Export] public string them { get; set; }
+	[Export] public string theirs { get; set; }
+	[Export] public string their { get; set; }
+	[Export] public string selves { get; set; }
 
-	[Export] public Texture2D playerSprite;
-	[Export] public Godot.Collections.Array playerActions = new Godot.Collections.Array();
+	[Export] public Texture2D playerSprite { get; set; }
+	[Export] public Godot.Collections.Array playerActions { get; set; } = new Godot.Collections.Array();
 
 	public int getNextLevelExperience()
 	{

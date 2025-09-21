@@ -34,6 +34,24 @@ public partial class EffectState : State
                 RTL.Text = actorPlayer.PlayerData.name + " heals for " + effect.EffectValue + " from " + actorPlayer.PlayerData.name + "'s " + Actions[0].ActionName + "!";
                 break;
             case "Heal Over Time":
+                if(targetPlayer.PlayerEffects.Count > 0)
+                {
+                    foreach(var e in targetPlayer.PlayerEffects)
+                    {
+                        if(e.EffectName == effect.EffectName)
+                        {
+                            if (e.EffectDuration == -1)
+                                RTL.Text = targetPlayer.PlayerData.name + " is already affected by " + effect.EffectName + "!";
+                            else
+                            {
+                                e.EffectDuration = effect.EffectDuration;
+                                RTL.Text = targetPlayer.PlayerData.name + "'s " + effect.EffectName + " duration has been renewed!";
+                            }
+                            targetPlayer.updateConditions();
+                            return;
+                        }
+                    }
+                }
                 actorPlayer.PlayerEffects.Add(effect.Duplicate() as Effect);
                 RTL.Text = actorPlayer.PlayerData.name + " begins to heal!";
                 break;
@@ -51,6 +69,7 @@ public partial class EffectState : State
                                 e.EffectDuration = effect.EffectDuration;
                                 RTL.Text = targetPlayer.PlayerData.name + "'s " + effect.EffectName + " duration has been refreshed!";
                             }
+                            targetPlayer.updateConditions();
                             return;
                         }
                     }

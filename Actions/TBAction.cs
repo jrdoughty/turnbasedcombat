@@ -22,11 +22,6 @@ public partial class TBAction : Resource
 			Effect e = Registry.EffectData[(string)effect];
 			Effects.Add(e);
 		}
-		ActionDescription = ActionDescription.Replace("<character>", Actor.PlayerData.name);
-		ActionDescription = ActionDescription.Replace("<selves>", Actor.PlayerData.selves);
-		ActionDescription = ActionDescription.Replace("<they>", Actor.PlayerData.they);
-		ActionDescription = ActionDescription.Replace("<them>", Actor.PlayerData.them);
-		ActionDescription = ActionDescription.Replace("<theirs>", Actor.PlayerData.theirs);
-		ActionDescription = ActionDescription.Replace("<their>", Actor.PlayerData.their);
+		ActionDescription = Utils.ReplacePlayerStrings(ActionDescription, Actor.PlayerData);
 	}
 }
