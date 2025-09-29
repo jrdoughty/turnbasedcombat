@@ -37,9 +37,13 @@ public partial class Game : Node2D
 
             player.PlayerName.Text = pData.name;
             player.PlayerHealth.Value = pData.health;
-            player.PlayerCurrentHealth = pData.health - 3;
+            if(pData.currentHealth < 0) //if current health is not set, set it to max health
+            {
+                pData.currentHealth = pData.health;
+            }
+            player.PlayerData.currentHealth = pData.health;
             player.PlayerHealth.MaxValue = pData.health;
-            player.GetNode<ProgressBar>("PlayerHealth").Value = player.PlayerCurrentHealth;
+            player.GetNode<ProgressBar>("PlayerHealth").Value = player.PlayerData.currentHealth;
             player.GetNode<ProgressBar>("PlayerHealth").MaxValue = pData.health;
             player.PlayerLevel.Text = pData.level.ToString();
             player.PlayerSprite.Texture = pData.playerSprite;

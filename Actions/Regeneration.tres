@@ -6,6 +6,6 @@
 script = ExtResource("1_xefps")
 ActionType = "Heal"
 ActionName = "Regeneration"
-ActionDescription = "<character> begin to regenerate."
+ActionDescription = "<character> casts Regeneration."
 EffectNames = ["Regeneration"]
 metadata/_custom_type_script = "uid://bupsnfrxtmn4s"

@@ -6,7 +6,6 @@ public partial class PlayerContainer : Node2D
 {
 	public Label PlayerName { get; set; }
 	public ProgressBar PlayerHealth { get; set; }
-	public int PlayerCurrentHealth { get; set; }
 	public Label PlayerLevel { get; set; }
 	public Sprite2D PlayerSprite { get; set; }
 	public Control PlayerControls { get; set; }
@@ -28,16 +27,42 @@ public partial class PlayerContainer : Node2D
 		PlayerLevel = GetNode<Label>("PlayerLevel");
 		PlayerSprite = GetNode<Sprite2D>("PlayerSprite");
 		PlayerControls = GetNode<Control>("PlayerControls");
-		for(int i = 0; i < PlayerData.playerActions.Count; i++)
-		{
-			string action = PlayerData.playerActions[i].ToString().Trim('"');
-			GD.Print($"action: {action}");
-			PlayerControls.GetNode<Button>($"Button{i+1}").Pressed += () =>
-			{
-				PerformAction((string)action);
-			};
-		}
-		PlayerID = Guid.NewGuid();
+        PlayerData = PlayerData.Duplicate() as Player;//make sure we have a unique instance of the player data
+        for (int i = 0; i < PlayerData.playerActions.Count; i++)
+        {
+            string action = PlayerData.playerActions[i].ToString().Trim('"');
+            GD.Print($"action: {action}");
+            PlayerControls.GetNode<Button>($"Button{i + 1}").Pressed += () =>
+            {
+                PerformAction((string)action);
+            };
+            PlayerControls.GetNode<Button>($"Button{i + 1}").Text = action;
+        }
+        
+        PlayerID = Guid.NewGuid();
+
+        try
+        {
+            if (PlayerData.level > 0)
+            {
+                Level levelData = ResourceLoader.Load<Level>($"res://Characters/Levels/{PlayerData.name}{PlayerData.level}.tres");
+                if (levelData != null)
+                {
+                    PlayerData.attack += levelData.attack;
+                    PlayerData.defense += levelData.defense;
+                    PlayerData.speed += levelData.speed;
+                    PlayerData.health += levelData.health;
+                    PlayerData.mana += levelData.mana;
+                    PlayerData.magicAttack += levelData.magicAttack;
+                    PlayerData.magicDefense += levelData.magicDefense;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            //GD.PrintErr("Error getting level: " + e.Message);
+        }
+        
 	}
 
 	public void PerformAction(String actionName)
@@ -58,7 +83,7 @@ public partial class PlayerContainer : Node2D
 	}
 	public void updateConditions()// this will need to be elaborated on later
 	{
-		if(PlayerCurrentHealth <= 0)
+		if(PlayerData.currentHealth <= 0)
 		{
 			PlayerSprite.Visible = false;
 			IsActive = false;

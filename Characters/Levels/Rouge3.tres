@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Level" load_steps=2 format=3 uid="uid://cjj3r8xhfq28h"]
+
+[ext_resource type="Script" uid="uid://6cku28pxavfk" path="res://Characters/Levels/Level.cs" id="1_ospks"]
+
+[resource]
+script = ExtResource("1_ospks")
+defense = 3
+metadata/_custom_type_script = "uid://6cku28pxavfk"

@@ -6,8 +6,9 @@ public partial class Player : Resource, ICharacter
 {
 	[Export] public string name { get; set; }
 	[Export] public int health { get; set; }
+    [Export] public int currentHealth { get; set; } = -1;//default to -1 to check if it has been set
 	[Export] public int mana { get; set; }
-	[Export] public int level { get; set; }
+    [Export] public int level { get; set; } = 0;
 	[Export] public int experience { get; set; }
 	[Export] public int attack { get; set; }
 	[Export] public int defense { get; set; }

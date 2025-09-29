@@ -49,12 +49,12 @@ public partial class TurnEndState : State
             switch (effect.EffectType)
             {
                 case "Heal Over Time":
-                    Player.PlayerCurrentHealth += effect.EffectValue;
-                    Player.GetNode<ProgressBar>("PlayerHealth").Value = Player.PlayerCurrentHealth;
+                    Player.PlayerData.currentHealth += effect.EffectValue;
+                    Player.GetNode<ProgressBar>("PlayerHealth").Value = Player.PlayerData.currentHealth;
                     break;
                 case "Damage Over Time":
-                    Player.PlayerCurrentHealth -= effect.EffectValue;
-                    Player.GetNode<ProgressBar>("PlayerHealth").Value = Player.PlayerCurrentHealth;
+                    Player.PlayerData.currentHealth -= effect.EffectValue;
+                    Player.GetNode<ProgressBar>("PlayerHealth").Value = Player.PlayerData.currentHealth;
                     break;
                 case "Buff":
                     Player.PlayerEffects.Add(effect);
@@ -70,9 +70,10 @@ public partial class TurnEndState : State
             str = Utils.ReplaceOtherPlayerStrings(str, Player.PlayerData);
             str = Utils.ReplaceDamageStrings(str, effect);
             RTL.Text = str;
-            effect.EffectDuration--;
+            if(effect.EffectDuration > 0)
+                effect.EffectDuration--;
             GD.Print("Effect duration: " + effect.EffectDuration);
-            if (effect.EffectDuration <= 0)
+            if (effect.EffectDuration == 0)
             {
                 Player.PlayerEffects.Remove(effect);
                 effectCount--;//compensate for the removal of the effect

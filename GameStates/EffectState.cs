@@ -24,12 +24,19 @@ public partial class EffectState : State
         switch (effect.EffectType)
         {
             case "Damage":
-                targetPlayer.PlayerCurrentHealth -= effect.EffectValue;
-                targetPlayer.GetNode<ProgressBar>("PlayerHealth").Value = targetPlayer.PlayerCurrentHealth;
+                int modifiedDamage = actorPlayer.PlayerData.attack;
+                modifiedDamage -= targetPlayer.PlayerData.defense;
+                GD.Print("Base Damage: " + effect.EffectValue);
+                GD.Print("Modified Damage: " + modifiedDamage);
+                GD.Print("Target Defense: " + targetPlayer.PlayerData.defense);
+                GD.Print("Actor Attack: " + actorPlayer.PlayerData.attack);
+                effect.EffectModifier = modifiedDamage;
+                targetPlayer.PlayerData.currentHealth -= effect.EffectValue + effect.EffectModifier;
+                targetPlayer.GetNode<ProgressBar>("PlayerHealth").Value = targetPlayer.PlayerData.currentHealth;
                 break;
             case "Heal":
-                actorPlayer.PlayerCurrentHealth += effect.EffectValue;
-                actorPlayer.GetNode<ProgressBar>("PlayerHealth").Value = actorPlayer.PlayerCurrentHealth;
+                actorPlayer.PlayerData.currentHealth += effect.EffectValue;
+                actorPlayer.GetNode<ProgressBar>("PlayerHealth").Value = actorPlayer.PlayerData.currentHealth;
                 break;
             case "Heal Over Time":
                 if(actorPlayer.PlayerEffects.Count > 0)

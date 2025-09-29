@@ -24,7 +24,8 @@ public class Utils
     }
     public static string ReplaceDamageStrings(string str, Effect data)
     {
-		str = str.Replace("<value>", data.EffectValue.ToString());
+		int dmg = data.EffectValue + data.EffectModifier;
+		str = str.Replace("<value>", dmg.ToString());
 		str = str.Replace("<ename>", data.EffectName);
 		str = str.Replace("<etype>", data.EffectType);
 		str = str.Replace("<eduration>", data.EffectDuration.ToString());
