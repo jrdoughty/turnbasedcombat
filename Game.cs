@@ -36,7 +36,6 @@ public partial class Game : Node2D
         Players[0].InitializeData();
         Teams[0].AddPlayer(Players[0]);
         Teams[1].AddPlayer(Players[1]);
-        int x = 0;
         foreach (var player in Players)
         {
             Player pData = player.CharacterData;
@@ -50,8 +49,6 @@ public partial class Game : Node2D
             player.CharacterHealth.MaxValue = pData.Health;
             player.CharacterLevel.Text = pData.Level.ToString();
             player.CharacterSprite.Texture = pData.PlayerSprite;
-
-            x++;
         }
         ActiveTeam = Teams[0];
         gameStateMachine.SetContainers(Players);
