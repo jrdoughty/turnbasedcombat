@@ -39,7 +39,7 @@ public partial class GameStates : Node2D
             state.SetTeams(teams);
         }
     }
-    public void SetContainers(List<PlayerContainer> containers)
+    public void SetContainers(List<TurnBasedCharacter> containers)
     {
         foreach (var state in States.Values)
         {
@@ -68,7 +68,7 @@ public partial class GameStates : Node2D
             state.StateChangedHandler = ChangeState;
         }
     }
-    public void setNextCharacter(Func<PlayerContainer> nextCharacterHandler)
+    public void setNextCharacter(Func<TurnBasedCharacter> nextCharacterHandler)
     {
         foreach (State state in States.Values)
         {

@@ -5,13 +5,13 @@ using System.Collections.Generic;
 public partial class Queue : Node
 {
 	public Action<string> StateChangedHandler;
-	public Action<PlayerContainer> ActiveCharacterHandler;
-	public List<PlayerContainer> CharacterQueue { get; set; } = new List<PlayerContainer>();
+	public Action<TurnBasedCharacter> ActiveCharacterHandler;
+	public List<TurnBasedCharacter> CharacterQueue { get; set; } = new List<TurnBasedCharacter>();
 
-	public PlayerContainer CurrentCharacter { get; set; } = null;
+	public TurnBasedCharacter CurrentCharacter { get; set; } = null;
 	private bool speedCheck = false;
 	[Export] public int QueueVal { get; set; } = 10;
-	public void Initialize(List<PlayerContainer> characterQueue)
+	public void Initialize(List<TurnBasedCharacter> characterQueue)
 	{
 		CharacterQueue = characterQueue;
 		foreach (var character in CharacterQueue)
@@ -20,7 +20,7 @@ public partial class Queue : Node
 		}
 	}
 
-	public PlayerContainer GetNextCharacter()
+	public TurnBasedCharacter GetNextCharacter()
 	{
 		CurrentCharacter = null;
 		speedCheck = false;
@@ -31,12 +31,12 @@ public partial class Queue : Node
 			{
 				foreach (var character in CharacterQueue)
 				{
-					character.QueueVal += character.PlayerData.speed;
+					character.QueueVal += character.CharacterData.Speed;
 				}
 				CheckIfCharacterReady();
 			}
 		}
-		GD.Print($"Current Character: {CurrentCharacter.PlayerData.name}");
+		GD.Print($"Current Character: {CurrentCharacter.CharacterData.CharacterName}");
 		GD.Print($"Current Character QueueVal: {CurrentCharacter.QueueVal}");
 		CurrentCharacter.QueueVal = CurrentCharacter.QueueVal % QueueVal;
 		return CurrentCharacter;
@@ -47,7 +47,7 @@ public partial class Queue : Node
 	{
 		foreach (var character in CharacterQueue)
 		{
-			if(character.PlayerData.speed > 0)
+			if(character.CharacterData.Speed > 0)
 			{
 				speedCheck = true;
 			}

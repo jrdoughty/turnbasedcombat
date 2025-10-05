@@ -15,7 +15,7 @@ public partial class StartState : State
         base.UpdateState();
         if (Input.IsActionJustPressed("ui_accept"))
         {
-            PlayerContainer nextPlayer = NextCharacterHandler();
+            TurnBasedCharacter nextPlayer = NextCharacterHandler();
             if(!nextPlayer.IsPlayerContolled)
             {
                 GD.Print("End of turn!");

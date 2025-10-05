@@ -7,7 +7,7 @@ public partial class CastState : State
     public override void EnterState()
     {
         base.EnterState();
-        string ActionDescription = Utils.ReplacePlayerStrings(Actions[0].ActionDescription, Actions[0].Actor.PlayerData);
+        string ActionDescription = Utils.ReplacePlayerStrings(Actions[0].ActionDescription, Actions[0].Actor.CharacterData);
         RTL.Text = ActionDescription;
         // Handle entering the state
     }

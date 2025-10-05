@@ -28,9 +28,10 @@ public static class Registry
     public static void SavePartyData(Array<Player> partyData)
     {
         // Save party data to a file or database
-        foreach(var member in partyData)
+        DirAccess.MakeDirRecursiveAbsolute(ProjectSettings.GlobalizePath("user://SaveData/Party"));
+        foreach (var member in partyData)
         {
-            ResourceSaver.Save(member, "res://SaveData/Party/"+member.name+".tres");
+            ResourceSaver.Save(member, "user://SaveData/Party/" + member.CharacterName + ".tres");
         }
     }
 }

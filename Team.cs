@@ -5,7 +5,7 @@ using Godot.Collections;
 
 public partial class Team : Node2D
 {
-    public List<PlayerContainer> Players { get; set; } = new List<PlayerContainer>();
+    public List<TurnBasedCharacter> Players { get; set; } = new List<TurnBasedCharacter>();
     public string TeamName { get; set; }
     public int TeamId { get; set; }
     public int TeamScore { get; set; }
@@ -20,12 +20,12 @@ public partial class Team : Node2D
     public bool IsTurnPassed { get; set; } = false;
     public bool IsTurnFinished { get; set; } = false;
 
-    public void AddPlayer(PlayerContainer player)
+    public void AddPlayer(TurnBasedCharacter player)
     {
         Players.Add(player);
         player.team = this;
     }
-    public void RemovePlayer(PlayerContainer player)
+    public void RemovePlayer(TurnBasedCharacter player)
     {
         Players.Remove(player);
     }
@@ -35,7 +35,7 @@ public partial class Team : Node2D
         Array<Player> partyData = new Array<Player>();
         foreach (var player in Players)
         {
-            partyData.Add(player.PlayerData);
+            partyData.Add(player.CharacterData);
         }
         return partyData;
     }

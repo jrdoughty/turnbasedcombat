@@ -17,7 +17,7 @@ public partial class VictoryState : State
                 {
                     if(player.IsDefeated)
                     {
-                        exp += player.PlayerData.getExperience(player.PlayerData.level);
+                        exp += player.CharacterData.getExperience(player.CharacterData.Level);
                     }
                     
                 }
@@ -30,39 +30,39 @@ public partial class VictoryState : State
                 RTL.Text = $"{team.Name} wins!";
                 foreach (var player in team.Players)
                 {
-                    if (player.PlayerData.level > 0)
+                    if (player.CharacterData.Level > 0)
                     {
-                        player.PlayerData.experience += exp;
-                        while (player.PlayerData.experience >= player.PlayerData.getNextLevelExperience())
+                        player.CharacterData.Experience += exp;
+                        while (player.CharacterData.Experience >= player.CharacterData.getNextLevelExperience())
                         {
-                            player.PlayerData.experience -= player.PlayerData.getNextLevelExperience();
-                            Level oldLevel = ResourceLoader.Load<Level>($"res://Characters/Levels/{player.PlayerData.name}{player.PlayerData.level}.tres");
-                            player.PlayerData.level++;
-                            Level newLevel = ResourceLoader.Load<Level>($"res://Characters/Levels/{player.PlayerData.name}{player.PlayerData.level}.tres");
+                            player.CharacterData.Experience -= player.CharacterData.getNextLevelExperience();
+                            Level oldLevel = ResourceLoader.Load<Level>($"res://Characters/Levels/{player.CharacterData.CharacterName}{player.CharacterData.Level}.tres");
+                            player.CharacterData.Level++;
+                            Level newLevel = ResourceLoader.Load<Level>($"res://Characters/Levels/{player.CharacterData.CharacterName}{player.CharacterData.Level}.tres");
                             if (newLevel != null && oldLevel != null)
                             {
-                                GD.Print($"Leveling up {player.PlayerData.name} to level {player.PlayerData.level}");
-                                player.PlayerData.attack += newLevel.attack - oldLevel.attack;
-                                player.PlayerData.defense += newLevel.defense - oldLevel.defense;
-                                player.PlayerData.speed += newLevel.speed - oldLevel.speed;
-                                player.PlayerData.health += newLevel.health - oldLevel.health;
-                                player.PlayerData.mana += newLevel.mana - oldLevel.mana;
-                                player.PlayerData.magicAttack += newLevel.magicAttack - oldLevel.magicAttack;
-                                player.PlayerData.magicDefense += newLevel.magicDefense - oldLevel.magicDefense;
-                                player.PlayerLevel.Text = player.PlayerData.level.ToString();
-                                RTL.Text += $"\n{player.PlayerData.name} is now level {player.PlayerData.level}!";
+                                GD.Print($"Leveling up {player.CharacterData.CharacterName} to level {player.CharacterData.Level}");
+                                player.CharacterData.Attack += newLevel.attack - oldLevel.attack;
+                                player.CharacterData.Defense += newLevel.defense - oldLevel.defense;
+                                player.CharacterData.Speed += newLevel.speed - oldLevel.speed;
+                                player.CharacterData.Health += newLevel.health - oldLevel.health;
+                                player.CharacterData.Mana += newLevel.mana - oldLevel.mana;
+                                player.CharacterData.MagicAttack += newLevel.magicAttack - oldLevel.magicAttack;
+                                player.CharacterData.MagicDefense += newLevel.magicDefense - oldLevel.magicDefense;
+                                player.CharacterLevel.Text = player.CharacterData.Level.ToString();
+                                RTL.Text += $"\n{player.CharacterData.CharacterName} is now level {player.CharacterData.Level}!";
                             }
                             else if (newLevel != null && oldLevel == null)
                             {
-                                player.PlayerData.attack += newLevel.attack;
-                                player.PlayerData.defense += newLevel.defense;
-                                player.PlayerData.speed += newLevel.speed;
-                                player.PlayerData.health += newLevel.health;
-                                player.PlayerData.mana += newLevel.mana;
-                                player.PlayerData.magicAttack += newLevel.magicAttack;
-                                player.PlayerData.magicDefense += newLevel.magicDefense;
-                                player.PlayerLevel.Text = player.PlayerData.level.ToString();
-                                RTL.Text += $"\n{player.PlayerData.name} is now level {player.PlayerData.level}!";
+                                player.CharacterData.Attack += newLevel.attack;
+                                player.CharacterData.Defense += newLevel.defense;
+                                player.CharacterData.Speed += newLevel.speed;
+                                player.CharacterData.Health += newLevel.health;
+                                player.CharacterData.Mana += newLevel.mana;
+                                player.CharacterData.MagicAttack += newLevel.magicAttack;
+                                player.CharacterData.MagicDefense += newLevel.magicDefense;
+                                player.CharacterLevel.Text = player.CharacterData.Level.ToString();
+                                RTL.Text += $"\n{player.CharacterData.CharacterName} is now level {player.CharacterData.Level}!";
                             }
 
                         }

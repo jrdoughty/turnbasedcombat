@@ -5,8 +5,8 @@ using System.Collections.Generic;
 [GlobalClass]
 public partial class TBAction : Resource
 {
-	public PlayerContainer Target { get; set; }
-	public PlayerContainer Actor { get; set; }
+	public TurnBasedCharacter Target { get; set; }
+	public TurnBasedCharacter Actor { get; set; }
 	[Export] public string ActionType { get; set; }
 	[Export] public string ActionName { get; set; }
 	[Export] public string ActionDescription { get; set; }

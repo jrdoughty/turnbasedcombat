@@ -5,16 +5,16 @@
 
 [resource]
 script = ExtResource("1_i4jvf")
-name = "Rouge"
-health = 8
-mana = 5
-level = 2
-experience = 25
-attack = 2
-defense = 3
-speed = 3
-magicDefense = 2
-magicAttack = 3
-playerSprite = ExtResource("1_ron26")
-playerActions = ["Dagger", "Heal", "Regeneration"]
+CharacterName = "Rouge"
+Health = 8
+Mana = 5
+Level = 2
+Experience = 25
+Attack = 2
+Defense = 3
+Speed = 3
+MagicDefense = 2
+MagicAttack = 3
+PlayerSprite = ExtResource("1_ron26")
+PlayerActions = Array[String](["Dagger", "Heal", "Regeneration"])
 metadata/_custom_type_script = "uid://decfhkt727sbr"

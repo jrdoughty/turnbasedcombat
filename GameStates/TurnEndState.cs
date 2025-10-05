@@ -3,7 +3,7 @@ using System;
 
 public partial class TurnEndState : State
 {
-    private PlayerContainer Player;
+    private TurnBasedCharacter Player;
     private bool firstTime = true;
     private int effectCount = 0;
     public override void EnterState()
@@ -49,12 +49,12 @@ public partial class TurnEndState : State
             switch (effect.EffectType)
             {
                 case "Heal Over Time":
-                    Player.PlayerData.currentHealth += effect.EffectValue;
-                    Player.GetNode<ProgressBar>("PlayerHealth").Value = Player.PlayerData.currentHealth;
+                    Player.CharacterData.CurrentHealth += effect.EffectValue;
+                    Player.GetNode<ProgressBar>("PlayerHealth").Value = Player.CharacterData.CurrentHealth;
                     break;
                 case "Damage Over Time":
-                    Player.PlayerData.currentHealth -= effect.EffectValue;
-                    Player.GetNode<ProgressBar>("PlayerHealth").Value = Player.PlayerData.currentHealth;
+                    Player.CharacterData.CurrentHealth -= effect.EffectValue;
+                    Player.GetNode<ProgressBar>("PlayerHealth").Value = Player.CharacterData.CurrentHealth;
                     break;
                 case "Buff":
                     Player.PlayerEffects.Add(effect);
@@ -66,8 +66,8 @@ public partial class TurnEndState : State
                     GD.Print("Unknown effect type: " + effect.EffectType);
                     break;
             }
-            string str = Utils.ReplacePlayerStrings(effect.EffectEndTurnDescription, Player.PlayerData);
-            str = Utils.ReplaceOtherPlayerStrings(str, Player.PlayerData);
+            string str = Utils.ReplacePlayerStrings(effect.EffectEndTurnDescription, Player.CharacterData);
+            str = Utils.ReplaceOtherPlayerStrings(str, Player.CharacterData);
             str = Utils.ReplaceDamageStrings(str, effect);
             RTL.Text = str;
             if(effect.EffectDuration > 0)
@@ -102,7 +102,7 @@ public partial class TurnEndState : State
         {
             player.IsActive = false;
         }
-        PlayerContainer next = NextCharacterHandler();
+        TurnBasedCharacter next = NextCharacterHandler();
         next.IsActive = true;
         if(!next.IsPlayerContolled)
         {

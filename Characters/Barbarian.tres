@@ -5,16 +5,16 @@
 
 [resource]
 script = ExtResource("2_qsqdx")
-name = "Barbarian"
-health = 12
-mana = 3
-level = 3
-experience = 15
-attack = 3
-defense = 1
-speed = 2
-magicDefense = 1
-magicAttack = 1
-playerSprite = ExtResource("1_bw44g")
-playerActions = ["Axe", "Regeneration"]
+CharacterName = "Barbarian"
+Health = 12
+Mana = 3
+Level = 3
+Experience = 15
+Attack = 3
+Defense = 1
+Speed = 2
+MagicDefense = 1
+MagicAttack = 1
+PlayerSprite = ExtResource("1_bw44g")
+PlayerActions = Array[String](["Axe", "Regeneration"])
 metadata/_custom_type_script = "uid://decfhkt727sbr"

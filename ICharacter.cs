@@ -1,9 +1,9 @@
 public interface ICharacter
 {
-    public string name { get; set; }
-    public string they { get; set; }
-    public string them { get; set; }
-    public string theirs { get; set; }
-    public string their { get; set; }
-    public string selves { get; set; }
+    public string CharacterName { get; set; }
+    public string They { get; set; }
+    public string Them { get; set; }
+    public string Theirs { get; set; }
+    public string Their { get; set; }
+    public string Selves { get; set; }
 }

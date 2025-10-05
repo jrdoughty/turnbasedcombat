@@ -8,11 +8,11 @@ public partial class State : Node
 
     public string state { get; set; }
     public List<Team> Teams;
-    public List<PlayerContainer> Players = new List<PlayerContainer>();
+    public List<TurnBasedCharacter> Players = new List<TurnBasedCharacter>();
     public RichTextLabel RTL { get; set; }
 
     public List<TBAction> Actions = new List<TBAction>();
-    public Func<PlayerContainer> NextCharacterHandler;
+    public Func<TurnBasedCharacter> NextCharacterHandler;
 
     public Action<string> StateChangedHandler;
     public Func<BattleConditions> GetConditionsHandler;
@@ -40,7 +40,7 @@ public partial class State : Node
         Teams = teams;
     }
 
-    public void SetContainers(List<PlayerContainer> containers)
+    public void SetContainers(List<TurnBasedCharacter> containers)
     {
         // Set player containers if needed
         Players = containers;
