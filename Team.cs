@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using Godot.Collections;
 
 public partial class Team : Node2D
 {
@@ -27,5 +28,15 @@ public partial class Team : Node2D
     public void RemovePlayer(PlayerContainer player)
     {
         Players.Remove(player);
+    }
+
+    public Array<Player> GetPartyData()
+    {
+        Array<Player> partyData = new Array<Player>();
+        foreach (var player in Players)
+        {
+            partyData.Add(player.PlayerData);
+        }
+        return partyData;
     }
 }

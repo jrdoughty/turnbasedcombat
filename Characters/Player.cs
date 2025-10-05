@@ -22,7 +22,7 @@ public partial class Player : Resource, ICharacter
 	[Export] public string selves { get; set; }
 
 	[Export] public Texture2D playerSprite { get; set; }
-	[Export] public Godot.Collections.Array playerActions { get; set; } = new Godot.Collections.Array();
+	[Export] public Godot.Collections.Array<string> playerActions { get; set; } = new Godot.Collections.Array<string>();
 
 	public int getNextLevelExperience()
 	{

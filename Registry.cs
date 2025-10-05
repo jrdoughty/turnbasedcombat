@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using Godot.Collections;
 
@@ -23,4 +24,13 @@ public static class Registry
     //public static Dictionary<string, object> UIData = new Dictionary<string, object>();
     //public static Dictionary<string, object> AnimationData = new Dictionary<string, object>();
     //public static Dictionary<string, object> AudioData = new Dictionary<string, object>();
+
+    public static void SavePartyData(Array<Player> partyData)
+    {
+        // Save party data to a file or database
+        foreach(var member in partyData)
+        {
+            ResourceSaver.Save(member, "res://SaveData/Party/"+member.name+".tres");
+        }
+    }
 }
