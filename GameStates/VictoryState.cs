@@ -68,7 +68,7 @@ public partial class VictoryState : State
                         }
                     }
                 }
-                Registry.SavePartyData(team.GetPartyData());
+                Utils.SavePartyData(team.GetPartyData());
             }
         }
         // Handle entering the state

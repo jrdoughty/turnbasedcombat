@@ -25,13 +25,5 @@ public static class Registry
     //public static Dictionary<string, object> AnimationData = new Dictionary<string, object>();
     //public static Dictionary<string, object> AudioData = new Dictionary<string, object>();
 
-    public static void SavePartyData(Array<Player> partyData)
-    {
-        // Save party data to a file or database
-        DirAccess.MakeDirRecursiveAbsolute(ProjectSettings.GlobalizePath("user://SaveData/Party"));
-        foreach (var member in partyData)
-        {
-            ResourceSaver.Save(member, "user://SaveData/Party/" + member.CharacterName + ".tres");
-        }
-    }
+
 }

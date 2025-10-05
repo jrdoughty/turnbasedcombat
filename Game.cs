@@ -28,6 +28,12 @@ public partial class Game : Node2D
         Players.Add(GetNode<TurnBasedCharacter>("Player1"));
         Players.Add(GetNode<TurnBasedCharacter>("Player2"));
         Players[0].IsPlayerContolled = true;
+        
+        Players[0].CharacterData = ResourceLoader.Load<Player>($"user://SaveData/Party/Rouge.tres");
+        if (Players[0].CharacterData == null)//if no save data, load default data
+            Players[0].CharacterData = ResourceLoader.Load<Player>($"res://Characters/Rouge.tres");
+        Players[0].dataLoaded = true;
+        Players[0].InitializeData();
         Teams[0].AddPlayer(Players[0]);
         Teams[1].AddPlayer(Players[1]);
         int x = 0;
@@ -36,15 +42,12 @@ public partial class Game : Node2D
             Player pData = player.CharacterData;
 
             player.CharacterName.Text = pData.CharacterName;
-            player.CharacterHealth.Value = pData.Health;
             if (pData.CurrentHealth < 0) //if current health is not set, set it to max health
             {
                 pData.CurrentHealth = pData.Health;
             }
-            player.CharacterData.CurrentHealth = pData.Health;
+            player.CharacterHealth.Value = pData.CurrentHealth;
             player.CharacterHealth.MaxValue = pData.Health;
-            player.GetNode<ProgressBar>("PlayerHealth").Value = player.CharacterData.CurrentHealth;
-            player.GetNode<ProgressBar>("PlayerHealth").MaxValue = pData.Health;
             player.CharacterLevel.Text = pData.Level.ToString();
             player.CharacterSprite.Texture = pData.PlayerSprite;
 
@@ -64,7 +67,6 @@ public partial class Game : Node2D
         GetNode<Queue>("Queue").ActiveCharacterHandler = SetActivePlayer;
         gameStateMachine.setGetBattleConditions(GetActiveBattleConditions);
         BattleConditions.Teams = Teams;
-        Registry.SavePartyData(Teams[0].GetPartyData());
     }
 
     public override void _Process(double delta)

@@ -8,6 +8,7 @@ public partial class CastState : State
     {
         base.EnterState();
         string ActionDescription = Utils.ReplacePlayerStrings(Actions[0].ActionDescription, Actions[0].Actor.CharacterData);
+        ActionDescription = Utils.ReplaceOtherPlayerStrings(ActionDescription, Actions[0].Target.CharacterData);
         RTL.Text = ActionDescription;
         // Handle entering the state
     }

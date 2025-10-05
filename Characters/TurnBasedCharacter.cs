@@ -17,7 +17,7 @@ public partial class TurnBasedCharacter : Node2D
 	public int QueueVal { get; set; } = 0;
 	[Export] public Player CharacterData { get; set; }
 	public Team team { get; set; }
-    private bool dataLoaded = false;
+    public bool dataLoaded = false;
 
 	public override void _Ready()
     {
@@ -28,13 +28,17 @@ public partial class TurnBasedCharacter : Node2D
         CharacterLevel = GetNode<Label>("PlayerLevel");
         CharacterSprite = GetNode<Sprite2D>("PlayerSprite");
         CharacterControls = GetNode<Control>("PlayerControls");
-        if (CharacterData == null)
+
+        CharacterID = Guid.NewGuid();
+        
+        if(CharacterData != null)
         {
-            CharacterData = ResourceLoader.Load<Player>($"user://SaveData/Party/Rouge.tres");
-            if (CharacterData == null)//if no save data, load default data
-                CharacterData = ResourceLoader.Load<Player>($"res://Characters/Rouge.tres");
-            dataLoaded = true;
+            InitializeData();
         }
+    }
+    
+    public void InitializeData()
+    {
         CharacterData = CharacterData.Duplicate() as Player;//make sure we have a unique instance of the player data
         for (int i = 0; i < CharacterData.PlayerActions.Count; i++)
         {
@@ -46,8 +50,6 @@ public partial class TurnBasedCharacter : Node2D
             };
             CharacterControls.GetNode<Button>($"Button{i + 1}").Text = action;
         }
-
-        CharacterID = Guid.NewGuid();
 
         try
         {
@@ -72,25 +74,24 @@ public partial class TurnBasedCharacter : Node2D
         {
             //GD.PrintErr("Error getting level: " + e.Message);
         }
-
     }
 
 	public void PerformAction(String actionName)
-	{
-		TBAction action = Registry.ActionData[actionName].Duplicate() as TBAction;
-		action.Actor = this;
-		action.Initialize();
-		foreach (var player in GetParent<Game>().Players)
-		{
-			if (player != this)
-			{
-				action.Target = player;
-			}
-		}
-		GetParent<Game>().SetActivePlayer(this);
-		GetParent<Game>().Actions.Add(action);
-		GetParent<Game>().gameStateMachine.ChangeState("Casting");
-	}
+    {
+        TBAction action = Registry.ActionData[actionName].Duplicate() as TBAction;
+        action.Actor = this;
+        action.Initialize();
+        foreach (var player in GetParent<Game>().Players)
+        {
+            if (player != this)
+            {
+                action.Target = player;
+            }
+        }
+        GetParent<Game>().SetActivePlayer(this);
+        GetParent<Game>().Actions.Add(action);
+        GetParent<Game>().gameStateMachine.ChangeState("Casting");
+    }
 	public void updateConditions()// this will need to be elaborated on later
 	{
 		if(CharacterData.CurrentHealth <= 0)
