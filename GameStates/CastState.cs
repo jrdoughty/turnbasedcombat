@@ -14,6 +14,14 @@ public partial class CastState : State
         {
             Actions[0].Actor.CharacterSprite.Play("Attack");
         }
+        else if(Actions[0].ActionType == "Heal")
+        {
+            Actions[0].Actor.CharacterSprite.Play("Cast");
+        }
+        else if(Actions[0].ActionType == "Spell")
+        {
+            Actions[0].Actor.CharacterSprite.Play("Cast");
+        }
         // Handle entering the state
     }
     public override void UpdateState()

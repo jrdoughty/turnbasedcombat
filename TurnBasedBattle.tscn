@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxtb8fsvj4lu1"]
+
+[ext_resource type="Script" uid="uid://sgvs2qpitt3a" path="res://TurnBasedBattle.cs" id="1_8qvph"]
+[ext_resource type="Texture2D" uid="uid://b1vlhukw46ch1" path="res://BG.png" id="2_1ji3n"]
+[ext_resource type="PackedScene" uid="uid://kjcmi16ndbnt" path="res://Characters/TurnBasedCharacter.tscn" id="3_oqnqm"]
+[ext_resource type="Resource" uid="uid://c3fps3v5iqkxc" path="res://Characters/Barbarian.tres" id="4_0oqjb"]
+[ext_resource type="Script" uid="uid://dyefct01v4jfa" path="res://GameStates/Queue.cs" id="5_w0o45"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_8qvph")
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(160, 120)
+texture = ExtResource("2_1ji3n")
+
+[node name="GameText" type="RichTextLabel" parent="."]
+offset_top = 163.0
+offset_right = 319.0
+offset_bottom = 240.0
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 12
+theme_override_font_sizes/bold_italics_font_size = 12
+theme_override_font_sizes/italics_font_size = 12
+theme_override_font_sizes/mono_font_size = 12
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2(160, 120)
+
+[node name="Player1" parent="." instance=ExtResource("3_oqnqm")]
+position = Vector2(3, -4)
+
+[node name="Player2" parent="." instance=ExtResource("3_oqnqm")]
+position = Vector2(164, -5)
+CharacterData = ExtResource("4_0oqjb")
+
+[node name="Queue" type="Node" parent="."]
+script = ExtResource("5_w0o45")

@@ -77,16 +77,16 @@ public partial class TurnBasedCharacter : Node2D
         TBAction action = Registry.ActionData[actionName].Duplicate() as TBAction;
         action.Actor = this;
         action.Initialize();
-        foreach (var player in GetParent<Game>().Players)
+        foreach (var player in GetParent<TurnBasedBattle>().Players)
         {
             if (player != this)
             {
                 action.Target = player;
             }
         }
-        GetParent<Game>().SetActivePlayer(this);
-        GetParent<Game>().Actions.Add(action);
-        GetParent<Game>().gameStateMachine.ChangeState("Casting");
+        GetParent<TurnBasedBattle>().SetActivePlayer(this);
+        GetParent<TurnBasedBattle>().Actions.Add(action);
+        GetParent<TurnBasedBattle>().gameStateMachine.ChangeState("Casting");
     }
 	public void updateConditions()// this will need to be elaborated on later
 	{

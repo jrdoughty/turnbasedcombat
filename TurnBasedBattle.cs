@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 
 
-public partial class Game : Node2D
+public partial class TurnBasedBattle : Node2D
 {
 
     public GameStates gameStateMachine = new GameStates();
