@@ -1,0 +1,103 @@
+[gd_scene load_steps=11 format=4 uid="uid://ce3y2jla3bqj4"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_jafjy"]
+_data = PackedByteArray("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")
+size_override = Vector2(192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vodvg"]
+atlas = SubResource("PortableCompressedTexture2D_jafjy")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xw52t"]
+atlas = SubResource("PortableCompressedTexture2D_jafjy")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8xma"]
+atlas = SubResource("PortableCompressedTexture2D_jafjy")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sv6ay"]
+atlas = SubResource("PortableCompressedTexture2D_jafjy")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7sli"]
+atlas = SubResource("PortableCompressedTexture2D_jafjy")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6b8a"]
+atlas = SubResource("PortableCompressedTexture2D_jafjy")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vaj41"]
+atlas = SubResource("PortableCompressedTexture2D_jafjy")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p772i"]
+atlas = SubResource("PortableCompressedTexture2D_jafjy")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a3q3s"]
+animations = [{
+"frames": [{
+"duration": 6.6666665,
+"texture": SubResource("AtlasTexture_vodvg")
+}, {
+"duration": 1.3333334,
+"texture": SubResource("AtlasTexture_xw52t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8xma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sv6ay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7sli")
+}, {
+"duration": 2.3333333,
+"texture": SubResource("AtlasTexture_p6b8a")
+}, {
+"duration": 1.3333334,
+"texture": SubResource("AtlasTexture_vaj41")
+}, {
+"duration": 1.3333334,
+"texture": SubResource("AtlasTexture_p772i")
+}, {
+"duration": 6.6666665,
+"texture": SubResource("AtlasTexture_vodvg")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vodvg")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}]
+
+[node name="RougeSprite" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_a3q3s")
+animation = &"Attack"
+autoplay = "Idle"
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://Characters/Sprites/Rouge.aseprite",
+"source_uid": 7410004666637541082
+}
+metadata/_aseprite_wizard_source_file_hash_ = "b9aee919ae012d671f5d83b208d8eb16"

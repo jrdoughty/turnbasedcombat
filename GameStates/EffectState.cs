@@ -26,10 +26,6 @@ public partial class EffectState : State
             case "Damage":
                 int modifiedDamage = actorPlayer.CharacterData.Attack;
                 modifiedDamage -= targetPlayer.CharacterData.Defense;
-                GD.Print("Base Damage: " + effect.EffectValue);
-                GD.Print("Modified Damage: " + modifiedDamage);
-                GD.Print("Target Defense: " + targetPlayer.CharacterData.Defense);
-                GD.Print("Actor Attack: " + actorPlayer.CharacterData.Attack);
                 effect.EffectModifier = modifiedDamage;
                 targetPlayer.CharacterData.CurrentHealth -= effect.EffectValue + effect.EffectModifier;
                 targetPlayer.GetNode<ProgressBar>("PlayerHealth").Value = targetPlayer.CharacterData.CurrentHealth;
@@ -90,7 +86,7 @@ public partial class EffectState : State
         string effectText = Utils.ReplacePlayerStrings(effect.EffectCastDescription, actorPlayer.CharacterData);
         effectText = Utils.ReplaceOtherPlayerStrings(effectText, targetPlayer.CharacterData);
         effectText = Utils.ReplaceDamageStrings(effectText, effect);
-        RTL.Text = effectText;
+        RTL.Text += "\n"+effectText;
         targetPlayer.updateConditions();
     }
 

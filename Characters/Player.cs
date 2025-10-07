@@ -21,7 +21,7 @@ public partial class Player : Resource, ICharacter
 	[Export] public string Their { get; set; }
 	[Export] public string Selves { get; set; }
 
-	[Export] public Texture2D PlayerSprite { get; set; }
+	[Export] public PackedScene PlayerSprite { get; set; }
 	[Export] public Godot.Collections.Array<string> PlayerActions { get; set; } = new Godot.Collections.Array<string>();
 
 	public int getNextLevelExperience()

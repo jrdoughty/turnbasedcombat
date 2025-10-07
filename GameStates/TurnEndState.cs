@@ -32,10 +32,10 @@ public partial class TurnEndState : State
         }
         else if(Input.IsActionJustPressed("ui_accept") || firstTime)
         {
+            ApplyEndTurnEffects();
             firstTime = false;
             GD.Print("End Turn pressed");
             // Apply end turn effects
-            ApplyEndTurnEffects();
         }
         // Handle state updates
     }
@@ -69,8 +69,11 @@ public partial class TurnEndState : State
             string str = Utils.ReplacePlayerStrings(effect.EffectEndTurnDescription, Player.CharacterData);
             str = Utils.ReplaceOtherPlayerStrings(str, Player.CharacterData);
             str = Utils.ReplaceDamageStrings(str, effect);
-            RTL.Text = str;
-            if(effect.EffectDuration > 0)
+            if(firstTime)
+                RTL.Text = str;
+            else
+                RTL.Text += "\n"+str;
+            if (effect.EffectDuration > 0)
                 effect.EffectDuration--;
             GD.Print("Effect duration: " + effect.EffectDuration);
             if (effect.EffectDuration == 0)

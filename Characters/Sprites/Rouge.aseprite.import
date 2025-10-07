@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ddtpxustvwkvi"
+path="res://.godot/imported/Rouge.aseprite-967fbfacb336242109830553c239fc6c.res"
+
+[deps]
+
+source_file="res://Characters/Sprites/Rouge.aseprite"
+dest_files=["res://.godot/imported/Rouge.aseprite-967fbfacb336242109830553c239fc6c.res"]
+
+[params]
+

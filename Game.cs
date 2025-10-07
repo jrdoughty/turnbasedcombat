@@ -29,8 +29,9 @@ public partial class Game : Node2D
         Players.Add(GetNode<TurnBasedCharacter>("Player2"));
         Players[0].IsPlayerContolled = true;
         
-        Players[0].CharacterData = ResourceLoader.Load<Player>($"user://SaveData/Party/Rouge.tres");
-        if (Players[0].CharacterData == null)//if no save data, load default data
+        if(ResourceLoader.Exists($"user://SaveData/Party/Rouge.tres"))
+            Players[0].CharacterData = ResourceLoader.Load<Player>($"user://SaveData/Party/Rouge.tres");
+        else
             Players[0].CharacterData = ResourceLoader.Load<Player>($"res://Characters/Rouge.tres");
         Players[0].dataLoaded = true;
         Players[0].InitializeData();
@@ -48,7 +49,7 @@ public partial class Game : Node2D
             player.CharacterHealth.Value = pData.CurrentHealth;
             player.CharacterHealth.MaxValue = pData.Health;
             player.CharacterLevel.Text = pData.Level.ToString();
-            player.CharacterSprite.Texture = pData.PlayerSprite;
+            //player.CharacterSprite.SpriteFrames = pData.PlayerSprite;
         }
         ActiveTeam = Teams[0];
         gameStateMachine.SetContainers(Players);

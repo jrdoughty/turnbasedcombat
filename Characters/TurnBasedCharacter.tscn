@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://kjcmi16ndbnt"]
+[gd_scene load_steps=2 format=3 uid="uid://kjcmi16ndbnt"]
 
 [ext_resource type="Script" uid="uid://bqylmn1uobrcw" path="res://Characters/TurnBasedCharacter.cs" id="1_oo13o"]
-[ext_resource type="Texture2D" uid="uid://bx7fosj3jhfu2" path="res://icon.svg" id="1_xhfnw"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_oo13o")
@@ -23,10 +22,29 @@ offset_right = 213.0
 offset_bottom = 47.0
 text = "Level 1"
 
-[node name="PlayerSprite" type="Sprite2D" parent="."]
+[node name="SpriteAnchor" type="Node2D" parent="."]
+texture_filter = 1
 position = Vector2(66, 119)
 scale = Vector2(0.992188, 0.742188)
-texture = ExtResource("1_xhfnw")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://Characters/Rouge.aseprite",
+"source_uid": 7410004666637541082
+}
+metadata/_aseprite_wizard_source_file_hash_ = "7de6352ed87af0f87b40f15892362749"
 
 [node name="PlayerControls" type="Control" parent="."]
 visible = false

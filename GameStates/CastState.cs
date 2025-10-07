@@ -3,13 +3,17 @@ using System;
 
 public partial class CastState : State
 {
-    
+
     public override void EnterState()
     {
         base.EnterState();
         string ActionDescription = Utils.ReplacePlayerStrings(Actions[0].ActionDescription, Actions[0].Actor.CharacterData);
         ActionDescription = Utils.ReplaceOtherPlayerStrings(ActionDescription, Actions[0].Target.CharacterData);
         RTL.Text = ActionDescription;
+        if(Actions[0].ActionType == "Attack")
+        {
+            Actions[0].Actor.CharacterSprite.Play("Attack");
+        }
         // Handle entering the state
     }
     public override void UpdateState()

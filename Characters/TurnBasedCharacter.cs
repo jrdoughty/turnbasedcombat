@@ -7,7 +7,8 @@ public partial class TurnBasedCharacter : Node2D
 	public Label CharacterName { get; set; }
 	public ProgressBar CharacterHealth { get; set; }
 	public Label CharacterLevel { get; set; }
-	public Sprite2D CharacterSprite { get; set; }
+	public AnimatedSprite2D CharacterSprite { get; set; }
+	public Node2D CharacterSpriteAnchor { get; set; }
 	public Control CharacterControls { get; set; }
 	public Guid CharacterID { get; set; }
 	public List<Effect> PlayerEffects { get; set; } = new List<Effect>();
@@ -26,7 +27,7 @@ public partial class TurnBasedCharacter : Node2D
         CharacterName = GetNode<Label>("PlayerName");
         CharacterHealth = GetNode<ProgressBar>("PlayerHealth");
         CharacterLevel = GetNode<Label>("PlayerLevel");
-        CharacterSprite = GetNode<Sprite2D>("PlayerSprite");
+        CharacterSpriteAnchor = GetNode<Node2D>("SpriteAnchor");
         CharacterControls = GetNode<Control>("PlayerControls");
 
         CharacterID = Guid.NewGuid();
@@ -36,7 +37,7 @@ public partial class TurnBasedCharacter : Node2D
             InitializeData();
         }
     }
-    
+
     public void InitializeData()
     {
         CharacterData = CharacterData.Duplicate() as Player;//make sure we have a unique instance of the player data
@@ -50,29 +51,24 @@ public partial class TurnBasedCharacter : Node2D
             };
             CharacterControls.GetNode<Button>($"Button{i + 1}").Text = action;
         }
+        CharacterSprite = CharacterData.PlayerSprite.Instantiate() as AnimatedSprite2D;
+        CharacterSpriteAnchor.AddChild(CharacterSprite);
 
-        try
+        string path = $"res://Characters/Levels/{CharacterData.CharacterName}{CharacterData.Level}.tres";
+        if (CharacterData.Level > 0 && !dataLoaded && ResourceLoader.Exists(path)) //load level data if level is set and data was not loaded from file
         {
-            if (CharacterData.Level > 0 && !dataLoaded) //load level data if level is set and data was not loaded from file
+            GD.Print($"Loading level data from {path}");
+            Level levelData = ResourceLoader.Load<Level>(path);
+            if (levelData != null)
             {
-                string path = $"res://Characters/Levels/{CharacterData.CharacterName}{CharacterData.Level}.tres";
-                GD.Print($"Loading level data from {path}");
-                Level levelData = ResourceLoader.Load<Level>(path);
-                if (levelData != null)
-                {
-                    CharacterData.Attack += levelData.attack;
-                    CharacterData.Defense += levelData.defense;
-                    CharacterData.Speed += levelData.speed;
-                    CharacterData.Health += levelData.health;
-                    CharacterData.Mana += levelData.mana;
-                    CharacterData.MagicAttack += levelData.magicAttack;
-                    CharacterData.MagicDefense += levelData.magicDefense;
-                }
+                CharacterData.Attack += levelData.attack;
+                CharacterData.Defense += levelData.defense;
+                CharacterData.Speed += levelData.speed;
+                CharacterData.Health += levelData.health;
+                CharacterData.Mana += levelData.mana;
+                CharacterData.MagicAttack += levelData.magicAttack;
+                CharacterData.MagicDefense += levelData.magicDefense;
             }
-        }
-        catch (Exception e)
-        {
-            //GD.PrintErr("Error getting level: " + e.Message);
         }
     }
 

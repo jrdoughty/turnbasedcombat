@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=4 uid="uid://b0rtok6t4aa7c"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_cs231"]
+_data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAABuAQAAUklGRmYBAABXRUJQVlA4TFkBAAAvP8APEC+gqG0jNlca/ZXA7aEgAAFEPLHFICvsVtC2DVNQd+SGfJPmPwBQmH3l8Tv2BYmRbIdt80SiAP+xCuD8QQHyQAV8IZcO0n8zAMUPRwVE9H8C9Dnbqse6P0gyywsoMjNLA57fK2Kw8ZYE0OyFmeUEUJoBKx4aXnlFsn/8xW4pgCQDkuKduymT2Re2oEjSnZelBKDxy15mt5yyDAYtoUi6Y/aTBj3gfmv7Nc2qA7U8WoImdMB7aXuCYqhQK9AyJMA73oHnniJFpVbGlkX3PmHPUfXK/JlEBxQAe1KFIg3PJO9ICoA9JWotkhRAy8G3QcOeU8sk4JFyuG9nSnV3PysZx7B9BiXVVcFQFjBhHWlxRhaTDpScgHqCFOgyFzJPtgBKRpwpgAwAubsmJafo8E1STgDS4ZIUQEqRtA1aMQfKtdr1ZlC3S4f7W+6L9Bv8wx3/gV/bfg8A")
+size_override = Vector2(64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckllv"]
+atlas = SubResource("PortableCompressedTexture2D_cs231")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i3nx2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckllv")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckllv")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}]
+
+[node name="BarbarianSprite" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_i3nx2")
+animation = &"Idle"
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://Characters/Sprites/Barbarian.ase",
+"source_uid": 1371537001435310727
+}
+metadata/_aseprite_wizard_source_file_hash_ = "6f501ef8e2262a348e1107df54d3cc5d"
