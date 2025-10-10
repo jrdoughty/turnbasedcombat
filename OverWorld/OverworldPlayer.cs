@@ -20,11 +20,11 @@ namespace TwoDGame
 		[Export]
 		private int damage = 3;
 		private const float SPEED = 100.0f;
-		private const string LEFT = "ui_left";
-		private const string RIGHT = "ui_right";
-		private const string UP = "ui_up";
-		private const string DOWN = "ui_down";
-		private const string ACCEPT = "ui_accept";
+		private const string LEFT = "left";
+		private const string RIGHT = "right";
+		private const string UP = "up";
+		private const string DOWN = "down";
+		private const string ACCEPT = "interact";
 		private const string ATTACK = "attack";
 		private Vector2 direction;
 		private Vector2 lastDirection = Vector2.Down;
