@@ -1,11 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgvdnby7rupxp"]
+[gd_scene load_steps=3 format=3 uid="uid://bgvdnby7rupxp"]
 
-[ext_resource type="TileSet" uid="uid://b31rieti0siav" path="res://res/levels/tilesets/tileset16x16.res" id="1_dsxby"]
+[ext_resource type="Texture2D" uid="uid://cadxau1cgcksq" path="res://assets/atlas/Halloween.png" id="1_eyxjo"]
 
-[node name="TallProp" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_fsebq"]
+radius = 5.0
 
-[node name="TileMap" type="TileMap" parent="."]
-position = Vector2(-8, 12)
-tile_set = ExtResource("1_dsxby")
-format = 2
-layer_0/tile_data = PackedInt32Array(-196608, 851969, 8, -131072, 851969, 9, -65536, 851969, 10)
+[node name="TallProp" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fsebq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -11)
+texture = ExtResource("1_eyxjo")
+region_enabled = true
+region_rect = Rect2(208.0374, 141.97997, 16.1194, 21.989548)

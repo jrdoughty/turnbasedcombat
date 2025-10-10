@@ -1997,8 +1997,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7sf1n"]
-radius = 6.0
-height = 14.0
+radius = 5.0
+height = 10.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rml7i"]
 size = Vector2(25.25, 20)
@@ -2151,56 +2151,56 @@ _data = {
 &"Up": SubResource("Animation_6f1pl")
 }
 
-[node name="Root" type="Node2D"]
-
-[node name="Character" type="CharacterBody2D" parent="."]
-position = Vector2(0, -8)
+[node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_cx0la")
 actionActive = true
 actionType = "attack"
 
-[node name="Sprite2D" type="Sprite2D" parent="Character"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
 texture = ExtResource("2_hbpuk")
 region_enabled = true
 region_rect = Rect2(336, 528, 48, 48)
 
-[node name="CharAnimPlayer" type="AnimationPlayer" parent="Character"]
+[node name="CharAnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_0miwt")
 }
 autoplay = "IdleDown"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Character"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, 1)
+position = Vector2(0, -5)
 shape = SubResource("CapsuleShape2D_7sf1n")
 
-[node name="Camera2D" type="Camera2D" parent="Character"]
+[node name="Camera2D" type="Camera2D" parent="."]
 y_sort_enabled = true
+position = Vector2(0, -8)
 process_callback = 0
 limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
-[node name="Action" type="Area2D" parent="Character"]
+[node name="Action" type="Area2D" parent="."]
+position = Vector2(0, -8)
 collision_layer = 6
 collision_mask = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Character/Action"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Action"]
 position = Vector2(-21, -1)
 shape = SubResource("RectangleShape2D_rml7i")
 
-[node name="InteractAnimPlayer" type="AnimationPlayer" parent="Character"]
+[node name="InteractAnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_2d0u5")
 }
 autoplay = "Down"
 
-[node name="PickSprite" type="Sprite2D" parent="Character"]
+[node name="PickSprite" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(0, -13)
+position = Vector2(0, -19)
 texture = ExtResource("3_hbpuk")
 
-[connection signal="area_entered" from="Character/Action" to="Character" method="OnActionAreaEntered"]
-[connection signal="body_entered" from="Character/Action" to="Character" method="OnActionBodyEntered"]
+[connection signal="area_entered" from="Action" to="." method="OnActionAreaEntered"]
+[connection signal="body_entered" from="Action" to="." method="OnActionBodyEntered"]

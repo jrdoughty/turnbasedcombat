@@ -33,36 +33,46 @@ namespace TwoDGame
 		private Area2D actionArea2D;
 		private int frameTimer = 0;
 		private CollisionShape2D collisionShape;
+        private Timer actionTimer = new Timer();
 
 
-		public override void _Ready()
-		{
-			
-			characterAnimPlayer = (AnimationPlayer)GetNode("CharAnimPlayer");
-			interactionAnimPlayer = (AnimationPlayer)GetNode("InteractAnimPlayer");
-			actionArea2D = (Area2D)GetNode("Action");
-			actionActive = false;
-			collisionShape = (CollisionShape2D)GetNode("Action/CollisionShape2D");
-			collisionShape.Disabled = true;
-		}
+        public override void _Ready()
+        {
+
+            characterAnimPlayer = (AnimationPlayer)GetNode("CharAnimPlayer");
+            interactionAnimPlayer = (AnimationPlayer)GetNode("InteractAnimPlayer");
+            actionArea2D = (Area2D)GetNode("Action");
+            actionActive = false;
+            collisionShape = (CollisionShape2D)GetNode("Action/CollisionShape2D");
+            collisionShape.Disabled = true;
+            AddChild(actionTimer);
+            actionTimer.OneShot = true;
+            actionTimer.WaitTime = 0.25f;
+            actionTimer.Timeout += () =>
+            {
+					collisionShape.Disabled = true;
+            };
+        }
 		public override void _Process(double delta)
 		{
+            /*
 			if (actionType == ActionType.Interact)
-			{
-				//GD.Print("action interaction active");
-				if(frameTimer >= 3)//have to guarantee there's been ~ 3 frames the character could have interacted with the object, any less seems unreliable
-				{
-					frameTimer = 0;
-					//actionType = ActionType.None;
-					collisionShape.Disabled = true;
-					//GD.Print("disabled properly");
-				}
-				else
-				{
-					frameTimer++;
-					//GD.Print("timer increment");
-				}
-			}
+            {
+                //GD.Print("action interaction active");
+                if (frameTimer >= 3)//have to guarantee there's been ~ 3 frames the character could have interacted with the object, any less seems unreliable
+                {
+                    frameTimer = 0;
+                    //actionType = ActionType.None;
+                    collisionShape.Disabled = true;
+                    //GD.Print("disabled properly");
+                }
+                else
+                {
+                    frameTimer++;
+                    //GD.Print("timer increment");
+                }
+            }
+            */
 				
 			if (actionActive && characterAnimPlayer.CurrentAnimationPosition == characterAnimPlayer.CurrentAnimationLength && actionType != ActionType.None)
 			{
@@ -77,20 +87,21 @@ namespace TwoDGame
 				if(direction != Vector2.Zero)
 					lastDirection = direction;
 
-				if(Input.IsActionJustPressed(ACCEPT))
-				{
-					actionType = ActionType.Interact;
-					collisionShape.Disabled = false;
+                if (Input.IsActionJustPressed(ACCEPT))
+                {
+                    actionType = ActionType.Interact;
+                    collisionShape.Disabled = false;
+                    actionTimer.Start();
 				}
-				else if (Input.IsActionJustPressed(ATTACK))
-				{
-					Attack();
-					GD.Print("attack pressed");
-				}
-				else
-				{
-					Move();
-				}
+                else if (Input.IsActionJustPressed(ATTACK))
+                {
+                    Attack();
+                    GD.Print("attack pressed");
+                }
+                else
+                {
+                    Move();
+                }
 			}
 			
 		}
