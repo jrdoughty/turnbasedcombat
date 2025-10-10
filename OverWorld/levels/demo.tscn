@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://2d2xuffcfguv"]
+
+[ext_resource type="PackedScene" uid="uid://djx2343wkm8sb" path="res://res/levels/demo.ldtk" id="1_d6hjh"]
+
+[node name="demo" instance=ExtResource("1_d6hjh")]
+
+[node name="Tilemaps16x16" parent="Level_0" index="0"]
+layer_3/name = "Collisions-values"
+layer_4/name = "Collisions"
+
+[node name="Tilemaps16x16" parent="Level_1" index="0"]
+layer_3/name = "Collisions-values"
+layer_4/name = "Collisions"
+
+[node name="Tilemaps16x16" parent="Level_2" index="0"]
+layer_3/name = "Collisions-values"
+layer_4/name = "Collisions"
+
+[node name="Tilemaps16x16" parent="Level_3" index="0"]
+layer_3/name = "Collisions-values"
+layer_4/name = "Collisions"

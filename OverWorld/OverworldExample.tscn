@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://clvd76x30jdkx"]
+
+[ext_resource type="PackedScene" path="res://res/levels/demo.ldtk" id="1_4ijxp"]
+[ext_resource type="PackedScene" uid="uid://cgn738mmxpcfr" path="res://OverWorld/OverworldPlayer.tscn" id="2_idj6j"]
+[ext_resource type="PackedScene" uid="uid://0yba63watmbu" path="res://OverWorld/items/WorldItem.tscn" id="3_6b2ml"]
+[ext_resource type="PackedScene" uid="uid://c811pxhtlqpjq" path="res://OverWorld/enemy.tscn" id="5_hxdmv"]
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+
+[node name="demo" parent="." instance=ExtResource("1_4ijxp")]
+z_index = -4
+y_sort_enabled = true
+rect = Rect2i(0, 0, 1200, 688)
+
+[node name="Level_0" parent="demo" index="0"]
+y_sort_enabled = true
+
+[node name="Tilemaps16x16" parent="demo/Level_0" index="0"]
+y_sort_enabled = true
+layer_0/y_sort_enabled = true
+layer_3/name = "Collisions-values"
+layer_4/name = "Collisions"
+layer_5/z_index = 7
+
+[node name="Tilemaps16x16" parent="demo/Level_1" index="0"]
+layer_3/name = "Collisions-values"
+layer_4/name = "Collisions"
+
+[node name="Tilemaps16x16" parent="demo/Level_2" index="0"]
+layer_3/name = "Collisions-values"
+layer_4/name = "Collisions"
+
+[node name="Tilemaps16x16" parent="demo/Level_3" index="0"]
+layer_3/name = "Collisions-values"
+layer_4/name = "Collisions"
+
+[node name="WorldItem" parent="." instance=ExtResource("3_6b2ml")]
+z_index = 3
+y_sort_enabled = false
+position = Vector2(266, 195)
+script = null
+
+[node name="Character" parent="." instance=ExtResource("2_idj6j")]
+z_index = 4
+y_sort_enabled = true
+position = Vector2(293, 195)
+
+[node name="Enemy" parent="." instance=ExtResource("5_hxdmv")]
+position = Vector2(182, 198)
+script = null
+
+[node name="WorldItem2" parent="." instance=ExtResource("3_6b2ml")]
+position = Vector2(269, 217)
+script = null
+
+[node name="WorldItem3" parent="." instance=ExtResource("3_6b2ml")]
+position = Vector2(300, 231)
+script = null
+
+[editable path="demo"]

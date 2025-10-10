@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cm43gxe7r4vv4"
+path="res://.godot/imported/16GrassSand.aseprite-342c20b583c52f01641f0f91ee45c612.res"
+
+[deps]
+
+source_file="res://assets/atlas/16GrassSand.aseprite"
+dest_files=["res://.godot/imported/16GrassSand.aseprite-342c20b583c52f01641f0f91ee45c612.res"]
+
+[params]
+

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://de4jcwicputov"]
+
+[ext_resource type="Texture2D" uid="uid://isea5ui0pa81" path="res://assets/atlas/sword.png" id="1_0qg38"]
+[ext_resource type="Script" uid="uid://bbw0y2bm2qlsy" path="res://OverWorld/items/WorldItem.cs" id="1_5p54e"]
+[ext_resource type="Resource" uid="uid://dxt1g5q7t6g40" path="res://OverWorld/res/items/sword.tres" id="2_sffbq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sffbq"]
+size = Vector2(8, 8)
+
+[node name="Sword" type="Node2D"]
+script = ExtResource("1_5p54e")
+item = ExtResource("2_sffbq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0qg38")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_sffbq")

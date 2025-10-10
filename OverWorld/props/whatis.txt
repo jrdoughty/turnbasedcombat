@@ -1,0 +1,3 @@
+presently this is for things in scenes that aren't interactable. 
+
+I'm expecting to populate this with stuff for building levels, and then when something becomes interactable for a quest or something, it'll either be moved somewhere else, or a duplicate with the extended functionality will be made

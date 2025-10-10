@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvu2prsltoc2y"]
+
+[ext_resource type="TileSet" uid="uid://b31rieti0siav" path="res://res/levels/tilesets/tileset16x16.res" id="1_cqxdm"]
+
+[node name="BigTree" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-8, 0)
+tile_set = ExtResource("1_cqxdm")
+format = 2
+layer_0/tile_data = PackedInt32Array(-131073, 983041, 8, -65537, 983041, 9, -1, 983041, 10, -196608, 1048577, 8, -131072, 1048577, 9, -65536, 1048577, 10, -196607, 1114113, 8, -131071, 1114113, 9, -65535, 1114113, 10)

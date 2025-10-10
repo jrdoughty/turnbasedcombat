@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://chdfc6x4mbixk"]
+
+[ext_resource type="TileSet" uid="uid://b31rieti0siav" path="res://OverWorld/res/levels/tilesets/tileset16x16.res" id="1_t3a6u"]
+
+[node name="LivingTree" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-8, 0)
+tile_set = ExtResource("1_t3a6u")
+format = 2
+layer_0/tile_data = PackedInt32Array(-131073, 1245185, 5, -65537, 1245185, 6, -1, 1245185, 7, -196608, 1310721, 5, -131072, 1310721, 6, -65536, 1310721, 7, -196607, 1376257, 5, -131071, 1376257, 6, -65535, 1376257, 7)

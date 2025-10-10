@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dxt1g5q7t6g40"]
+
+[ext_resource type="PackedScene" uid="uid://b0j4l1fbnh208" path="res://OverWorld/items/icons/sword.tscn" id="1_tsu1v"]
+[ext_resource type="Script" uid="uid://8gp70m41vgl3" path="res://OverWorld/res/items/Item.cs" id="2_gcfmf"]
+
+[resource]
+script = ExtResource("2_gcfmf")
+name = "Sword"
+description = "Run of the mill pointy thing that makes goblins more dead."
+value = 2
+rarity = 1
+equipable = true
+dropRate = 1
+icon = ExtResource("1_tsu1v")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://xgutt3uplrdy"]
+
+[ext_resource type="Texture2D" uid="uid://dvo38c0s05ju7" path="res://assets/atlas/pickaxe.png" id="1_pcewc"]
+
+[node name="Pickaxe" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("1_pcewc")

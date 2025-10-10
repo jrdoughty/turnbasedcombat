@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bjeqqpxntbcm3"
+path="res://.godot/imported/rouge.aseprite-6ab380b6479444cda8db02922f1ad15f.res"
+
+[deps]
+
+source_file="res://assets/atlas/rouge.aseprite"
+dest_files=["res://.godot/imported/rouge.aseprite-6ab380b6479444cda8db02922f1ad15f.res"]
+
+[params]
+

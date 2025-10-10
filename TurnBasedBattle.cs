@@ -29,9 +29,9 @@ public partial class TurnBasedBattle : Node2D
         Players.Add(GetNode<TurnBasedCharacter>("Player2"));
         Players[0].IsPlayerContolled = true;
         
-        //if(ResourceLoader.Exists($"user://SaveData/Party/Rouge.tres"))
-        //    Players[0].CharacterData = ResourceLoader.Load<Player>($"user://SaveData/Party/Rouge.tres");
-        //else
+        if(ResourceLoader.Exists($"user://SaveData/Party/Rouge.tres"))
+            Players[0].CharacterData = ResourceLoader.Load<Player>($"user://SaveData/Party/Rouge.tres");
+        else
             Players[0].CharacterData = ResourceLoader.Load<Player>($"res://Characters/Rouge.tres");
         Players[0].dataLoaded = true;
         Players[0].InitializeData();

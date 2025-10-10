@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cng6itpa5jw65"]
+
+[ext_resource type="TileSet" uid="uid://b31rieti0siav" path="res://res/levels/tilesets/tileset16x16.res" id="1_wicrk"]
+
+[node name="Tower" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-8, 0)
+tile_set = ExtResource("1_wicrk")
+format = 2
+layer_0/tile_data = PackedInt32Array(-262145, 1638401, 21, -196609, 1638401, 22, -131073, 1638401, 23, -65537, 1638401, 24, -1, 1638401, 25, -327680, 1703937, 21, -262144, 1703937, 22, -196608, 1703937, 23, -131072, 1703937, 24, -65536, 1703937, 25, -327679, 1769473, 21, -262143, 1769473, 22, -196607, 1769473, 23, -131071, 1769473, 24, -65535, 1769473, 25)

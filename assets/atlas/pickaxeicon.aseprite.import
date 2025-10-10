@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c1v286a8oms3i"
+path="res://.godot/imported/pickaxeicon.aseprite-0937beee9d98ab8604dba66ba589fca1.res"
+
+[deps]
+
+source_file="res://assets/atlas/pickaxeicon.aseprite"
+dest_files=["res://.godot/imported/pickaxeicon.aseprite-0937beee9d98ab8604dba66ba589fca1.res"]
+
+[params]
+

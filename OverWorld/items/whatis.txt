@@ -1,0 +1,5 @@
+Ok, so what's with the icons vs sprites?
+
+Icons are meant for the inventory or quest screens.
+
+Some items are going to be sizable or tiny. think a marble might only be 1px for its in game sprite, but its icon will still be 8x8 and might even be more detailed. That is what would show in an inventory

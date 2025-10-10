@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4y7hdwxu0m48"]
+
+[ext_resource type="Texture2D" uid="uid://cadxau1cgcksq" path="res://assets/atlas/Halloween.png" id="1_7vq6q"]
+
+[node name="House" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7vq6q")
+offset = Vector2(0, -32)
+region_enabled = true
+region_rect = Rect2(4.3179226, 347.46573, 69.66306, 67.50955)
