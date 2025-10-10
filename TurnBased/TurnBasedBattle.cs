@@ -32,7 +32,7 @@ public partial class TurnBasedBattle : Node2D
         if(ResourceLoader.Exists($"user://SaveData/Party/Rouge.tres"))
             Players[0].CharacterData = ResourceLoader.Load<Player>($"user://SaveData/Party/Rouge.tres");
         else
-            Players[0].CharacterData = ResourceLoader.Load<Player>($"res://Characters/Rouge.tres");
+            Players[0].CharacterData = ResourceLoader.Load<Player>($"res://TurnBased/Characters/Rouge.tres");
         Players[0].dataLoaded = true;
         Players[0].InitializeData();
         Teams[0].AddPlayer(Players[0]);

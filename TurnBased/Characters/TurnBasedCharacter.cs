@@ -54,7 +54,7 @@ public partial class TurnBasedCharacter : Node2D
         CharacterSprite = CharacterData.PlayerSprite.Instantiate() as AnimatedSprite2D;
         CharacterSpriteAnchor.AddChild(CharacterSprite);
 
-        string path = $"res://Characters/Levels/{CharacterData.CharacterName}{CharacterData.Level}.tres";
+        string path = $"res://TurnBased/Characters/Levels/{CharacterData.CharacterName}{CharacterData.Level}.tres";
         if (CharacterData.Level > 0 && !dataLoaded && ResourceLoader.Exists(path)) //load level data if level is set and data was not loaded from file
         {
             GD.Print($"Loading level data from {path}");

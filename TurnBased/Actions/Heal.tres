@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TBAction" load_steps=2 format=3 uid="uid://bdte57lo7h7q7"]
 
-[ext_resource type="Script" uid="uid://bupsnfrxtmn4s" path="res://Actions/TBAction.cs" id="1_wo7ry"]
+[ext_resource type="Script" uid="uid://bupsnfrxtmn4s" path="res://TurnBased/Actions/TBAction.cs" id="1_wo7ry"]
 
 [resource]
 script = ExtResource("1_wo7ry")

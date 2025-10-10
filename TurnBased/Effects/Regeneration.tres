@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://dd4yj7tchukv0"]
 
-[ext_resource type="Script" uid="uid://c0aqfb0ay7tac" path="res://Effects/Effect.cs" id="1_xruj8"]
+[ext_resource type="Script" uid="uid://c0aqfb0ay7tac" path="res://TurnBased/Effects/Effect.cs" id="1_xruj8"]
 
 [resource]
 script = ExtResource("1_xruj8")

@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://cxtb8fsvj4lu1"]
 
-[ext_resource type="Script" uid="uid://sgvs2qpitt3a" path="res://TurnBasedBattle.cs" id="1_8qvph"]
+[ext_resource type="Script" uid="uid://sgvs2qpitt3a" path="res://TurnBased/TurnBasedBattle.cs" id="1_8qvph"]
 [ext_resource type="Texture2D" uid="uid://b1vlhukw46ch1" path="res://BG.png" id="2_1ji3n"]
-[ext_resource type="PackedScene" uid="uid://kjcmi16ndbnt" path="res://Characters/TurnBasedCharacter.tscn" id="3_oqnqm"]
-[ext_resource type="Resource" uid="uid://c3fps3v5iqkxc" path="res://Characters/Barbarian.tres" id="4_0oqjb"]
-[ext_resource type="Script" uid="uid://dyefct01v4jfa" path="res://GameStates/Queue.cs" id="5_w0o45"]
+[ext_resource type="PackedScene" uid="uid://kjcmi16ndbnt" path="res://TurnBased/Characters/TurnBasedCharacter.tscn" id="3_oqnqm"]
+[ext_resource type="Resource" uid="uid://c3fps3v5iqkxc" path="res://TurnBased/Characters/Barbarian.tres" id="4_0oqjb"]
+[ext_resource type="Script" uid="uid://dyefct01v4jfa" path="res://TurnBased/GameStates/Queue.cs" id="5_w0o45"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_8qvph")

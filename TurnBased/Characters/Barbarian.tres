@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Player" load_steps=3 format=3 uid="uid://c3fps3v5iqkxc"]
 
-[ext_resource type="PackedScene" uid="uid://b0rtok6t4aa7c" path="res://Characters/Sprites/BarbarianSprite.tscn" id="1_bw44g"]
-[ext_resource type="Script" uid="uid://decfhkt727sbr" path="res://Characters/Player.cs" id="2_qsqdx"]
+[ext_resource type="PackedScene" uid="uid://b0rtok6t4aa7c" path="res://TurnBased/Characters/Sprites/BarbarianSprite.tscn" id="1_bw44g"]
+[ext_resource type="Script" uid="uid://decfhkt727sbr" path="res://TurnBased/Characters/Player.cs" id="2_qsqdx"]
 
 [resource]
 script = ExtResource("2_qsqdx")

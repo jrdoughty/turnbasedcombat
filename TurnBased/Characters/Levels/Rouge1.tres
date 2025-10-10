@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Level" load_steps=2 format=3 uid="uid://db6tadwr768rc"]
 
-[ext_resource type="Script" uid="uid://6cku28pxavfk" path="res://Characters/Levels/Level.cs" id="1_v1ub7"]
+[ext_resource type="Script" uid="uid://6cku28pxavfk" path="res://TurnBased/Characters/Levels/Level.cs" id="1_v1ub7"]
 
 [resource]
 script = ExtResource("1_v1ub7")

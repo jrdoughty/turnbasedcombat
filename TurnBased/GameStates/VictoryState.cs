@@ -36,9 +36,9 @@ public partial class VictoryState : State
                         while (player.CharacterData.Experience >= player.CharacterData.getNextLevelExperience())
                         {
                             player.CharacterData.Experience -= player.CharacterData.getNextLevelExperience();
-                            Level oldLevel = ResourceLoader.Load<Level>($"res://Characters/Levels/{player.CharacterData.CharacterName}{player.CharacterData.Level}.tres");
+                            Level oldLevel = ResourceLoader.Load<Level>($"res://TurnBased/Characters/Levels/{player.CharacterData.CharacterName}{player.CharacterData.Level}.tres");
                             player.CharacterData.Level++;
-                            Level newLevel = ResourceLoader.Load<Level>($"res://Characters/Levels/{player.CharacterData.CharacterName}{player.CharacterData.Level}.tres");
+                            Level newLevel = ResourceLoader.Load<Level>($"res://TurnBased/Characters/Levels/{player.CharacterData.CharacterName}{player.CharacterData.Level}.tres");
                             if (newLevel != null && oldLevel != null)
                             {
                                 GD.Print($"Leveling up {player.CharacterData.CharacterName} to level {player.CharacterData.Level}");
