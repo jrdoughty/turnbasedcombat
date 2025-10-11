@@ -15,7 +15,8 @@ namespace TwoDGame
 		[Export] public bool usable {get;set;}
 		[Export] public bool equipable {get;set;}
 		[Export] public int dropRate {get;set;}
-		[Export] public PackedScene icon {get;set;}
+		[Export] public Texture2D icon {get;set;}
+		[Export] public Texture2D sprite {get;set;}
 		[Export] public bool questItem {get;set;} 
 		/*
 		public Item()

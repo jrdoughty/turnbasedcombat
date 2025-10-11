@@ -1,8 +1,9 @@
-[gd_scene load_steps=71 format=3 uid="uid://cgn738mmxpcfr"]
+[gd_scene load_steps=72 format=3 uid="uid://cgn738mmxpcfr"]
 
 [ext_resource type="Script" uid="uid://b1iuuxb3lxeng" path="res://OverWorld/OverworldPlayer.cs" id="1_cx0la"]
 [ext_resource type="Texture2D" uid="uid://cbew0yxyvtodl" path="res://assets/atlas/rouge.png" id="2_hbpuk"]
 [ext_resource type="Texture2D" uid="uid://isea5ui0pa81" path="res://assets/atlas/sword.png" id="3_hbpuk"]
+[ext_resource type="PackedScene" uid="uid://dxuiv6qfk8n8p" path="res://OverWorld/inventory.tscn" id="4_ghhbn"]
 
 [sub_resource type="Animation" id="Animation_bvnvy"]
 length = 0.4
@@ -2154,7 +2155,6 @@ _data = {
 [node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_cx0la")
 actionActive = true
-actionType = "attack"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
@@ -2201,6 +2201,13 @@ autoplay = "Down"
 visible = false
 position = Vector2(0, -19)
 texture = ExtResource("3_hbpuk")
+
+[node name="Inventory" parent="." instance=ExtResource("4_ghhbn")]
+visible = false
+offset_left = -60.0
+offset_top = -102.0
+offset_right = -60.0
+offset_bottom = -102.0
 
 [connection signal="area_entered" from="Action" to="." method="OnActionAreaEntered"]
 [connection signal="body_entered" from="Action" to="." method="OnActionBodyEntered"]

@@ -1,5 +1,5 @@
 using Godot;
-using System;
+using Godot.Collections;
 namespace TwoDGame
 {
 	public enum ActionType
@@ -11,8 +11,8 @@ namespace TwoDGame
 	public partial class OverworldPlayer : CharacterBody2D
 	{
 		[Export] 
-		public Godot.Collections.Array items = new Godot.Collections.Array{};
-		public Godot.Collections.Array interactables = new Godot.Collections.Array{};
+		public Array<Item> items = new Array<Item>{};
+		public Array interactables = new Array{};
 		[Export]
 		private bool actionActive = false; 
 		[Export]
@@ -26,6 +26,7 @@ namespace TwoDGame
 		private const string DOWN = "down";
 		private const string ACCEPT = "interact";
 		private const string ATTACK = "attack";
+		private const string INVENTORY = "inventory";
 		private Vector2 direction;
 		private Vector2 lastDirection = Vector2.Down;
 		private AnimationPlayer characterAnimPlayer;//Character Anim Player
@@ -34,25 +35,27 @@ namespace TwoDGame
 		private int frameTimer = 0;
 		private CollisionShape2D collisionShape;
         private Timer actionTimer = new Timer();
+		private Inventory inventory;
+		
 
 
         public override void _Ready()
-        {
-
-            characterAnimPlayer = (AnimationPlayer)GetNode("CharAnimPlayer");
-            interactionAnimPlayer = (AnimationPlayer)GetNode("InteractAnimPlayer");
-            actionArea2D = (Area2D)GetNode("Action");
-            actionActive = false;
-            collisionShape = (CollisionShape2D)GetNode("Action/CollisionShape2D");
-            collisionShape.Disabled = true;
-            AddChild(actionTimer);
-            actionTimer.OneShot = true;
-            actionTimer.WaitTime = 0.25f;
-            actionTimer.Timeout += () =>
-            {
-					collisionShape.Disabled = true;
-            };
-        }
+		{
+			inventory = (Inventory)GetNode("Inventory");
+			characterAnimPlayer = (AnimationPlayer)GetNode("CharAnimPlayer");
+			interactionAnimPlayer = (AnimationPlayer)GetNode("InteractAnimPlayer");
+			actionArea2D = (Area2D)GetNode("Action");
+			actionActive = false;
+			collisionShape = (CollisionShape2D)GetNode("Action/CollisionShape2D");
+			collisionShape.Disabled = true;
+			AddChild(actionTimer);
+			actionTimer.OneShot = true;
+			actionTimer.WaitTime = 0.25f;
+			actionTimer.Timeout += () =>
+			{
+				collisionShape.Disabled = true;
+			};
+		}
 		public override void _Process(double delta)
 		{
             /*
@@ -87,21 +90,32 @@ namespace TwoDGame
 				if(direction != Vector2.Zero)
 					lastDirection = direction;
 
-                if (Input.IsActionJustPressed(ACCEPT))
-                {
-                    actionType = ActionType.Interact;
-                    collisionShape.Disabled = false;
-                    actionTimer.Start();
+				if (Input.IsActionJustPressed(ACCEPT))
+				{
+					actionType = ActionType.Interact;
+					collisionShape.Disabled = false;
+					actionTimer.Start();
 				}
-                else if (Input.IsActionJustPressed(ATTACK))
-                {
-                    Attack();
-                    GD.Print("attack pressed");
+				else if (Input.IsActionJustPressed(ATTACK))
+				{
+					Attack();
+					GD.Print("attack pressed");
+				}
+				else if (Input.IsActionJustPressed(INVENTORY))
+				{
+					if (inventory.Visible)
+					{
+						inventory.CloseInventory(items);
+					}
+					else
+					{
+						inventory.OpenInventory(items);
+					}
                 }
-                else
-                {
-                    Move();
-                }
+				else
+				{
+					Move();
+				}
 			}
 			
 		}
