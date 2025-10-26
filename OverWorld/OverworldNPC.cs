@@ -13,11 +13,16 @@ namespace TwoDGame
         private const string RIGHT = "right";
         private const string UP = "up";
         private const string DOWN = "down";
-        public override void _Ready()
-        {
-            characterSprite = (AnimatedSprite2D)GetNode("AnimatedSprite2D");
+		public override void _Ready()
+		{
+			characterSprite = (AnimatedSprite2D)GetNode("AnimatedSprite2D");
 			AddToGroup("interactable");
-        }
+			AddToGroup("NPC");
+			if (EventManager.IsEventCompleted("Kill_Barbarian"))
+			{
+				characterSprite.CallDeferred("play","DeadLeft");
+			}
+		}
         
 		public void interact(OverworldPlayer initiater)
         {

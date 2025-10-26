@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=4 uid="uid://dr3v7hnpuumif"]
+[gd_scene load_steps=13 format=4 uid="uid://dr3v7hnpuumif"]
 
 [ext_resource type="Material" uid="uid://cmbcfxlkxxnwq" path="res://addons/TileMapDual/ghost_material.tres" id="1_1xomf"]
+[ext_resource type="Script" uid="uid://bsndni1vpfkgy" path="res://OverWorld/OverWorld.cs" id="1_ghfyg"]
 [ext_resource type="Texture2D" uid="uid://cehfih1ep5556" path="res://assets/atlas/16x16-dirtgrass.png" id="2_victi"]
 [ext_resource type="Script" uid="uid://cjk8nronimk5r" path="res://addons/TileMapDual/TileMapDual.gd" id="3_ghfyg"]
 [ext_resource type="Texture2D" uid="uid://cadxau1cgcksq" path="res://assets/atlas/Halloween.png" id="4_hrlb7"]
@@ -2999,6 +3000,7 @@ sources/0 = SubResource("TileSetAtlasSource_raatb")
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_ghfyg")
 
 [node name="TileMapDual" type="TileMapLayer" parent="."]
 z_index = -1
@@ -3023,7 +3025,7 @@ tile_set = SubResource("TileSet_khmkl")
 [node name="Sword" parent="." instance=ExtResource("5_erwbr")]
 position = Vector2(132, 111)
 
-[node name="Root" parent="." instance=ExtResource("6_n5ji2")]
+[node name="Player" parent="." instance=ExtResource("6_n5ji2")]
 position = Vector2(140, 92)
 
 [node name="Sword2" parent="." instance=ExtResource("5_erwbr")]

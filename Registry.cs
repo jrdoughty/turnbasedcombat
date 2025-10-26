@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using Godot.Collections;
+using TwoDGame;
 
 public static class Registry
 {
@@ -20,6 +21,7 @@ public static class Registry
         { "Poison", GD.Load<Effect>("res://TurnBased/Effects/Poison.tres") },
         { "Regeneration", GD.Load<Effect>("res://TurnBased/Effects/Regeneration.tres") }
     };
+    public static OverWorldData CurrentOverworldData = new OverWorldData();
     //public static Dictionary<string, object> GameStateData = new Dictionary<string, object>();
     //public static Dictionary<string, object> UIData = new Dictionary<string, object>();
     //public static Dictionary<string, object> AnimationData = new Dictionary<string, object>();

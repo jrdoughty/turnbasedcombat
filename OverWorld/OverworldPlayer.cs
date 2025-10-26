@@ -27,8 +27,8 @@ namespace TwoDGame
 		private const string ACCEPT = "interact";
 		private const string ATTACK = "attack";
 		private const string INVENTORY = "inventory";
-		private Vector2 direction;
-		private Vector2 lastDirection = Vector2.Down;
+		public Vector2 direction;
+		public Vector2 lastDirection = Vector2.Down;
 		private AnimationPlayer characterAnimPlayer;//Character Anim Player
 		private AnimationPlayer interactionAnimPlayer;//Attack Anim Player
 		private Area2D actionArea2D;
