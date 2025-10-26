@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d38byljg8g6lm"]
+
+[ext_resource type="PackedScene" uid="uid://dr3v7hnpuumif" path="res://OverWorld/OverWorld.tscn" id="1_wbfu4"]
+[ext_resource type="Script" uid="uid://cpbort6hkrwiq" path="res://Game.cs" id="1_xkndl"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_xkndl")
+
+[node name="World" parent="." instance=ExtResource("1_wbfu4")]
+position = Vector2(18, 61)

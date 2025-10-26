@@ -13,6 +13,11 @@ public partial class GameStates : Node2D
         GameState = States["Start"];
         GameState.EnterState();
         GD.Print("Game state initialized to: Start");
+        foreach (var state in States.Values)
+        {
+            AddChild(state);
+            GD.Print($"Added state: {state.GetType().Name}");
+        }
     }
 
     public void ChangeState(string newState)

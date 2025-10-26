@@ -24,7 +24,6 @@ public partial class TurnBasedBattle : Node2D
             new Team(),
             new Team()
         };
-
         Players.Add(GetNode<TurnBasedCharacter>("Player1"));
         Players.Add(GetNode<TurnBasedCharacter>("Player2"));
         Players[0].IsPlayerContolled = true;

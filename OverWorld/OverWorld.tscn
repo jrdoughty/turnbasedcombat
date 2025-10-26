@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dr3v7hnpuumif"]
+[gd_scene load_steps=12 format=4 uid="uid://dr3v7hnpuumif"]
 
 [ext_resource type="Material" uid="uid://cmbcfxlkxxnwq" path="res://addons/TileMapDual/ghost_material.tres" id="1_1xomf"]
 [ext_resource type="Texture2D" uid="uid://cehfih1ep5556" path="res://assets/atlas/16x16-dirtgrass.png" id="2_victi"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cadxau1cgcksq" path="res://assets/atlas/Halloween.png" id="4_hrlb7"]
 [ext_resource type="PackedScene" uid="uid://de4jcwicputov" path="res://OverWorld/items/sword.tscn" id="5_erwbr"]
 [ext_resource type="PackedScene" uid="uid://cgn738mmxpcfr" path="res://OverWorld/OverworldPlayer.tscn" id="6_n5ji2"]
+[ext_resource type="PackedScene" uid="uid://bxlb6al6oeacr" path="res://OverWorld/OverworldNPC.tscn" id="7_victi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3k85a"]
 resource_name = "16x16_dirt_grass"
@@ -3024,7 +3025,6 @@ position = Vector2(132, 111)
 
 [node name="Root" parent="." instance=ExtResource("6_n5ji2")]
 position = Vector2(140, 92)
-actionType = 0
 
 [node name="Sword2" parent="." instance=ExtResource("5_erwbr")]
 position = Vector2(184, 111)
@@ -3034,3 +3034,6 @@ position = Vector2(158, 81)
 
 [node name="Sword4" parent="." instance=ExtResource("5_erwbr")]
 position = Vector2(158, 138)
+
+[node name="OverworldNpc" parent="." instance=ExtResource("7_victi")]
+position = Vector2(212, 110)

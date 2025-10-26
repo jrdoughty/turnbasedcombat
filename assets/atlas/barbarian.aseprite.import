@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cahw5xpjmhf1e"
+path="res://.godot/imported/barbarian.aseprite-7f8ef10f3b996deeb878124e683b5bc8.res"
+
+[deps]
+
+source_file="res://assets/atlas/barbarian.aseprite"
+dest_files=["res://.godot/imported/barbarian.aseprite-7f8ef10f3b996deeb878124e683b5bc8.res"]
+
+[params]
+

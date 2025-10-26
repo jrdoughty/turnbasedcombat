@@ -231,6 +231,38 @@ namespace TwoDGame
 				IDamagable enemy = (IDamagable)body;
 				enemy.hit(damage);
 			}
+			else if(body.IsInGroup("interactable") && !actionActive)
+			{
+				actionActive = true;
+				IInteractable interactable = (IInteractable)body;
+				if(interactable is WorldItem worldItem)
+				{
+					Sprite2D spr = (Sprite2D)GetNode("PickSprite");
+					spr.Texture = ((Sprite2D)worldItem.GetNode("Sprite2D")).Texture;
+				}
+				interactable.interact(this);
+				/*
+				if(lastDirection.X > 0)
+				{
+					characterAnimPlayer.Play("GrabRight");
+					interactionAnimPlayer.Play("Right");
+				}
+				else if (lastDirection.X < 0)
+				{
+					characterAnimPlayer.Play("GrabLeft");
+					interactionAnimPlayer.Play("Left");
+				}
+				else if (lastDirection.Y < 0)
+				{
+					characterAnimPlayer.Play("GrabUp");
+					interactionAnimPlayer.Play("Up");
+				}
+				else if (lastDirection.Y > 0)
+				{
+					characterAnimPlayer.Play("GrabDown");
+					interactionAnimPlayer.Play("Down");
+				}*/
+			}
 			
 		}
 		private void OnActionAreaEntered(Area2D area)

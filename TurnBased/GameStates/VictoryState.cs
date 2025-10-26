@@ -70,6 +70,11 @@ public partial class VictoryState : State
                 }
                 Utils.SavePartyData(team.GetPartyData());
             }
+            else
+            {
+                GD.Print($"{team.Players[0].CharacterData.CharacterName} has been killed.");
+                EventManager.CompleteEvent($"Kill_{team.Players[0].CharacterData.CharacterName}");
+            }
         }
         // Handle entering the state
     }
@@ -78,7 +83,10 @@ public partial class VictoryState : State
         base.UpdateState();
         if(Input.IsActionJustPressed("ui_accept"))
         {
-
+            var p = GetParent();
+            TurnBasedBattle battle = GetNode<TurnBasedBattle>("/root/Game/Battle");
+            battle.GetParent<Node>().RemoveChild(battle);
+            battle.QueueFree();
         }
         // Handle state updates
     }
