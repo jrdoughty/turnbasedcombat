@@ -61,18 +61,18 @@ namespace TwoDGame
             /*
 			if (actionType == ActionType.Interact)
             {
-                //GD.Print("action interaction active");
+                ////GD.Print("action interaction active");
                 if (frameTimer >= 3)//have to guarantee there's been ~ 3 frames the character could have interacted with the object, any less seems unreliable
                 {
                     frameTimer = 0;
                     //actionType = ActionType.None;
                     collisionShape.Disabled = true;
-                    //GD.Print("disabled properly");
+                    ////GD.Print("disabled properly");
                 }
                 else
                 {
                     frameTimer++;
-                    //GD.Print("timer increment");
+                    ////GD.Print("timer increment");
                 }
             }
             */
@@ -81,11 +81,11 @@ namespace TwoDGame
 			{
 				actionActive = false;
 				actionType = ActionType.None;
-				//GD.Print("reset at end of anim");
+				////GD.Print("reset at end of anim");
 			}
 			else if(!actionActive)
 			{
-				//GD.Print("test 5");
+				////GD.Print("test 5");
 
 				if(direction != Vector2.Zero)
 					lastDirection = direction;
@@ -99,7 +99,6 @@ namespace TwoDGame
 				else if (Input.IsActionJustPressed(ATTACK))
 				{
 					Attack();
-					GD.Print("attack pressed");
 				}
 				else if (Input.IsActionJustPressed(INVENTORY))
 				{
@@ -220,22 +219,21 @@ namespace TwoDGame
 			//Position.MoveToward(Position,50);
 			
 		}
-		
+
 
 
 
 		private void OnActionBodyEntered(Node2D body)
 		{
-			if(body.IsInGroup("enemy") && actionType == ActionType.Attack)
+			if (body.IsInGroup("enemy") && actionType == ActionType.Attack)
 			{
 				IDamagable enemy = (IDamagable)body;
 				enemy.hit(damage);
 			}
-			else if(body.IsInGroup("interactable") && !actionActive)
+			else if (body.IsInGroup("interactable") && !actionActive)
 			{
-				actionActive = true;
 				IInteractable interactable = (IInteractable)body;
-				if(interactable is WorldItem worldItem)
+				if (interactable is WorldItem worldItem)
 				{
 					Sprite2D spr = (Sprite2D)GetNode("PickSprite");
 					spr.Texture = ((Sprite2D)worldItem.GetNode("Sprite2D")).Texture;
@@ -263,7 +261,13 @@ namespace TwoDGame
 					interactionAnimPlayer.Play("Down");
 				}*/
 			}
-			
+
+		}
+		
+		public void AddItem(Item item)
+		{
+			actionActive = true;
+			items.Add(item);
 		}
 		private void OnActionAreaEntered(Area2D area)
 		{

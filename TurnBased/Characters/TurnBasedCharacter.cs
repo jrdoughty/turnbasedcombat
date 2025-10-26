@@ -23,7 +23,6 @@ public partial class TurnBasedCharacter : Node2D
 	public override void _Ready()
     {
         // Initialize the player container
-        GD.Print("PlayerContainer getting ready!");
         CharacterName = GetNode<Label>("PlayerName");
         CharacterHealth = GetNode<ProgressBar>("PlayerHealth");
         CharacterLevel = GetNode<Label>("PlayerLevel");
@@ -44,7 +43,6 @@ public partial class TurnBasedCharacter : Node2D
         for (int i = 0; i < CharacterData.PlayerActions.Count; i++)
         {
             string action = CharacterData.PlayerActions[i].ToString().Trim('"');
-            GD.Print($"action: {action}");
             CharacterControls.GetNode<Button>($"Button{i + 1}").Pressed += () =>
             {
                 PerformAction((string)action);
@@ -57,7 +55,6 @@ public partial class TurnBasedCharacter : Node2D
         string path = $"res://TurnBased/Characters/Levels/{CharacterData.CharacterName}{CharacterData.Level}.tres";
         if (CharacterData.Level > 0 && !dataLoaded && ResourceLoader.Exists(path)) //load level data if level is set and data was not loaded from file
         {
-            GD.Print($"Loading level data from {path}");
             Level levelData = ResourceLoader.Load<Level>(path);
             if (levelData != null)
             {

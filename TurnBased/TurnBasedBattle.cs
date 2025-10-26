@@ -19,7 +19,6 @@ public partial class TurnBasedBattle : Node2D
     public override void _Ready()
     {
         // Initialize the game state
-        GD.Print("Game is ready!");
         Teams = new List<Team>{
             new Team(),
             new Team()
@@ -56,7 +55,7 @@ public partial class TurnBasedBattle : Node2D
         gameStateMachine.SetTextBox(GetNode<RichTextLabel>("GameText"));
         gameStateMachine.SetActions(Actions);
         AddChild(gameStateMachine);
-        GD.Print($"Game state: {gameStateMachine.GameState.state}");
+        //GD.Print($"Game state: {gameStateMachine.GameState.state}");
         GetNode<Queue>("Queue").StateChangedHandler = gameStateMachine.ChangeState;
         gameStateMachine.setNextCharacter(GetNode<Queue>("Queue").GetNextCharacter);
 
@@ -78,15 +77,10 @@ public partial class TurnBasedBattle : Node2D
         { 
             if(keyEvent.IsPressed() && keyEvent.Keycode == Key.Escape)
             {
-                GD.Print("Escape key pressed!");
                 GetTree().Quit();
             }
             else if (keyEvent.IsPressed() && keyEvent.Keycode == Key.Q)
             {
-                GD.Print($"Key pressed: {keyEvent.Keycode.ToString()}");
-                GD.Print($"Game state: {gameStateMachine.GameState.state}");
-                GD.Print($"Teams: {Teams.Count}");
-                GD.Print($"Game states: {gameStateMachine.States.Count}");
                 gameStateMachine.ChangeState("Casting");
             }
         }

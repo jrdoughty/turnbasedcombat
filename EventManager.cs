@@ -16,8 +16,6 @@ public static class EventManager
         if (!completedEvents.ContainsKey(eventName))
         {
             completedEvents.Add(eventName,resource);
-            GD.Print($"Event Completed: {eventName}");
-
             // Notify listeners
             if (eventListeners.ContainsKey(eventName))
             {

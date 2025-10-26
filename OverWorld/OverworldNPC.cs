@@ -12,22 +12,33 @@ namespace TwoDGame
         private const string LEFT = "left";
         private const string RIGHT = "right";
         private const string UP = "up";
-        private const string DOWN = "down";
+		private const string DOWN = "down";
+		public string state = "idle";
 		public override void _Ready()
 		{
-			characterSprite = (AnimatedSprite2D)GetNode("AnimatedSprite2D");
-			AddToGroup("interactable");
-			AddToGroup("NPC");
-			if (EventManager.IsEventCompleted("Kill_Barbarian"))
+			if (EventManager.IsEventCompleted($"Kill_{NpcName}"))
 			{
-				characterSprite.CallDeferred("play","DeadLeft");
+				state = "dead";
+			}
+			characterSprite = (AnimatedSprite2D)GetNode("AnimatedSprite2D");
+			AddToGroup("NPC");
+			AddToGroup("interactable");
+			if (state == "dead")
+			{
+				characterSprite.CallDeferred("play", "DeadLeft");
 			}
 		}
-        
 		public void interact(OverworldPlayer initiater)
-        {
-		    var d = GetNode<Node>("/root/Dialogic");
-		    d.Call("start", "res://Dialog/barbarian.dtl");
+		{
+			var d = GetNode<Node>("/root/Dialogic");
+			if (state != "dead")
+			{
+				d.Call("start", "res://Dialog/Barbarian.dtl");
+			}
+			else
+            {
+				d.Call("start", "res://Dialog/Killed_Barbarian.dtl");
+            }
         }
 
 		private void _on_area_2d_area_entered(Area2D area)
@@ -49,7 +60,7 @@ namespace TwoDGame
 			{
 				OverworldPlayer p = (OverworldPlayer)area.GetParent();
 				p.interactables.Remove(this);
-				//GD.Print(p.items.Count);
+				////GD.Print(p.items.Count);
 				//QueueFree();
 			}
 		}

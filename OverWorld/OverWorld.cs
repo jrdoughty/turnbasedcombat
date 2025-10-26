@@ -16,7 +16,6 @@ public partial class OverWorld : Node2D
         var player = GetNode<OverworldPlayer>("Player");
         player.GlobalPosition = data.PlayerPosition;
         var animationPlayer = GetNode<AnimationPlayer>("Player/CharAnimPlayer");
-        GD.Print("Setting player animation to: " + data.PlayerAnimation);
         player.direction = data.PlayerDirection;
         player.lastDirection = data.PlayerLastDirection;
         animationPlayer.Play(data.PlayerAnimation);

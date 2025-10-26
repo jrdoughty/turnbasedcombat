@@ -18,12 +18,10 @@ public partial class StartState : State
             TurnBasedCharacter nextPlayer = NextCharacterHandler();
             if(!nextPlayer.IsPlayerContolled)
             {
-                GD.Print("End of turn!");
                 StateChangedHandler("Decision");
             }
             else
             {
-                GD.Print("Your turn!");
                 StateChangedHandler("Menu");
             }
         }

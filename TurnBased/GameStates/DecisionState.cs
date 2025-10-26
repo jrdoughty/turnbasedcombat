@@ -8,7 +8,7 @@ public partial class DecisionState : State
     {
 
         base.EnterState();
-        GD.Print("Enemy has " + Players[1].PlayerEffects.Count + " effects.");
+        //GD.Print("Enemy has " + Players[1].PlayerEffects.Count + " effects.");
     }
     public override void UpdateState()
     {

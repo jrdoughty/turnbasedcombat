@@ -7,10 +7,11 @@
 script = ExtResource("2_qsqdx")
 CharacterName = "Barbarian"
 Health = 12
+CurrentHealth = 4
 Mana = 3
-Level = 3
+Level = 1
 Experience = 15
-Attack = 3
+Attack = 2
 Defense = 1
 Speed = 2
 MagicDefense = 1

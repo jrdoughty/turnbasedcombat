@@ -18,7 +18,7 @@ public partial class EffectState : State
         // This method can be called from the EnterState method or elsewhere as needed 
         targetPlayer = Actions[0].Target;
         actorPlayer = Actions[0].Actor;
-        GD.Print("Actor: " + actorPlayer.CharacterData.CharacterName + ", Target: " + targetPlayer.CharacterData.CharacterName);
+        //GD.Print("Actor: " + actorPlayer.CharacterData.CharacterName + ", Target: " + targetPlayer.CharacterData.CharacterName);
         Effect effect = Actions[0].Effects[0];
         Actions[0].Effects.RemoveAt(0);
         switch (effect.EffectType)
@@ -80,7 +80,7 @@ public partial class EffectState : State
                 targetPlayer.PlayerEffects.Add(effect.Duplicate() as Effect);
                 break;
             default:
-                GD.Print("Unknown effect type: " + effect.EffectType);
+                //GD.Print("Unknown effect type: " + effect.EffectType);
                 break;
         }
         string effectText = Utils.ReplacePlayerStrings(effect.EffectCastDescription, actorPlayer.CharacterData);

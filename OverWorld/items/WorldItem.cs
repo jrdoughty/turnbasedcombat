@@ -17,11 +17,11 @@ namespace TwoDGame
 			AddToGroup("interactable");
 			if (item != null)
 			{
-				GD.Print("Item name: " + item.name);
+				////GD.Print("Item name: " + item.name);
 			}
 			else
 			{
-				GD.Print("Item not set");
+				//GD.Print("Item not set");
 			}
 		}
 
@@ -32,7 +32,7 @@ namespace TwoDGame
 
 		public void interact(OverworldPlayer initiater)
 		{
-			initiater.items.Add(item);
+			initiater.AddItem(item);
 			QueueFree();
 		}
 
@@ -55,7 +55,7 @@ namespace TwoDGame
 			{
 				OverworldPlayer p = (OverworldPlayer)area.GetParent();
 				p.interactables.Remove(this);
-				//GD.Print(p.items.Count);
+				////GD.Print(p.items.Count);
 				//QueueFree();
 			}
 		}

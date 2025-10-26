@@ -16,7 +16,7 @@ public partial class TBAction : Resource
 	public void Initialize()
 	{
 		// Initialize the action
-		//GD.Print("TBAction initialized!");
+		////GD.Print("TBAction initialized!");
 		foreach (var effect in EffectNames)
 		{
 			Effect e = Registry.EffectData[(string)effect];

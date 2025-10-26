@@ -12,11 +12,11 @@ public partial class GameStates : Node2D
         setStateChange();
         GameState = States["Start"];
         GameState.EnterState();
-        GD.Print("Game state initialized to: Start");
+        //GD.Print("Game state initialized to: Start");
         foreach (var state in States.Values)
         {
             AddChild(state);
-            GD.Print($"Added state: {state.GetType().Name}");
+            //GD.Print($"Added state: {state.GetType().Name}");
         }
     }
 
@@ -30,11 +30,11 @@ public partial class GameStates : Node2D
             }
             GameState = States[newState];
             GameState.EnterState();
-            GD.Print($"Game state changed to: {newState}");
+            //GD.Print($"Game state changed to: {newState}");
         }
         else
         {
-            GD.Print($"Invalid state: {newState}");
+            //GD.Print($"Invalid state: {newState}");
         }
     }
     public void SetTeams(List<Team> teams)

@@ -6,7 +6,6 @@ namespace TwoDGame
     {
         public override void _Ready()
         {
-            GD.Print("Dialogic Initialized");
             var d = GetNode<Node>("/root/Dialogic");
             Callable dialogEvent = new Callable(this, "DialogEvent");
             d.Connect("signal_event", dialogEvent);
@@ -15,7 +14,6 @@ namespace TwoDGame
 
         public void DialogEvent(string eventName)
         {
-            GD.Print("Dialog Event Triggered: " + eventName);
             OverWorld w = GetNode<OverWorld>("World");
             createOverWorldData();
             RemoveChild(w);
@@ -26,7 +24,6 @@ namespace TwoDGame
 
         public void TurnBasedBattleFinish()
         {
-            GD.Print("Turn Based Battle Finished");
             CallDeferred("AddOverworld");
         }
         public void AddOverworld()

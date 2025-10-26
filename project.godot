@@ -25,7 +25,8 @@ directories/dch_directory={
 "barbarian": "res://Dialog/barbarian.dch"
 }
 directories/dtl_directory={
-"Barbarian": "res://Dialog/Barbarian.dtl"
+"Barbarian": "res://Dialog/Barbarian.dtl",
+"Killed_Barbarian": "res://Dialog/Killed_Barbarian.dtl"
 }
 layout/style_directory={
 "": "res://Dialog/style.tres",

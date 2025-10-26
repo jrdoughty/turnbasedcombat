@@ -36,8 +36,6 @@ public partial class Queue : Node
 				CheckIfCharacterReady();
 			}
 		}
-		GD.Print($"Current Character: {CurrentCharacter.CharacterData.CharacterName}");
-		GD.Print($"Current Character QueueVal: {CurrentCharacter.QueueVal}");
 		CurrentCharacter.QueueVal = CurrentCharacter.QueueVal % QueueVal;
 		return CurrentCharacter;
 	}

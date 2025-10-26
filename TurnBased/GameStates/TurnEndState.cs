@@ -19,7 +19,7 @@ public partial class TurnEndState : State
                 return;
             }
         }
-        GD.Print("No active player found, ending turn.");
+        //GD.Print("No active player found, ending turn.");
         EndTurn();
     }
 
@@ -34,18 +34,18 @@ public partial class TurnEndState : State
         {
             ApplyEndTurnEffects();
             firstTime = false;
-            GD.Print("End Turn pressed");
+            //GD.Print("End Turn pressed");
             // Apply end turn effects
         }
         // Handle state updates
     }
     private void ApplyEndTurnEffects()
     {
-        GD.Print(Player.PlayerEffects.Count + " effects to process. We're on effect " + effectCount);
+        //GD.Print(Player.PlayerEffects.Count + " effects to process. We're on effect " + effectCount);
         if (Player.PlayerEffects.Count > effectCount)
         {
             Effect effect = Player.PlayerEffects[effectCount];
-            GD.Print("Applying effect: " + effect.EffectName);
+            //GD.Print("Applying effect: " + effect.EffectName);
             switch (effect.EffectType)
             {
                 case "Heal Over Time":
@@ -63,7 +63,7 @@ public partial class TurnEndState : State
                     Player.PlayerEffects.Add(effect);
                     break;
                 default:
-                    GD.Print("Unknown effect type: " + effect.EffectType);
+                    //GD.Print("Unknown effect type: " + effect.EffectType);
                     break;
             }
             string str = Utils.ReplacePlayerStrings(effect.EffectEndTurnDescription, Player.CharacterData);
@@ -75,7 +75,7 @@ public partial class TurnEndState : State
                 RTL.Text += "\n"+str;
             if (effect.EffectDuration > 0)
                 effect.EffectDuration--;
-            GD.Print("Effect duration: " + effect.EffectDuration);
+            //GD.Print("Effect duration: " + effect.EffectDuration);
             if (effect.EffectDuration == 0)
             {
                 Player.PlayerEffects.Remove(effect);
@@ -96,7 +96,7 @@ public partial class TurnEndState : State
         {
             if(GetConditionsHandler().SessionComplete())
             {
-                GD.Print("Victory!");
+                //GD.Print("Victory!");
                 StateChangedHandler("Victory");
                 return;
             }
@@ -109,12 +109,12 @@ public partial class TurnEndState : State
         next.IsActive = true;
         if(!next.IsPlayerContolled)
         {
-            GD.Print("End of turn!");
+            //GD.Print("End of turn!");
             StateChangedHandler("Decision");
         }
         else
         {
-            GD.Print("Your turn!");
+            //GD.Print("Your turn!");
             StateChangedHandler("Menu");
         }
     }

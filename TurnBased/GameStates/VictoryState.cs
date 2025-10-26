@@ -41,7 +41,7 @@ public partial class VictoryState : State
                             Level newLevel = ResourceLoader.Load<Level>($"res://TurnBased/Characters/Levels/{player.CharacterData.CharacterName}{player.CharacterData.Level}.tres");
                             if (newLevel != null && oldLevel != null)
                             {
-                                GD.Print($"Leveling up {player.CharacterData.CharacterName} to level {player.CharacterData.Level}");
+                                //GD.Print($"Leveling up {player.CharacterData.CharacterName} to level {player.CharacterData.Level}");
                                 player.CharacterData.Attack += newLevel.attack - oldLevel.attack;
                                 player.CharacterData.Defense += newLevel.defense - oldLevel.defense;
                                 player.CharacterData.Speed += newLevel.speed - oldLevel.speed;
@@ -72,7 +72,7 @@ public partial class VictoryState : State
             }
             else
             {
-                GD.Print($"{team.Players[0].CharacterData.CharacterName} has been killed.");
+                //GD.Print($"{team.Players[0].CharacterData.CharacterName} has been killed.");
                 EventManager.CompleteEvent($"Kill_{team.Players[0].CharacterData.CharacterName}");
             }
         }

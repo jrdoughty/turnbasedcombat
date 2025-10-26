@@ -21,17 +21,17 @@ public partial class State : Node
     }
     public virtual void UpdateState()
     {
-        //GD.Print($"Updating state: {state}");
+        ////GD.Print($"Updating state: {state}");
         // Handle state updates
     }
     public virtual void EnterState()
     {
-        //GD.Print($"Entering state: {state}");
+        ////GD.Print($"Entering state: {state}");
         // Handle entering the state
     }
     public virtual void ExitState()
     {
-        //GD.Print($"Exiting state: {state}");
+        ////GD.Print($"Exiting state: {state}");
         // Handle exiting the state
     }
     

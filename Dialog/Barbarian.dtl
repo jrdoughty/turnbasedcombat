@@ -1,3 +1,4 @@
 join barbarian center [animation="Fade In"]
 barbarian: Let us battle!
 [signal arg="barbarian"]
+[end_timeline]

@@ -51,7 +51,7 @@ public class Utils
 		DirAccess dir = DirAccess.Open("user://SaveData/Party");
 		if (dir == null)
 		{
-			GD.Print("No party data found.");
+			//GD.Print("No party data found.");
 			return partyData;
 		}
 		dir.ListDirBegin();
