@@ -58,25 +58,10 @@ namespace TwoDGame
 		}
 		public override void _Process(double delta)
 		{
-            /*
-			if (actionType == ActionType.Interact)
-            {
-                ////GD.Print("action interaction active");
-                if (frameTimer >= 3)//have to guarantee there's been ~ 3 frames the character could have interacted with the object, any less seems unreliable
-                {
-                    frameTimer = 0;
-                    //actionType = ActionType.None;
-                    collisionShape.Disabled = true;
-                    ////GD.Print("disabled properly");
-                }
-                else
-                {
-                    frameTimer++;
-                    ////GD.Print("timer increment");
-                }
-            }
-            */
-				
+			if(Registry.IsDialogActive)
+			{
+				return;
+			}
 			if (actionActive && characterAnimPlayer.CurrentAnimationPosition == characterAnimPlayer.CurrentAnimationLength && actionType != ActionType.None)
 			{
 				actionActive = false;

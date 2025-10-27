@@ -1,2 +1,4 @@
+[signal arg="dialog_start"]
 should probably leave before he starts to smell
 [end_timeline]
+[signal arg="dialog_end"]

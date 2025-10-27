@@ -14,12 +14,37 @@ namespace TwoDGame
 
         public void DialogEvent(string eventName)
         {
+            switch (eventName)
+            {
+                case "start_battle":
+                    StartTurnBasedBattle();
+                    break;
+                case "dialog_start":
+                    Registry.IsDialogActive = true;
+                    break;
+                case "dialog_end":
+                    Registry.IsDialogActive = false;
+                    break;
+                default:
+                    Registry.nextEnemy = eventName;
+                    break;
+            }
+            
+        }
+
+        public void StartTurnBasedBattle()
+        {
             OverWorld w = GetNode<OverWorld>("World");
             createOverWorldData();
             RemoveChild(w);
             w.SafeFree();
-            AddChild(GD.Load<PackedScene>("res://TurnBased/TurnBasedBattle.tscn").Instantiate());
-            GetNode<Node>("Battle").TreeExiting += TurnBasedBattleFinish;
+            TurnBasedBattle tb = GD.Load<PackedScene>("res://TurnBased/TurnBasedBattle.tscn").Instantiate<TurnBasedBattle>();
+
+            tb.TreeExiting += TurnBasedBattleFinish;
+            TurnBasedCharacter enemy = tb.GetNode<TurnBasedCharacter>("Player2");
+            var d = GetNode<Node>("/root/Dialogic");
+            enemy.CharacterData = ResourceLoader.Load<Player>($"res://TurnBased/Characters/{Registry.nextEnemy}.tres");
+            AddChild(tb);
         }
 
         public void TurnBasedBattleFinish()

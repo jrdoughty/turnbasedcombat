@@ -22,6 +22,9 @@ public static class Registry
         { "Regeneration", GD.Load<Effect>("res://TurnBased/Effects/Regeneration.tres") }
     };
     public static OverWorldData CurrentOverworldData = new OverWorldData();
+    //public static bool IsGamePaused = false;
+    public static bool IsDialogActive = false;
+    public static string nextEnemy = "";
     //public static Dictionary<string, object> GameStateData = new Dictionary<string, object>();
     //public static Dictionary<string, object> UIData = new Dictionary<string, object>();
     //public static Dictionary<string, object> AnimationData = new Dictionary<string, object>();
