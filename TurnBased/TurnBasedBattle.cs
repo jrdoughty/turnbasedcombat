@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 
 
 public partial class TurnBasedBattle : Node2D
@@ -19,37 +20,15 @@ public partial class TurnBasedBattle : Node2D
     public override void _Ready()
     {
         // Initialize the game state
-        Teams = new List<Team>{
-            new Team(),
-            new Team()
-        };
-        Players.Add(GetNode<TurnBasedCharacter>("Player1"));
-        Players.Add(GetNode<TurnBasedCharacter>("Player2"));
-        Players[0].IsPlayerContolled = true;
         
-        if(ResourceLoader.Exists($"user://SaveData/Party/Rouge.tres"))
-            Players[0].CharacterData = ResourceLoader.Load<Player>($"user://SaveData/Party/Rouge.tres");
-        else
-            Players[0].CharacterData = ResourceLoader.Load<Player>($"res://TurnBased/Characters/Rouge.tres");
-        Players[0].dataLoaded = true;
-        Players[0].InitializeData();
-        Teams[0].AddPlayer(Players[0]);
-        Teams[1].AddPlayer(Players[1]);
-        foreach (var player in Players)
+        foreach( Team team in Teams)
         {
-            Player pData = player.CharacterData;
-
-            player.CharacterName.Text = pData.CharacterName;
-            if (pData.CurrentHealth < 0) //if current health is not set, set it to max health
+            foreach(TurnBasedCharacter character in team.Players)
             {
-                pData.CurrentHealth = pData.Health;
+                Players.Add(character);
             }
-            player.CharacterHealth.Value = pData.CurrentHealth;
-            player.CharacterHealth.MaxValue = pData.Health;
-            player.CharacterLevel.Text = pData.Level.ToString();
-            //player.CharacterSprite.SpriteFrames = pData.PlayerSprite;
         }
-        ActiveTeam = Teams[0];
+
         gameStateMachine.SetContainers(Players);
         gameStateMachine.SetTeams(Teams);
         gameStateMachine.SetTextBox(GetNode<RichTextLabel>("GameText"));
@@ -65,6 +44,71 @@ public partial class TurnBasedBattle : Node2D
         BattleConditions.Teams = Teams;
     }
 
+    public void SetTeams(List<Player> players, List<Player> enemies)
+    {
+        Teams = new List<Team>{
+                new Team(),
+                new Team()
+            };
+        List<TurnBasedCharacter> tempPlayers = new List<TurnBasedCharacter>();
+        tempPlayers.Add(GetNode<TurnBasedCharacter>("Player1"));
+        tempPlayers.Add(GetNode<TurnBasedCharacter>("Player2"));
+        bool first = true;
+        foreach (var p in players)
+        {
+            TurnBasedCharacter tbc = GD.Load<PackedScene>("res://TurnBased/Characters/TurnBasedCharacter.tscn").Instantiate<TurnBasedCharacter>();
+            tbc.CharacterData = p;
+            tbc.IsPlayerContolled = true;
+            Teams[0].AddPlayer(tbc);
+            Players.Add(tbc);
+            if(first)
+            {
+                tbc.MoveLocalX(tempPlayers[0].Position.X);
+                tbc.MoveLocalY(tempPlayers[0].Position.Y);
+                AddChild(tbc);
+                RemoveChild(tempPlayers[0]);
+                if (p.CurrentHealth < 0) //if current health is not set, set it to max health
+                {
+                    p.CurrentHealth = p.Health;
+                }
+                //tbc.CharacterSprite.SpriteFrames = p.PlayerSprite;
+                first = false;
+            }
+            else
+            {
+                //tempPlayers[0].QueueVal = 0;
+                //RemoveChild(tempPlayers[0]);
+                //tempPlayers[0].SafeFree();
+            }
+            first = false;
+        }
+        first = true;
+        foreach (var e in enemies)
+        {
+            TurnBasedCharacter tbc = GD.Load<PackedScene>("res://TurnBased/Characters/TurnBasedCharacter.tscn").Instantiate<TurnBasedCharacter>();
+            tbc.CharacterData = e;
+            tbc.IsPlayerContolled = false;
+            Teams[1].AddPlayer(tbc);
+            Players.Add(tbc);
+            if(first)
+            {
+                tbc.MoveLocalX(tempPlayers[1].Position.X);
+                tbc.MoveLocalY(tempPlayers[1].Position.Y);
+                AddChild(tbc);
+                RemoveChild(tempPlayers[1]);
+                //tbc.CharacterSprite.SpriteFrames = e.PlayerSprite;
+                first = false;
+            }
+            else
+            {
+                //tempPlayers[1].QueueVal = 0;
+                //RemoveChild(tempPlayers[1]);
+                //tempPlayers[1].SafeFree();
+            }
+            first = false;
+        }
+        ActiveTeam = Teams[0];
+    }
     public override void _Process(double delta)
     {
         gameStateMachine.GameState.UpdateState();

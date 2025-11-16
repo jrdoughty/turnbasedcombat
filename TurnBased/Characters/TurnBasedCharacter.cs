@@ -18,7 +18,6 @@ public partial class TurnBasedCharacter : Node2D
 	public int QueueVal { get; set; } = 0;
 	[Export] public Player CharacterData { get; set; }
 	public Team team { get; set; }
-    public bool dataLoaded = false;
 
 	public override void _Ready()
     {
@@ -35,11 +34,16 @@ public partial class TurnBasedCharacter : Node2D
         {
             InitializeData();
         }
+        else
+        {
+            GD.PrintErr("No Character Data assigned to TurnBasedCharacter");
+        }
     }
 
     public void InitializeData()
     {
         CharacterData = CharacterData.Duplicate() as Player;//make sure we have a unique instance of the player data
+
         for (int i = 0; i < CharacterData.PlayerActions.Count; i++)
         {
             string action = CharacterData.PlayerActions[i].ToString().Trim('"');
@@ -53,7 +57,7 @@ public partial class TurnBasedCharacter : Node2D
         CharacterSpriteAnchor.AddChild(CharacterSprite);
 
         string path = $"res://TurnBased/Characters/Levels/{CharacterData.CharacterName}{CharacterData.Level}.tres";
-        if (CharacterData.Level > 0 && !dataLoaded && ResourceLoader.Exists(path)) //load level data if level is set and data was not loaded from file
+        if (CharacterData.Level > 0 && ResourceLoader.Exists(path)) //load level data if level is set and data was not loaded from file
         {
             Level levelData = ResourceLoader.Load<Level>(path);
             if (levelData != null)
@@ -67,6 +71,15 @@ public partial class TurnBasedCharacter : Node2D
                 CharacterData.MagicDefense += levelData.magicDefense;
             }
         }
+        CharacterName.Text = CharacterData.CharacterName;
+
+        if (CharacterData.CurrentHealth < 0) //if current health is set to a negative, set it to max health
+        {
+            CharacterData.CurrentHealth = CharacterData.Health;
+        }
+        CharacterHealth.Value = CharacterData.CurrentHealth;
+        CharacterHealth.MaxValue = CharacterData.Health;
+        CharacterLevel.Text = CharacterData.Level.ToString();
     }
 
 	public void PerformAction(String actionName)

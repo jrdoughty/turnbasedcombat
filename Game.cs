@@ -45,9 +45,15 @@ namespace TwoDGame
             TurnBasedBattle tb = GD.Load<PackedScene>("res://TurnBased/TurnBasedBattle.tscn").Instantiate<TurnBasedBattle>();
 
             tb.TreeExiting += TurnBasedBattleFinish;
-            TurnBasedCharacter enemy = tb.GetNode<TurnBasedCharacter>("Player2");
-            var d = GetNode<Node>("/root/Dialogic");
-            enemy.CharacterData = ResourceLoader.Load<Player>($"res://TurnBased/Characters/{Registry.nextEnemy}.tres");
+            Player enemy = ResourceLoader.Load<Player>($"res://TurnBased/Characters/{Registry.nextEnemy}.tres");
+            Player player;
+            if(ResourceLoader.Exists($"user://SaveData/Party/Rouge.tres"))
+                player = ResourceLoader.Load<Player>($"user://SaveData/Party/Rouge.tres");
+            else
+                player = ResourceLoader.Load<Player>($"res://TurnBased/Characters/Rouge.tres");
+
+            tb.SetTeams([player], [enemy]);
+            
             AddChild(tb);
         }
 
