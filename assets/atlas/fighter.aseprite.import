@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://0be58i8sxcg2"
+path="res://.godot/imported/fighter.aseprite-b7f13c3d6d3f69fc8f60da8ade7ec3ad.res"
+
+[deps]
+
+source_file="res://assets/atlas/fighter.aseprite"
+dest_files=["res://.godot/imported/fighter.aseprite-b7f13c3d6d3f69fc8f60da8ade7ec3ad.res"]
+
+[params]
+

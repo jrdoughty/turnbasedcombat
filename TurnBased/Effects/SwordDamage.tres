@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://djr1qggsrha2l"]
+
+[ext_resource type="Script" uid="uid://c0aqfb0ay7tac" path="res://TurnBased/Effects/Effect.cs" id="1_aw112"]
+
+[resource]
+script = ExtResource("1_aw112")
+EffectType = "Damage"
+EffectValue = 2
+EffectName = "Sword"
+EffectCastDescription = "<oname> takes <value> damage from <name>'s <ename>!"
+metadata/_custom_type_script = "uid://c0aqfb0ay7tac"

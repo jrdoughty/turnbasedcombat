@@ -27,7 +27,10 @@ public partial class VictoryState : State
         {
             if (!team.IsDefeated)
             {
-                RTL.Text = $"{team.Name} wins!";
+                if (team.Players.Count > 1)
+                    RTL.Text = $"{team.Name} wins!";
+                else
+                    RTL.Text = $"{team.Players[0].CharacterData.CharacterName} wins!";
                 foreach (var player in team.Players)
                 {
                     if (player.CharacterData.Level > 0)

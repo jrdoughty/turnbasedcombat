@@ -1,7 +1,6 @@
 [signal arg="dialog_start"]
 join barbarian center [animation="Fade In"]
 barbarian: Let us battle!
-[signal arg="Barbarian"]
+[signal arg="enemy_Barbarian"]
 [signal arg="dialog_end"]
-[signal arg="start_battle"]
 [end_timeline]

@@ -107,12 +107,14 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="BarbarianSprite" type="AnimatedSprite2D"]
+[node name="Sprite" type="AnimatedSprite2D"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_4fchr")
 animation = &"Cast"
 metadata/_aseprite_wizard_interface_config_ = {
-"pending_changes": {}
+"pending_changes": {
+"source": "res://TurnBased/Characters/Sprites/Barbarian.ase"
+}
 }
 metadata/_aseprite_wizard_config_ = {
 "embed_tex": true,

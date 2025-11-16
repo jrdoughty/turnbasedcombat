@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Player" load_steps=3 format=3 uid="uid://dhvgfhhrpprro"]
+
+[ext_resource type="Script" uid="uid://decfhkt727sbr" path="res://TurnBased/Characters/Player.cs" id="1_1brbx"]
+[ext_resource type="PackedScene" uid="uid://ce3y2jla3bqj4" path="res://TurnBased/Characters/Sprites/Fighter.tscn" id="1_wkl4o"]
+
+[resource]
+script = ExtResource("1_1brbx")
+CharacterName = "Fighter"
+Health = 4
+Level = 1
+Attack = 2
+Defense = 3
+Speed = 5
+They = "they"
+Them = "them"
+Theirs = "theirs"
+Their = "their"
+Selves = "selves"
+PlayerSprite = ExtResource("1_wkl4o")
+PlayerActions = Array[String](["Sword"])
+metadata/_custom_type_script = "uid://decfhkt727sbr"

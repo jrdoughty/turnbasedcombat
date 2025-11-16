@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Player" load_steps=3 format=3 uid="uid://buof0guua5auj"]
 
 [ext_resource type="Script" uid="uid://decfhkt727sbr" path="res://TurnBased/Characters/Player.cs" id="1_i4jvf"]
-[ext_resource type="PackedScene" uid="uid://ce3y2jla3bqj4" path="res://TurnBased/Characters/Sprites/RougeSprite.tscn" id="1_tg25d"]
+[ext_resource type="PackedScene" uid="uid://cw3njtdi6egd1" path="res://TurnBased/Characters/Sprites/Rougue.tscn" id="1_tyu4d"]
 
 [resource]
 script = ExtResource("1_i4jvf")
@@ -15,6 +15,6 @@ Defense = 3
 Speed = 3
 MagicDefense = 2
 MagicAttack = 3
-PlayerSprite = ExtResource("1_tg25d")
+PlayerSprite = ExtResource("1_tyu4d")
 PlayerActions = Array[String](["Dagger", "Heal", "Regeneration"])
 metadata/_custom_type_script = "uid://decfhkt727sbr"

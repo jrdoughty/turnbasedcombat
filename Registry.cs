@@ -10,6 +10,7 @@ public static class Registry
     public static Dictionary<string, TBAction> ActionData = new Dictionary<string, TBAction>(){
         { "Dagger", GD.Load<TBAction>("res://TurnBased/Actions/Dagger.tres")},
         { "Axe", GD.Load<TBAction>("res://TurnBased/Actions/Axe.tres")},
+        { "Sword", GD.Load<TBAction>("res://TurnBased/Actions/Sword.tres")},
         { "Heal", GD.Load<TBAction>("res://TurnBased/Actions/Heal.tres")},
         { "Regeneration", GD.Load<TBAction>("res://TurnBased/Actions/Regeneration.tres") },
         { "Poison", GD.Load<TBAction>("res://TurnBased/Actions/Poison.tres")}
@@ -17,6 +18,7 @@ public static class Registry
     public static Dictionary<string, Effect> EffectData = new Dictionary<string, Effect>(){
         { "Dagger", GD.Load<Effect>("res://TurnBased/Effects/DaggerDamage.tres") },
         { "Axe", GD.Load<Effect>("res://TurnBased/Effects/AxeDamage.tres") },
+        { "Sword", GD.Load<Effect>("res://TurnBased/Effects/SwordDamage.tres") },
         { "Heal", GD.Load<Effect>("res://TurnBased/Effects/Heal.tres") },
         { "Poison", GD.Load<Effect>("res://TurnBased/Effects/Poison.tres") },
         { "Regeneration", GD.Load<Effect>("res://TurnBased/Effects/Regeneration.tres") }

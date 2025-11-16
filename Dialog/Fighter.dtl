@@ -1,0 +1,9 @@
+[signal arg="dialog_start"]
+join fighter center
+fighter: Run along
+<Empty Text Event>
+- Do as he says
+- Pick a fight
+	[signal arg="enemy_Fighter"]
+[signal arg="dialog_end"]
+[end_timeline]

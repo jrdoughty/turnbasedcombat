@@ -26,7 +26,11 @@ namespace TwoDGame
                     Registry.IsDialogActive = false;
                     break;
                 default:
-                    Registry.nextEnemy = eventName;
+                    if(eventName.StartsWith("enemy_"))
+                    {
+                        Registry.nextEnemy = eventName.Substring(6);
+                        StartTurnBasedBattle();
+                    }
                     break;
             }
             

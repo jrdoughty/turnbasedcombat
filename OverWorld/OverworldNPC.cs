@@ -33,11 +33,11 @@ namespace TwoDGame
 			var d = GetNode<Node>("/root/Dialogic");
 			if (state != "dead")
 			{
-				d.Call("start", "res://Dialog/Barbarian.dtl");
+				d.Call("start", $"res://Dialog/{NpcName}.dtl");
 			}
 			else
             {
-				d.Call("start", "res://Dialog/Killed_Barbarian.dtl");
+				d.Call("start", $"res://Dialog/Killed_{NpcName}.dtl");
             }
         }
 

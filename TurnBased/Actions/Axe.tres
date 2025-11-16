@@ -6,6 +6,6 @@
 script = ExtResource("1_rq3k6")
 ActionType = "Attack"
 ActionName = "Axe"
-ActionDescription = "<character> swing <their> axe at <ocharacter>."
+ActionDescription = "<character> swings <their> axe at <ocharacter>."
 EffectNames = ["Axe"]
 metadata/_custom_type_script = "uid://bupsnfrxtmn4s"

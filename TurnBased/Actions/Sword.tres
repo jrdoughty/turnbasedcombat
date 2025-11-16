@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TBAction" load_steps=2 format=3 uid="uid://b2gk4aoa6chua"]
+
+[ext_resource type="Script" uid="uid://bupsnfrxtmn4s" path="res://TurnBased/Actions/TBAction.cs" id="1_23hwe"]
+
+[resource]
+script = ExtResource("1_23hwe")
+ActionType = "Attack"
+ActionName = "Sword"
+ActionDescription = "<character> swings <their> sword at <ocharacter>."
+EffectNames = ["Sword"]
+metadata/_custom_type_script = "uid://bupsnfrxtmn4s"
