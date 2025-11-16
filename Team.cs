@@ -39,4 +39,16 @@ public partial class Team : Node2D
         }
         return partyData;
     }
+
+    public void CheckStatus()
+    {
+        foreach (var player in Players)
+        {
+            if (!player.IsDefeated)
+            {
+                return;
+            }
+        }
+        IsDefeated = true;
+    }
 }

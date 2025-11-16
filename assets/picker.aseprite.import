@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bchtty6mhorol"
+path="res://.godot/imported/picker.aseprite-a4c2060b28116b9b2067ee5b88d25fec.res"
+
+[deps]
+
+source_file="res://assets/picker.aseprite"
+dest_files=["res://.godot/imported/picker.aseprite-a4c2060b28116b9b2067ee5b88d25fec.res"]
+
+[params]
+

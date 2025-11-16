@@ -18,6 +18,8 @@ public partial class TurnBasedCharacter : Node2D
 	public int QueueVal { get; set; } = 0;
 	[Export] public Player CharacterData { get; set; }
 	public Team team { get; set; }
+    public bool Selected { get; set; } = false;
+    public bool Picking { get; set; } = false;
 
 	public override void _Ready()
     {
@@ -89,14 +91,14 @@ public partial class TurnBasedCharacter : Node2D
         action.Initialize();
         foreach (var player in GetParent<TurnBasedBattle>().Players)
         {
-            if (player != this)
+            if (player != this && player.IsPlayerContolled != this.IsPlayerContolled)
             {
                 action.Target = player;
             }
         }
         GetParent<TurnBasedBattle>().SetActivePlayer(this);
         GetParent<TurnBasedBattle>().Actions.Add(action);
-        GetParent<TurnBasedBattle>().gameStateMachine.ChangeState("Casting");
+        GetParent<TurnBasedBattle>().gameStateMachine.ChangeState("Target");
     }
 	public void updateConditions()// this will need to be elaborated on later
 	{
@@ -105,7 +107,7 @@ public partial class TurnBasedCharacter : Node2D
 			CharacterSprite.Visible = false;
 			IsActive = false;
 			IsDefeated = true;
-			team.IsDefeated = true;// will need to change later
+            team.CheckStatus();
 		}
 		else
 		{
@@ -114,4 +116,25 @@ public partial class TurnBasedCharacter : Node2D
 			//IsDefeated = false;
 		}
 	}
+    public void OnArea2DInputEvent(Viewport viewport, InputEvent @event, int shape_idx)
+    {
+        if(Picking && @event is InputEventMouseButton mouseEvent)
+        {
+            if(mouseEvent.Pressed)
+            {
+                Selected = true;
+            }
+        }
+    }
+    public void OnArea2DMouseEntered()
+    {
+        if(Picking)
+        {
+            GetNode<Node2D>("Picker").Visible = true;
+        }
+    }
+    public void OnArea2DMouseExited()
+    {
+        GetNode<Node2D>("Picker").Visible = false;
+    }
 }

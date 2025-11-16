@@ -82,6 +82,10 @@ public partial class TurnEndState : State
                 effectCount--;//compensate for the removal of the effect
             }
             Player.updateConditions();
+            if(Player.IsDefeated)
+            {
+                characterQueue.CharacterQueue.Remove(Player);
+            }
             effectCount++;
         }
         else

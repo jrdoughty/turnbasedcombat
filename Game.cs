@@ -52,7 +52,7 @@ namespace TwoDGame
             else
                 player = ResourceLoader.Load<Player>($"res://TurnBased/Characters/Rouge.tres");
 
-            tb.SetTeams([player], [enemy]);
+            tb.SetTeams([player,player], [enemy,enemy]);
             
             AddChild(tb);
         }

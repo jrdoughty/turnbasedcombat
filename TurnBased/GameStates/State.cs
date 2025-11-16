@@ -16,6 +16,7 @@ public partial class State : Node
 
     public Action<string> StateChangedHandler;
     public Func<BattleConditions> GetConditionsHandler;
+    protected Queue characterQueue;
     public override void _Ready()
     {
     }
@@ -49,6 +50,11 @@ public partial class State : Node
     public void SetTextBox(RichTextLabel rtl)
     {
         RTL = rtl;
+    }
+
+    public void setCharacterQueue(Queue queue)
+    {
+        characterQueue = queue;
     }
 
 }

@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=4 uid="uid://0qyncxdo5nqk"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_ud76c"]
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAADSAAAAUklGRsoAAABXRUJQVlA4TL4AAAAvH8AHEC9AFmAaHMQQussrhYwksbmzKP8SVeoVAkCABhuOHJJIpvkPAP83Y6zW5AxuI0lym4F4n9KHeCTAe/oQBV9e/sH8QWUQ0f8J0F1QVYVRzA3+IgNMIRoctFYb5dYGNEFkWIApSB71It74DSkwVWGoHEBfO6P3VuUjmt4vxI3H+HTWWBrT8+mMx3wR3xlzSq6anIW7CktV9VgQWU/lx8ZTrQzuWBHqE9PPc6KvTtAvZ17bmW9y18PdNXEJ")
+size_override = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2t17"]
+atlas = SubResource("PortableCompressedTexture2D_ud76c")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evt5w"]
+atlas = SubResource("PortableCompressedTexture2D_ud76c")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x6hr"]
+atlas = SubResource("PortableCompressedTexture2D_ud76c")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06gfe"]
+atlas = SubResource("PortableCompressedTexture2D_ud76c")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1y2li"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2t17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evt5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7x6hr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06gfe")
+}],
+"loop": true,
+"name": &"main",
+"speed": 10.0
+}]
+
+[node name="Picker" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_1y2li")
+animation = &"main"
+autoplay = "main"
+frame_progress = 0.9699912
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"output_section": false,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://assets/picker.aseprite",
+"source_uid": 2542437877198830283
+}
+metadata/_aseprite_wizard_source_file_hash_ = "43250234230e4d4f7126303d6bef7381"

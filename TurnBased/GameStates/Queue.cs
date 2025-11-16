@@ -25,16 +25,16 @@ public partial class Queue : Node
 		CurrentCharacter = null;
 		speedCheck = false;
 		CheckIfCharacterReady();
-		if(CurrentCharacter == null)
+		while (CurrentCharacter == null && speedCheck)
 		{
-			while (CurrentCharacter == null && speedCheck)
+			foreach (var character in CharacterQueue)
 			{
-				foreach (var character in CharacterQueue)
+				if(!character.IsDefeated)
 				{
 					character.QueueVal += character.CharacterData.Speed;
 				}
-				CheckIfCharacterReady();
 			}
+			CheckIfCharacterReady();
 		}
 		CurrentCharacter.QueueVal = CurrentCharacter.QueueVal % QueueVal;
 		return CurrentCharacter;

@@ -24,36 +24,38 @@ public partial class EffectState : State
         switch (effect.EffectType)
         {
             case "Damage":
-                int modifiedDamage = actorPlayer.CharacterData.Attack;
-                modifiedDamage -= targetPlayer.CharacterData.Defense;
-                effect.EffectModifier = modifiedDamage;
+                effect.EffectModifier = actorPlayer.CharacterData.Attack - targetPlayer.CharacterData.Defense;
+                if(effect.EffectValue + effect.EffectModifier < 0)
+                {
+                    effect.EffectModifier = -effect.EffectValue;// Prevent healing from damage
+                }
                 targetPlayer.CharacterData.CurrentHealth -= effect.EffectValue + effect.EffectModifier;
                 targetPlayer.GetNode<ProgressBar>("PlayerHealth").Value = targetPlayer.CharacterData.CurrentHealth;
                 break;
             case "Heal":
-                actorPlayer.CharacterData.CurrentHealth += effect.EffectValue;
-                actorPlayer.GetNode<ProgressBar>("PlayerHealth").Value = actorPlayer.CharacterData.CurrentHealth;
+                targetPlayer.CharacterData.CurrentHealth += effect.EffectValue;
+                targetPlayer.GetNode<ProgressBar>("PlayerHealth").Value = targetPlayer.CharacterData.CurrentHealth;
                 break;
             case "Heal Over Time":
-                if(actorPlayer.PlayerEffects.Count > 0)
+                if(targetPlayer.PlayerEffects.Count > 0)
                 {
-                    foreach(var e in actorPlayer.PlayerEffects)
+                    foreach(var e in targetPlayer.PlayerEffects)
                     {
                         if(e.EffectName == effect.EffectName)
                         {
                             if (e.EffectDuration == -1)
-                                RTL.Text = actorPlayer.CharacterData.CharacterName + " is already affected by " + effect.EffectName + "!";
+                                RTL.Text = targetPlayer.CharacterData.CharacterName + " is already affected by " + effect.EffectName + "!";
                             else
                             {
                                 e.EffectDuration = effect.EffectDuration;
-                                RTL.Text = actorPlayer.CharacterData.CharacterName + "'s " + effect.EffectName + " duration has been renewed!";
+                                RTL.Text = targetPlayer.CharacterData.CharacterName + "'s " + effect.EffectName + " duration has been renewed!";
                             }
-                            actorPlayer.updateConditions();
+                            targetPlayer.updateConditions();
                             return;
                         }
                     }
                 }
-                actorPlayer.PlayerEffects.Add(effect.Duplicate() as Effect);
+                targetPlayer.PlayerEffects.Add(effect.Duplicate() as Effect);
                 break;
             case "Damage Over Time":
                 if(targetPlayer.PlayerEffects.Count > 0)

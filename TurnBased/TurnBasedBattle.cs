@@ -38,8 +38,9 @@ public partial class TurnBasedBattle : Node2D
         GetNode<Queue>("Queue").StateChangedHandler = gameStateMachine.ChangeState;
         gameStateMachine.setNextCharacter(GetNode<Queue>("Queue").GetNextCharacter);
 
-        GetNode<Queue>("Queue").Initialize(new List<TurnBasedCharacter>() { Players[0], Players[1] });
+        GetNode<Queue>("Queue").Initialize(Players);
         GetNode<Queue>("Queue").ActiveCharacterHandler = SetActivePlayer;
+        gameStateMachine.SetCharacterQueue(GetNode<Queue>("Queue"));
         gameStateMachine.setGetBattleConditions(GetActiveBattleConditions);
         BattleConditions.Teams = Teams;
     }
@@ -54,6 +55,7 @@ public partial class TurnBasedBattle : Node2D
         tempPlayers.Add(GetNode<TurnBasedCharacter>("Player1"));
         tempPlayers.Add(GetNode<TurnBasedCharacter>("Player2"));
         bool first = true;
+        TurnBasedCharacter lastCharacter = null;
         foreach (var p in players)
         {
             TurnBasedCharacter tbc = GD.Load<PackedScene>("res://TurnBased/Characters/TurnBasedCharacter.tscn").Instantiate<TurnBasedCharacter>();
@@ -65,21 +67,16 @@ public partial class TurnBasedBattle : Node2D
             {
                 tbc.MoveLocalX(tempPlayers[0].Position.X);
                 tbc.MoveLocalY(tempPlayers[0].Position.Y);
-                AddChild(tbc);
                 RemoveChild(tempPlayers[0]);
-                if (p.CurrentHealth < 0) //if current health is not set, set it to max health
-                {
-                    p.CurrentHealth = p.Health;
-                }
-                //tbc.CharacterSprite.SpriteFrames = p.PlayerSprite;
                 first = false;
             }
             else
             {
-                //tempPlayers[0].QueueVal = 0;
-                //RemoveChild(tempPlayers[0]);
-                //tempPlayers[0].SafeFree();
+                tbc.MoveLocalX(lastCharacter.Position.X + 60);
+                tbc.MoveLocalY(lastCharacter.Position.Y);
             }
+            AddChild(tbc);
+            lastCharacter = tbc;
             first = false;
         }
         first = true;
@@ -94,17 +91,16 @@ public partial class TurnBasedBattle : Node2D
             {
                 tbc.MoveLocalX(tempPlayers[1].Position.X);
                 tbc.MoveLocalY(tempPlayers[1].Position.Y);
-                AddChild(tbc);
                 RemoveChild(tempPlayers[1]);
-                //tbc.CharacterSprite.SpriteFrames = e.PlayerSprite;
                 first = false;
             }
             else
             {
-                //tempPlayers[1].QueueVal = 0;
-                //RemoveChild(tempPlayers[1]);
-                //tempPlayers[1].SafeFree();
+                tbc.MoveLocalX(lastCharacter.Position.X + 60);
+                tbc.MoveLocalY(lastCharacter.Position.Y);
             }
+            AddChild(tbc);
+            lastCharacter = tbc;
             first = false;
         }
         ActiveTeam = Teams[0];

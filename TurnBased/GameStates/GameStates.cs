@@ -10,11 +10,20 @@ public partial class GameStates : Node2D
         { "Start", new StartState() },
         { "Casting", new CastState() },
         { "Effect", new EffectState() },
-        { "Decision", new DecisionState() } ,
+        { "Decision", new DecisionState() },
         { "TurnEnd", new TurnEndState() },
-        {"Victory", new VictoryState() },
-        { "Defeat", new DefeatState() } 
+        { "Victory", new VictoryState() },
+        { "Defeat", new DefeatState() },
+        { "Target", new TargetState() } 
     };
+
+    public void SetCharacterQueue(Queue queue)
+    {
+        foreach (var state in States.Values)
+        {
+            state.setCharacterQueue(queue);
+        }
+    }
 
     public override void _Ready()
     {
