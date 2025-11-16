@@ -39,7 +39,7 @@ namespace TwoDGame
 		private void _on_area_2d_area_entered(Area2D area)
 		{
 			// Replace with function body.
-			if(area.GetParent() != null && area.GetParent() is Player)
+			if(area.GetParent() != null && area.GetParent() is CharacterData)
 			{
 				OverworldPlayer p = (OverworldPlayer)area.GetParent();
 				p.interactables.Add(this);
@@ -51,7 +51,7 @@ namespace TwoDGame
 		private void _on_area_2d_area_exited(Area2D area)
 		{
 			// Replace with function body.
-			if(area.GetParent() != null && area.GetParent() is Player)
+			if(area.GetParent() != null && area.GetParent() is CharacterData)
 			{
 				OverworldPlayer p = (OverworldPlayer)area.GetParent();
 				p.interactables.Remove(this);

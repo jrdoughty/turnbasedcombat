@@ -45,7 +45,7 @@ public partial class TurnBasedBattle : Node2D
         BattleConditions.Teams = Teams;
     }
 
-    public void SetTeams(List<Player> players, List<Player> enemies)
+    public void SetTeams(List<CharacterData> players, List<CharacterData> enemies)
     {
         Teams = new List<Team>{
                 new Team(),

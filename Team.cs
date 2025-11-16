@@ -30,9 +30,9 @@ public partial class Team : Node2D
         Players.Remove(player);
     }
 
-    public Array<Player> GetPartyData()
+    public Array<CharacterData> GetPartyData()
     {
-        Array<Player> partyData = new Array<Player>();
+        Array<CharacterData> partyData = new Array<CharacterData>();
         foreach (var player in Players)
         {
             partyData.Add(player.CharacterData);

@@ -16,7 +16,7 @@ public partial class TurnBasedCharacter : Node2D
 	public bool IsDefeated { get; set; } = false;
 	public bool IsPlayerContolled { get; set; } = false;
 	public int QueueVal { get; set; } = 0;
-	[Export] public Player CharacterData { get; set; }
+	[Export] public CharacterData CharacterData { get; set; }
 	public Team team { get; set; }
     public bool Selected { get; set; } = false;
     public bool Picking { get; set; } = false;
@@ -44,7 +44,7 @@ public partial class TurnBasedCharacter : Node2D
 
     public void InitializeData()
     {
-        CharacterData = CharacterData.Duplicate() as Player;//make sure we have a unique instance of the player data
+        CharacterData = CharacterData.Duplicate() as CharacterData;//make sure we have a unique instance of the player data
 
         for (int i = 0; i < CharacterData.PlayerActions.Count; i++)
         {

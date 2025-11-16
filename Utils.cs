@@ -35,7 +35,7 @@ public class Utils
 		return str;
 	}
 
-	public static void SavePartyData(Array<Player> partyData)
+	public static void SavePartyData(Array<CharacterData> partyData)
 	{
 		// Save party data to a file or database
 		DirAccess.MakeDirRecursiveAbsolute(ProjectSettings.GlobalizePath("user://SaveData/Party"));
@@ -45,9 +45,9 @@ public class Utils
 		}
 	}
 
-	public static Array<Player> LoadPartyData()
+	public static Array<CharacterData> LoadPartyData()
 	{
-		Array<Player> partyData = new Array<Player>();
+		Array<CharacterData> partyData = new Array<CharacterData>();
 		DirAccess dir = DirAccess.Open("user://SaveData/Party");
 		if (dir == null)
 		{
@@ -60,7 +60,7 @@ public class Utils
 		{
 			if (fileName.EndsWith(".tres"))
 			{
-				Player player = ResourceLoader.Load<Player>("user://SaveData/Party/" + fileName);
+				CharacterData player = ResourceLoader.Load<CharacterData>("user://SaveData/Party/" + fileName);
 				if (player != null)
 				{
 					partyData.Add(player);

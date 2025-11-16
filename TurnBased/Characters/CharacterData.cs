@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class Player : Resource, ICharacter
+public partial class CharacterData : Resource, ICharacter
 {
 	[Export] public string CharacterName { get; set; }
 	[Export] public int Health { get; set; }
